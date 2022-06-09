@@ -12,6 +12,7 @@ import re
 import torch
 import torch.distributed as dist
 from torch.utils.data import DataLoader
+import wandb
 
 import wespeaker.utils.schedulers as schedulers
 from wespeaker.models.speaker_model import get_speaker_model
@@ -30,6 +31,7 @@ def train(config='conf/config.yaml', **kwargs):
     :returns: None
     """
     configs = parse_config_or_kwargs(config, **kwargs)
+
     checkpoint = configs.get('checkpoint', None)
     # dist configs
     rank = int(os.environ['LOCAL_RANK'])
@@ -40,6 +42,9 @@ def train(config='conf/config.yaml', **kwargs):
 
     model_dir = os.path.join(configs['exp_dir'], "models")
     if rank == 0:
+        wandb.login(host="http://wandb.speech-rnd.internal",
+                    key="local-473ad2cf1f9ed9023faf837048e75943e1bbe7c5")
+        wandb.init(project='Jan_DIAR-88', config=configs)
         try:
             os.makedirs(model_dir)
         except IOError:
@@ -175,11 +180,14 @@ def train(config='conf/config.yaml', **kwargs):
             logger.info(line)
     dist.barrier()  # synchronize here
 
+    if rank == 0:
+        wandb.watch(ddp_model)
+
     for epoch in range(start_epoch, configs['num_epochs'] + 1):
         # train_sampler.set_epoch(epoch)
         train_dataset.set_epoch(epoch)
 
-        run_epoch(train_dataloader,
+        lr, margin, loss, acc = run_epoch(train_dataloader,
                   loader_size,
                   ddp_model,
                   criterion,
@@ -197,6 +205,7 @@ def train(config='conf/config.yaml', **kwargs):
                 save_checkpoint(
                     model,
                     os.path.join(model_dir, 'model_{}.pt'.format(epoch)))
+            wandb.log({'epoch': epoch, 'lr': lr, 'margin': margin, 'loss': loss, 'acc': acc})
 
     if rank == 0:
         os.symlink('model_{}.pt'.format(configs['num_epochs']),

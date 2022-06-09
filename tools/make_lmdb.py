@@ -32,7 +32,7 @@ def get_args():
 
 def main():
     args = get_args()
-    db = lmdb.open(args.out_lmdb, map_size=int(math.pow(1024, 4)))  # 1TB
+    db = lmdb.open(args.out_lmdb, map_size=int(math.pow(512, 4)))  # 1TB
     # txn is for Transaciton
     txn = db.begin(write=True)
     keys = []
