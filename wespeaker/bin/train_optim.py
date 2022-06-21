@@ -20,7 +20,6 @@ import yaml
 import tableprint as tp
 import re
 
-import wandb
 import torch
 import torch.distributed as dist
 from torch.utils.data import DataLoader
@@ -73,16 +72,6 @@ def train(config='conf/config.yaml', **kwargs):
 
     # seed
     set_seed(configs['seed'] + rank)
-
-    if rank == 0:
-        wandb.login(
-            host="http://wandb.speech-rnd.internal",
-            key="local-473ad2cf1f9ed9023faf837048e75943e1bbe7c5"
-        )
-        wandb.init(
-            project='DIAR-88',
-            config=configs,
-        )
 
     # train data
     train_label = configs['train_label']
@@ -201,25 +190,19 @@ def train(config='conf/config.yaml', **kwargs):
         # train_sampler.set_epoch(epoch)
         train_dataset.set_epoch(epoch)
 
-        lr, margin, loss, acc = run_epoch(
-            train_dataloader,
-            loader_size,
-            ddp_model,
-            criterion,
-            optimizer,
-            scheduler,
-            margin_scheduler,
-            epoch,
-            logger,
-            log_batch_interval=configs['log_batch_interval'],
-            device=device)
+        run_epoch(train_dataloader,
+                  loader_size,
+                  ddp_model,
+                  criterion,
+                  optimizer,
+                  scheduler,
+                  margin_scheduler,
+                  epoch,
+                  logger,
+                  log_batch_interval=configs['log_batch_interval'],
+                  device=device)
 
         if rank == 0:
-            try:
-                wandb_log = {'loss': loss, 'lr': lr, 'epoch': epoch, 'acc': acc, 'margin': margin}
-                wandb.log(wandb_log)
-            except:
-                logger.warning('Problem with wandb.')
             if epoch % configs['save_epoch_interval'] == 0 or epoch >= configs[
                     'num_epochs'] - configs['num_avg']:
                 save_checkpoint(

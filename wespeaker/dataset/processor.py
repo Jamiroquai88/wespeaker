@@ -1,4 +1,6 @@
-# Copyright (c) 2022 Horizon Robtics. (authors: Binbin Zhang)
+# Copyright (c) 2021 Mobvoi Inc. (authors: Binbin Zhang)
+#               2022 Chengdong Liang (liangchengdong@mail.nwpu.edu.cn)
+#               2022 Hongji Wang (jijijiang77@gmail.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import boto3
 import io
+import kaldiio
 import json
 import logging
+import os
 import random
+import re
 import tarfile
 from subprocess import PIPE, Popen
 from urllib.parse import urlparse
@@ -28,6 +34,24 @@ import torchaudio
 import torchaudio.compliance.kaldi as kaldi
 
 AUDIO_FORMAT_SETS = set(['flac', 'mp3', 'm4a', 'ogg', 'opus', 'wav', 'wma'])
+
+# The following are required to avoid S3 messages polluting our logs
+# and slowing down the training because of the high number of messages
+logging.getLogger('boto3').setLevel(logging.CRITICAL)
+logging.getLogger('botocore').setLevel(logging.CRITICAL)
+logging.getLogger('nose').setLevel(logging.CRITICAL)
+logging.getLogger('s3transfer').setLevel(logging.CRITICAL)
+logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+
+# FIXME : JPR : how can we get this credential thing work a bit more transparently?
+# one needs to add the following in their ~/.aws/config
+#
+# [profile rev-inst]
+# credential_source=Ec2InstanceMetadata
+#
+# this uses the fact that we have EC2-level permissions to access our s3 speech buckets
+session = boto3.Session(profile_name='rev-inst')
+s3res = session.client('s3', region_name="us-west-2")
 
 
 def url_opener(data):
@@ -50,6 +74,11 @@ def url_opener(data):
             if pr.scheme == '' or pr.scheme == 'file':
                 stream = open(url, 'rb')
             # network file, such as HTTP(HDFS/OSS/S3)/HTTPS/SCP
+            elif pr.scheme == 's3':
+                buf = io.BytesIO()
+                s3res.download_fileobj(pr.netloc, pr.path[1:], buf)
+                buf.seek(0)
+                stream = io.BufferedReader(buf)
             else:
                 cmd = f'curl -s -L {url}'
                 process = Popen(cmd, shell=True, stdout=PIPE)
@@ -142,6 +171,85 @@ def parse_raw(data):
             logging.warning('Failed to read {}'.format(wav_file))
 
 
+def parse_segments(data):
+    bdir, data = data
+    with open(os.path.join(bdir, 'wav.scp')) as f:
+        lines = f.readlines()
+        assert len(lines) == 1
+        wav = lines[0].split()[1]
+        assert os.path.isfile(wav), f'Missing wave file {wav}.'
+
+    waveform, sample_rate = None, None
+    for sample_idx, sample in enumerate(data):
+        assert 'src' in sample
+        segment, utt, start_sec, end_sec = sample['src'].split()
+        utt = utt[:-2]
+        start_sec, end_sec = float(start_sec), float(end_sec)
+
+        if waveform is None:
+            waveform, sample_rate = torchaudio.load(wav)
+
+        # print(start_sec, end_sec)
+        waveform_segment = waveform[:, int(start_sec * sample_rate):int(end_sec * sample_rate)]
+        slen = waveform_segment.shape[1]
+        seg_len, seg_jump = int(1.2 * sample_rate), int(0.24 * sample_rate)
+        start = 0
+        # print(f'{bdir} {waveform_segment.shape} {start_sec} {end_sec} {slen} {seg_len} {seg_jump}\n')
+        for start in range(0, slen - seg_len, seg_jump):
+            key = f'{utt}-A_{sample_idx:04}-' \
+                  f'{int(start / sample_rate * 100):08}-{int((start + seg_len) / sample_rate * 100):08}'
+            assert start <= start + seg_len <= waveform_segment.shape[1], \
+                f'Start: {start}, end: {start + seg_len}, shape: {waveform_segment.shape[1]}'
+            example = dict(key=key,
+                           spk=(start / sample_rate + start_sec, (start + seg_len) / sample_rate + start_sec),
+                           wav=waveform_segment[:, start:start + seg_len],
+                           sample_rate=sample_rate)
+            # print(f'{start} {slen} {seg_len} {seg_jump} {key} {waveform_segment[:, start:start + seg_len].shape}\n')
+            yield example
+
+        # print(slen, start, seg_jump)
+        if slen - start - seg_jump > 0.12 * sample_rate:
+            key = f'{utt}-A_{sample_idx:04}-' \
+                  f'{int((start + seg_jump) / sample_rate * 100):08}-{int(slen / sample_rate * 100):08}'
+            assert start + seg_jump <= slen <= waveform_segment.shape[1],\
+                f'Start: {start + seg_jump}, end: {slen}, shape: {waveform_segment.shape[1]}'
+            example = dict(key=key,
+                           spk=((start + seg_jump) / sample_rate + start_sec, slen / sample_rate + start_sec),
+                           wav=waveform_segment[:, start + seg_jump:slen],
+                           sample_rate=sample_rate)
+            # print(f'{start} {slen} {seg_len} {seg_jump} {key}\n')
+            yield example
+
+
+def parse_feat(data):
+    """ Parse key/feat/spk from json line
+
+        Args:
+            data: Iterable[str], str is a json line has key/feat/spk
+
+        Returns:
+            Iterable[{key, feat, spk}]
+    """
+    for sample in data:
+        assert 'src' in sample
+        json_line = sample['src']
+        obj = json.loads(json_line)
+        assert 'key' in obj
+        assert 'feat' in obj
+        assert 'spk' in obj
+        key = obj['key']
+        feat_ark = obj['feat']
+        spk = obj['spk']
+        try:
+            feat = torch.from_numpy(kaldiio.load_mat(feat_ark))
+            example = dict(key=key,
+                           spk=spk,
+                           feat=feat)
+            yield example
+        except Exception as ex:
+            logging.warning('Failed to load {}'.format(feat_ark))
+
+
 def shuffle(data, shuffle_size=2500):
     """ Local shuffle the data
 
@@ -181,7 +289,7 @@ def spk_to_id(data, spk2id):
         if sample['spk'] in spk2id:
             label = spk2id[sample['spk']]
         else:
-            label = -1
+            label = sample['spk']
         sample['label'] = label
         yield sample
 
@@ -215,6 +323,15 @@ def speed_perturb(data, num_spks):
 
 
 def get_random_chunk(data, chunk_len):
+    """ Get random chunk
+
+        Args:
+            data: torch.Tensor (random len)
+            chunk_len: chunk length
+
+        Returns:
+            torch.Tensor (exactly chunk_len)
+    """
     data_len = len(data)
     data_shape = data.shape
     # random chunk
@@ -223,33 +340,49 @@ def get_random_chunk(data, chunk_len):
         data = data[chunk_start:chunk_start + chunk_len]
     else:
         # padding
-        chunk_shape = chunk_len if len(data_shape) == 1 else (chunk_len,
-                                                              data.shape[1])
-        data = np.resize(data, chunk_shape)  # resize will repeat copy
+        repeat_factor = chunk_len // data_len + 1
+        repeat_shape = repeat_factor if len(data_shape) == 1 else (repeat_factor, 1)
+        data = data.repeat(repeat_shape)
+        data = data[:chunk_len]
 
     return data
 
 
-def random_chunk(data, num_frms=200):
+def random_chunk(data, data_type='shard/raw/feat', num_frms=200):
     """ Random chunk the data into `num_frms` frames
 
         Args:
-            data: Iterable[{key, wav, label, sample_rate}]
+            data: Iterable[{key, wav/feat, label, sample_rate}]
             num_frms: num of frames for each training sample
 
         Returns:
-            Iterable[{key, wav, label, sample_rate}]
+            Iterable[{key, wav/feat, label, sample_rate}]
     """
     # Note(Binbin Zhang): We assume the sample rate is 16000,
     #                     frame shift 10ms, frame length 25ms
-    chunk_len = (num_frms - 1) * 160 + 400
+    if data_type == 'feat':
+        chunk_len = num_frms
+    else:
+        chunk_len = (num_frms - 1) * 160 + 400
+
     for sample in data:
         assert 'key' in sample
-        assert 'wav' in sample
 
-        wav = sample['wav'].numpy()[0]
-        wav = get_random_chunk(wav, chunk_len)
-        sample['wav'] = torch.from_numpy(wav).unsqueeze(0)
+        if data_type == 'feat':
+            assert 'feat' in sample
+            feat = sample['feat']
+            feat = get_random_chunk(feat, chunk_len)
+            sample['feat'] = feat
+        else:
+            assert 'wav' in sample
+            wav = sample['wav'][0]
+            try:
+                wav = get_random_chunk(wav, chunk_len)
+            except:
+                logging.warning(f'{sample["key"]} probably empty. '
+                                f'If you see this error often there might be a problem with your data.')
+                continue
+            sample['wav'] = wav.unsqueeze(0)
         yield sample
 
 
@@ -343,8 +476,27 @@ def compute_fbank(data,
                           window_type='hamming',
                           htk_compat=True,
                           use_energy=False)
-        # CMN, without CVN
-        mat = mat - torch.mean(mat, dim=0)
+        yield dict(key=sample['key'], label=sample['label'], feat=mat)
+
+
+def apply_cmvn(data, norm_mean=True, norm_var=False):
+    """ Apply CMVN
+
+        Args:
+            data: Iterable[{key, feat, label}]
+
+        Returns:
+            Iterable[{key, feat, label}]
+    """
+    for sample in data:
+        assert 'key' in sample
+        assert 'feat' in sample
+        assert 'label' in sample
+        mat = sample['feat']
+        if norm_mean:
+            mat = mat - torch.mean(mat, dim=0)
+        if norm_var:
+            mat = mat / torch.sqrt(torch.var(mat, dim=0) + 1e-8)
         yield dict(key=sample['key'], label=sample['label'], feat=mat)
 
 

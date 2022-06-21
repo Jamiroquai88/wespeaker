@@ -8,11 +8,11 @@ stage=-1
 stop_stage=-1
 
 config=conf/resnet.yaml
-exp_dir=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150
+exp_dir=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data
 data_type="shard"  # shard/raw
 gpus="[0,1,2,3]"
 num_avg=10
-checkpoint=exp/ResNet101-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_45.pt
+checkpoint=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data/models/model_15.pt
 
 score_norm_method="asnorm"  # asnorm/snorm
 top_n=100
@@ -27,23 +27,23 @@ fi
 
 if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
   echo "Covert train and test data to ${data_type}..."
-  for dset in voxceleb1 voxceleb2; do
+  for dset in train; do
     if [ $data_type == "shard" ]; then
-      python tools/make_shard_list.py --num_utts_per_shard 1000 \
+      python tools/make_shard_list_segments.py --num_utts_per_shard 1000 \
           --num_threads 8 \
           --prefix shards \
           --shuffle \
-          data/$dset/wav.scp data/$dset/utt2spk \
-          data/$dset/shards data/$dset/shard.list
+          data/$dset/wav.scp data/$dset/utt2spk data/$dset/segments \
+          data/$dset/audio data/$dset/shards data/$dset/shard.list
     else
       python tools/make_raw_list.py data/$dset/wav.scp \
           data/$dset/utt2spk data/$dset/raw.list
     fi
   done
   # Convert all musan data to LMDB
-  python tools/make_lmdb.py data/musan/wav.scp data/musan/lmdb
+  # FIXME python tools/make_lmdb.py data/musan/wav.scp data/musan/lmdb
   # Convert all rirs data to LMDB
-  python tools/make_lmdb.py data/rirs/wav.scp data/rirs/lmdb
+  # FIXME python tools/make_lmdb.py data/rirs/wav.scp data/rirs/lmdb
 fi
 
 if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
@@ -55,8 +55,8 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
       --gpus $gpus \
       --num_avg ${num_avg} \
       --data_type "${data_type}" \
-      --train_data data/voxceleb2/${data_type}.list \
-      --train_label data/voxceleb2/utt2spk \
+      --train_data data/train/${data_type}.list \
+      --train_label data/train/utt2spk \
       --reverb_data data/rirs/lmdb \
       --noise_data data/musan/lmdb \
       ${checkpoint:+--checkpoint $checkpoint}
@@ -65,15 +65,15 @@ fi
 if [ ${stage} -le 4 ] && [ ${stop_stage} -ge 4 ]; then
   echo "Do model average ..."
   avg_model=$exp_dir/models/avg_model.pt
-  python wespeaker/bin/average_model.py \
-    --dst_model $avg_model \
-    --src_path $exp_dir/models \
-    --num ${num_avg}
+  #python wespeaker/bin/average_model.py \
+  #  --dst_model $avg_model \
+  #  --src_path $exp_dir/models \
+  #  --num ${num_avg}
 
   echo "Extract embeddings ..."
   local/extract_vox.sh \
     --exp_dir $exp_dir --model_path $avg_model \
-    --nj 4 --gpus $gpus --data_type $data_type
+    --nj 1 --gpus [0] --data_type $data_type
 fi
 
 if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ]; then
