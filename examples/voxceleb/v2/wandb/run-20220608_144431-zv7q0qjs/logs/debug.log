@@ -1,0 +1,43 @@
+2022-06-08 14:44:31,836 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Loading settings from /shared/workspaces/jprofant/.config/wandb/settings
+2022-06-08 14:44:31,836 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Loading settings from /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/settings
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'examples/voxceleb/v2/wespeaker/bin/train.py', 'program': '/shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wespeaker/bin/train.py'}
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***', 'base_url': 'http://wandb.speech-rnd.internal'}
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_init.py:_log_setup():428] Logging user logs to /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220608_144431-zv7q0qjs/logs/debug.log
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_init.py:_log_setup():429] Logging internal logs to /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220608_144431-zv7q0qjs/logs/debug-internal.log
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_init.py:init():462] calling init triggers
+2022-06-08 14:44:31,837 INFO    MainThread:22890 [wandb_init.py:init():465] wandb.init called with sweep_config: {}
+config: {}
+2022-06-08 14:44:31,838 INFO    MainThread:22890 [wandb_init.py:init():515] starting backend
+2022-06-08 14:44:31,838 INFO    MainThread:22890 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-06-08 14:44:31,851 INFO    MainThread:22890 [backend.py:ensure_launched():217] starting backend process...
+2022-06-08 14:44:31,859 INFO    MainThread:22890 [backend.py:ensure_launched():222] started backend process with pid: 22927
+2022-06-08 14:44:31,860 INFO    MainThread:22890 [wandb_init.py:init():525] backend started and connected
+2022-06-08 14:44:31,864 INFO    MainThread:22890 [wandb_init.py:init():596] updated telemetry
+2022-06-08 14:44:31,900 INFO    MainThread:22890 [wandb_init.py:init():627] communicating run to backend with 30 second timeout
+2022-06-08 14:45:01,901 INFO    MainThread:22890 [interface_shared.py:_communicate_run():326] couldn't get run from backend
+2022-06-08 14:45:01,901 ERROR   MainThread:22890 [wandb_init.py:init():636] backend process timed out
+2022-06-08 14:45:01,901 ERROR   MainThread:22890 [wandb_init.py:init():647] encountered error: Error communicating with wandb process
+try: wandb.init(settings=wandb.Settings(start_method='fork'))
+or:  wandb.init(settings=wandb.Settings(start_method='thread'))
+For more info see: https://docs.wandb.ai/library/init#init-start-error
+2022-06-08 14:45:01,910 ERROR   MainThread:22890 [wandb_init.py:init():1026] error
+Traceback (most recent call last):
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 999, in init
+    run = wi.init()
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 651, in init
+    backend.cleanup()
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/backend/backend.py", line 246, in cleanup
+    self.interface.join()
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 475, in join
+    super().join()
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 666, in join
+    _ = self._communicate_shutdown()
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 472, in _communicate_shutdown
+    _ = self._communicate(record)
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 226, in _communicate
+    return self._communicate_async(rec, local=local).get(timeout=timeout)
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 231, in _communicate_async
+    raise Exception("The wandb backend process has shutdown")
+Exception: The wandb backend process has shutdown

@@ -1,0 +1,1343 @@
+[ INFO : 2022-06-18 19:34:06,359 ] - <== Data statistics ==>
+[ INFO : 2022-06-18 19:34:06,359 ] - train data num: 1747308, spk num: 29501
+[ INFO : 2022-06-18 19:34:06,369 ] - <== Dataloaders ==>
+[ INFO : 2022-06-18 19:34:06,370 ] - train dataloaders created
+[ INFO : 2022-06-18 19:34:06,370 ] - loader size: 2275
+[ INFO : 2022-06-18 19:34:06,370 ] - <== Model ==>
+[ INFO : 2022-06-18 19:34:06,448 ] - Load initial model from exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/avg_model.pt
+[ INFO : 2022-06-18 19:34:06,485 ] - Dropping parameter projection.weight
+[ INFO : 2022-06-18 19:34:06,695 ] - ResNet(
+[ INFO : 2022-06-18 19:34:06,696 ] -   (conv1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,696 ] -   (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,696 ] -   (layer1): Sequential(
+[ INFO : 2022-06-18 19:34:06,696 ] -     (0): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,696 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,696 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,696 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,696 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,696 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,696 ] -     )
+[ INFO : 2022-06-18 19:34:06,696 ] -     (1): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,697 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,697 ] -     )
+[ INFO : 2022-06-18 19:34:06,697 ] -     (2): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,697 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,697 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,698 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,698 ] -     )
+[ INFO : 2022-06-18 19:34:06,698 ] -   )
+[ INFO : 2022-06-18 19:34:06,698 ] -   (layer2): Sequential(
+[ INFO : 2022-06-18 19:34:06,698 ] -     (0): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,698 ] -       (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,698 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,698 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,698 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,698 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-18 19:34:06,698 ] -         (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-18 19:34:06,698 ] -         (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,699 ] -       )
+[ INFO : 2022-06-18 19:34:06,699 ] -     )
+[ INFO : 2022-06-18 19:34:06,699 ] -     (1): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,699 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,699 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,699 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,699 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,699 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,699 ] -     )
+[ INFO : 2022-06-18 19:34:06,699 ] -     (2): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,699 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,700 ] -     )
+[ INFO : 2022-06-18 19:34:06,700 ] -     (3): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,700 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,700 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,701 ] -     )
+[ INFO : 2022-06-18 19:34:06,701 ] -   )
+[ INFO : 2022-06-18 19:34:06,701 ] -   (layer3): Sequential(
+[ INFO : 2022-06-18 19:34:06,701 ] -     (0): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,701 ] -       (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,701 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,701 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,701 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,701 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-18 19:34:06,701 ] -         (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-18 19:34:06,701 ] -         (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,701 ] -       )
+[ INFO : 2022-06-18 19:34:06,702 ] -     )
+[ INFO : 2022-06-18 19:34:06,702 ] -     (1): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,702 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,702 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,702 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,702 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,702 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,702 ] -     )
+[ INFO : 2022-06-18 19:34:06,702 ] -     (2): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,702 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,702 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,703 ] -     )
+[ INFO : 2022-06-18 19:34:06,703 ] -     (3): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,703 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,703 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,703 ] -     )
+[ INFO : 2022-06-18 19:34:06,703 ] -     (4): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,704 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,704 ] -     )
+[ INFO : 2022-06-18 19:34:06,704 ] -     (5): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,704 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,704 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,705 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,705 ] -     )
+[ INFO : 2022-06-18 19:34:06,705 ] -   )
+[ INFO : 2022-06-18 19:34:06,705 ] -   (layer4): Sequential(
+[ INFO : 2022-06-18 19:34:06,705 ] -     (0): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,705 ] -       (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,705 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,705 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,705 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,705 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-18 19:34:06,705 ] -         (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-18 19:34:06,705 ] -         (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,706 ] -       )
+[ INFO : 2022-06-18 19:34:06,706 ] -     )
+[ INFO : 2022-06-18 19:34:06,706 ] -     (1): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,706 ] -       (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,706 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,706 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,706 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,706 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,706 ] -     )
+[ INFO : 2022-06-18 19:34:06,706 ] -     (2): BasicBlock(
+[ INFO : 2022-06-18 19:34:06,706 ] -       (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,707 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,707 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-18 19:34:06,707 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,707 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-18 19:34:06,707 ] -     )
+[ INFO : 2022-06-18 19:34:06,707 ] -   )
+[ INFO : 2022-06-18 19:34:06,707 ] -   (pool): TSTP()
+[ INFO : 2022-06-18 19:34:06,707 ] -   (seg_1): Linear(in_features=5120, out_features=256, bias=True)
+[ INFO : 2022-06-18 19:34:06,707 ] -   (seg_bn_1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+[ INFO : 2022-06-18 19:34:06,707 ] -   (seg_2): Linear(in_features=256, out_features=256, bias=True)
+[ INFO : 2022-06-18 19:34:06,707 ] -   (projection): ArcMarginProduct(
+[ INFO : 2022-06-18 19:34:06,707 ] -     in_features=256, out_features=88503, scale=32.0,
+[ INFO : 2022-06-18 19:34:06,708 ] -                       margin=0.0, easy_margin=False
+[ INFO : 2022-06-18 19:34:06,708 ] -   )
+[ INFO : 2022-06-18 19:34:06,708 ] - )
+[ INFO : 2022-06-18 19:34:07,704 ] - checkpoint: exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data/models/model_15.pt
+[ INFO : 2022-06-18 19:34:07,704 ] - start_epoch: 16
+[ INFO : 2022-06-18 19:34:07,745 ] - <== Loss ==>
+[ INFO : 2022-06-18 19:34:07,745 ] - loss criterion is: CrossEntropyLoss
+[ INFO : 2022-06-18 19:34:07,746 ] - <== Optimizer ==>
+[ INFO : 2022-06-18 19:34:07,746 ] - optimizer is: SGD
+[ INFO : 2022-06-18 19:34:07,746 ] - <== Scheduler ==>
+[ INFO : 2022-06-18 19:34:07,746 ] - scheduler is: ExponentialDecrease
+[ INFO : 2022-06-18 19:34:07,746 ] - <== MarginScheduler ==>
+[ INFO : 2022-06-18 19:34:07,754 ] - <========== Training process ==========>
+[ INFO : 2022-06-18 19:34:07,754 ] - +----------+----------+----------+----------+----------+----------+
+[ INFO : 2022-06-18 19:34:07,754 ] - |     Epoch|     Batch|        Lr|    Margin|      Loss|       Acc|
+[ INFO : 2022-06-18 19:34:07,754 ] - +----------+----------+----------+----------+----------+----------+
+[ INFO : 2022-06-18 19:35:32,707 ] - Reducer buckets have been rebuilt in this iteration.
+[ WARNING : 2022-06-18 19:36:13,896 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 19:39:14,941 ] - |        16|       100|   0.18664|         0|    1.4331|    75.031|
+[ INFO : 2022-06-18 19:44:02,654 ] - |        16|       200|   0.18622|         0|      1.44|    74.891|
+[ INFO : 2022-06-18 19:48:46,169 ] - |        16|       300|   0.18581|         0|     1.445|     74.66|
+[ WARNING : 2022-06-18 19:51:12,175 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 19:53:03,905 ] - |        16|       400|   0.18539|         0|     1.448|    74.577|
+[ INFO : 2022-06-18 19:57:25,395 ] - |        16|       500|   0.18498|         0|    1.4515|    74.517|
+[ INFO : 2022-06-18 20:01:59,459 ] - |        16|       600|   0.18457|         0|    1.4606|    74.348|
+[ INFO : 2022-06-18 20:06:15,118 ] - |        16|       700|   0.18416|         0|    1.4586|    74.356|
+[ INFO : 2022-06-18 20:10:47,403 ] - |        16|       800|   0.18375|         0|    1.4613|    74.294|
+[ INFO : 2022-06-18 20:15:15,090 ] - |        16|       900|   0.18334|         0|    1.4614|    74.252|
+[ INFO : 2022-06-18 20:19:50,599 ] - |        16|      1000|   0.18293|         0|     1.465|     74.17|
+[ INFO : 2022-06-18 20:24:10,618 ] - |        16|      1100|   0.18253|         0|    1.4658|    74.143|
+[ INFO : 2022-06-18 20:28:16,957 ] - |        16|      1200|   0.18212|         0|    1.4666|    74.163|
+[ INFO : 2022-06-18 20:32:23,087 ] - |        16|      1300|   0.18172|         0|    1.4683|    74.127|
+[ INFO : 2022-06-18 20:36:59,687 ] - |        16|      1400|   0.18131|         0|    1.4711|    74.087|
+[ INFO : 2022-06-18 20:41:29,388 ] - |        16|      1500|   0.18091|         0|    1.4717|    74.079|
+[ WARNING : 2022-06-18 20:41:53,412 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-18 20:42:55,347 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 20:45:58,719 ] - |        16|      1600|   0.18051|         0|    1.4738|    74.043|
+[ INFO : 2022-06-18 20:50:28,841 ] - |        16|      1700|    0.1801|         0|    1.4751|    74.039|
+[ INFO : 2022-06-18 20:55:06,455 ] - |        16|      1800|    0.1797|         0|    1.4787|     73.99|
+[ WARNING : 2022-06-18 20:57:55,695 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 20:59:43,330 ] - |        16|      1900|    0.1793|         0|    1.4781|     73.98|
+[ INFO : 2022-06-18 21:04:27,760 ] - |        16|      2000|    0.1789|         0|    1.4792|    73.955|
+[ INFO : 2022-06-18 21:08:55,707 ] - |        16|      2100|   0.17851|         0|    1.4784|     73.97|
+[ INFO : 2022-06-18 21:13:12,927 ] - |        16|      2200|   0.17811|         0|    1.4785|    73.963|
+[ INFO : 2022-06-18 21:15:53,476 ] - |        16|      2273|   0.17782|         0|    1.4783|    73.972|
+[ INFO : 2022-06-18 21:21:20,365 ] - |        17|       100|   0.17742|         0|    1.4494|    74.234|
+[ INFO : 2022-06-18 21:25:59,294 ] - |        17|       200|   0.17702|         0|    1.4523|    74.443|
+[ INFO : 2022-06-18 21:30:23,510 ] - |        17|       300|   0.17663|         0|    1.4516|    74.391|
+[ INFO : 2022-06-18 21:34:35,322 ] - |        17|       400|   0.17623|         0|    1.4457|    74.457|
+[ INFO : 2022-06-18 21:38:57,615 ] - |        17|       500|   0.17584|         0|    1.4408|    74.581|
+[ INFO : 2022-06-18 21:43:28,815 ] - |        17|       600|   0.17545|         0|    1.4446|    74.502|
+[ INFO : 2022-06-18 21:47:39,268 ] - |        17|       700|   0.17506|         0|    1.4477|    74.452|
+[ INFO : 2022-06-18 21:52:00,533 ] - |        17|       800|   0.17467|         0|    1.4509|    74.402|
+[ WARNING : 2022-06-18 21:54:31,127 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 21:56:22,303 ] - |        17|       900|   0.17428|         0|    1.4543|     74.35|
+[ INFO : 2022-06-18 22:00:41,741 ] - |        17|      1000|   0.17389|         0|    1.4514|    74.412|
+[ WARNING : 2022-06-18 22:03:04,607 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00055 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-18 22:05:23,992 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 22:05:33,738 ] - |        17|      1100|   0.17351|         0|    1.4519|    74.372|
+[ INFO : 2022-06-18 22:09:56,755 ] - |        17|      1200|   0.17312|         0|    1.4554|    74.322|
+[ INFO : 2022-06-18 22:13:45,814 ] - |        17|      1300|   0.17274|         0|    1.4592|    74.257|
+[ INFO : 2022-06-18 22:18:11,914 ] - |        17|      1400|   0.17235|         0|    1.4588|     74.28|
+[ WARNING : 2022-06-18 22:20:07,633 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 22:22:36,436 ] - |        17|      1500|   0.17197|         0|    1.4591|    74.263|
+[ INFO : 2022-06-18 22:26:55,801 ] - |        17|      1600|   0.17159|         0|    1.4582|    74.271|
+[ INFO : 2022-06-18 22:31:23,397 ] - |        17|      1700|    0.1712|         0|    1.4567|    74.297|
+[ INFO : 2022-06-18 22:35:45,338 ] - |        17|      1800|   0.17082|         0|    1.4569|    74.297|
+[ WARNING : 2022-06-18 22:38:43,815 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 22:40:09,800 ] - |        17|      1900|   0.17044|         0|    1.4579|    74.311|
+[ INFO : 2022-06-18 22:44:36,019 ] - |        17|      2000|   0.17006|         0|    1.4563|    74.342|
+[ INFO : 2022-06-18 22:48:59,275 ] - |        17|      2100|   0.16969|         0|    1.4566|    74.332|
+[ INFO : 2022-06-18 22:53:10,217 ] - |        17|      2200|   0.16931|         0|    1.4582|    74.307|
+[ INFO : 2022-06-18 22:55:17,218 ] - |        17|      2273|   0.16903|         0|    1.4577|     74.32|
+[ INFO : 2022-06-18 23:00:35,177 ] - |        18|       100|   0.16865|         0|    1.4596|     74.37|
+[ INFO : 2022-06-18 23:05:21,108 ] - |        18|       200|   0.16827|         0|    1.4322|     74.87|
+[ INFO : 2022-06-18 23:09:47,644 ] - |        18|       300|    0.1679|         0|    1.4274|     74.91|
+[ INFO : 2022-06-18 23:14:25,309 ] - |        18|       400|   0.16753|         0|    1.4236|    74.893|
+[ INFO : 2022-06-18 23:19:01,764 ] - |        18|       500|   0.16715|         0|    1.4214|    74.939|
+[ WARNING : 2022-06-18 23:21:21,119 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 23:23:34,894 ] - |        18|       600|   0.16678|         0|    1.4204|    74.969|
+[ WARNING : 2022-06-18 23:26:58,401 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 23:28:13,883 ] - |        18|       700|   0.16641|         0|    1.4163|    75.068|
+[ INFO : 2022-06-18 23:32:49,872 ] - |        18|       800|   0.16604|         0|    1.4211|    74.962|
+[ INFO : 2022-06-18 23:37:07,787 ] - |        18|       900|   0.16567|         0|     1.421|    74.959|
+[ INFO : 2022-06-18 23:41:35,709 ] - |        18|      1000|    0.1653|         0|    1.4197|    74.977|
+[ INFO : 2022-06-18 23:46:02,766 ] - |        18|      1100|   0.16493|         0|    1.4157|    75.039|
+[ WARNING : 2022-06-18 23:50:09,510 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-18 23:50:29,560 ] - |        18|      1200|   0.16457|         0|    1.4182|        75|
+[ INFO : 2022-06-18 23:54:18,227 ] - |        18|      1300|    0.1642|         0|    1.4201|    74.972|
+[ INFO : 2022-06-18 23:58:40,015 ] - |        18|      1400|   0.16384|         0|    1.4221|     74.93|
+[ INFO : 2022-06-19 00:03:02,130 ] - |        18|      1500|   0.16347|         0|    1.4222|    74.954|
+[ WARNING : 2022-06-19 00:06:36,864 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 00:07:30,870 ] - |        18|      1600|   0.16311|         0|    1.4225|    74.963|
+[ INFO : 2022-06-19 00:11:47,047 ] - |        18|      1700|   0.16275|         0|    1.4215|    74.989|
+[ WARNING : 2022-06-19 00:12:42,802 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 00:15:09,655 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 00:15:49,918 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 00:16:23,122 ] - |        18|      1800|   0.16238|         0|    1.4235|    74.959|
+[ INFO : 2022-06-19 00:20:45,568 ] - |        18|      1900|   0.16202|         0|    1.4236|    74.949|
+[ INFO : 2022-06-19 00:25:17,297 ] - |        18|      2000|   0.16166|         0|    1.4235|     74.96|
+[ INFO : 2022-06-19 00:29:49,809 ] - |        18|      2100|    0.1613|         0|    1.4232|    74.977|
+[ INFO : 2022-06-19 00:34:00,571 ] - |        18|      2200|   0.16094|         0|     1.421|    74.999|
+[ INFO : 2022-06-19 00:36:03,500 ] - |        18|      2273|   0.16068|         0|     1.422|    74.994|
+[ WARNING : 2022-06-19 00:36:49,306 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 00:41:34,809 ] - |        19|       100|   0.16032|         0|    1.4119|    75.792|
+[ INFO : 2022-06-19 00:46:12,439 ] - |        19|       200|   0.15996|         0|    1.3853|    75.927|
+[ WARNING : 2022-06-19 00:48:43,021 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 00:51:06,833 ] - |        19|       300|    0.1596|         0|    1.3825|    75.851|
+[ INFO : 2022-06-19 00:55:46,040 ] - |        19|       400|   0.15925|         0|    1.3791|    75.889|
+[ INFO : 2022-06-19 01:00:03,166 ] - |        19|       500|   0.15889|         0|    1.3825|    75.853|
+[ INFO : 2022-06-19 01:04:27,472 ] - |        19|       600|   0.15854|         0|    1.3846|    75.727|
+[ INFO : 2022-06-19 01:08:46,056 ] - |        19|       700|   0.15819|         0|     1.386|    75.708|
+[ INFO : 2022-06-19 01:13:13,184 ] - |        19|       800|   0.15784|         0|    1.3856|    75.635|
+[ WARNING : 2022-06-19 01:15:03,128 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 01:17:40,461 ] - |        19|       900|   0.15749|         0|    1.3864|    75.618|
+[ INFO : 2022-06-19 01:22:15,129 ] - |        19|      1000|   0.15713|         0|    1.3867|    75.649|
+[ INFO : 2022-06-19 01:26:51,231 ] - |        19|      1100|   0.15679|         0|    1.3846|    75.675|
+[ WARNING : 2022-06-19 01:28:12,996 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 01:31:17,558 ] - |        19|      1200|   0.15644|         0|     1.385|    75.662|
+[ INFO : 2022-06-19 01:35:08,522 ] - |        19|      1300|   0.15609|         0|    1.3865|    75.668|
+[ INFO : 2022-06-19 01:39:39,066 ] - |        19|      1400|   0.15574|         0|    1.3854|    75.681|
+[ WARNING : 2022-06-19 01:40:16,945 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 01:44:14,471 ] - |        19|      1500|   0.15539|         0|    1.3858|    75.649|
+[ WARNING : 2022-06-19 01:47:30,334 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 01:48:39,966 ] - |        19|      1600|   0.15505|         0|    1.3848|    75.654|
+[ INFO : 2022-06-19 01:53:11,078 ] - |        19|      1700|    0.1547|         0|     1.384|    75.671|
+[ INFO : 2022-06-19 01:57:34,844 ] - |        19|      1800|   0.15436|         0|    1.3844|    75.672|
+[ INFO : 2022-06-19 02:02:04,795 ] - |        19|      1900|   0.15402|         0|    1.3839|    75.695|
+[ INFO : 2022-06-19 02:06:38,812 ] - |        19|      2000|   0.15367|         0|     1.385|    75.703|
+[ INFO : 2022-06-19 02:10:58,612 ] - |        19|      2100|   0.15333|         0|    1.3852|    75.691|
+[ WARNING : 2022-06-19 02:13:57,637 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 02:15:01,979 ] - |        19|      2200|   0.15299|         0|    1.3845|    75.702|
+[ INFO : 2022-06-19 02:17:02,295 ] - |        19|      2269|   0.15276|         0|    1.3856|    75.694|
+[ INFO : 2022-06-19 02:22:37,325 ] - |        20|       100|    0.1524|         0|    1.4805|    73.812|
+[ INFO : 2022-06-19 02:27:07,888 ] - |        20|       200|   0.15206|         0|    1.4656|    74.138|
+[ WARNING : 2022-06-19 02:27:15,455 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 02:31:43,098 ] - |        20|       300|   0.15172|         0|    1.4577|    74.252|
+[ INFO : 2022-06-19 02:36:19,825 ] - |        20|       400|   0.15138|         0|    1.4489|    74.408|
+[ INFO : 2022-06-19 02:40:36,980 ] - |        20|       500|   0.15104|         0|    1.4415|    74.527|
+[ INFO : 2022-06-19 02:45:04,329 ] - |        20|       600|   0.15071|         0|    1.4334|    74.659|
+[ WARNING : 2022-06-19 02:48:23,111 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 02:49:21,309 ] - |        20|       700|   0.15037|         0|    1.4256|    74.821|
+[ INFO : 2022-06-19 02:53:49,970 ] - |        20|       800|   0.15004|         0|     1.424|    74.904|
+[ INFO : 2022-06-19 02:58:03,440 ] - |        20|       900|    0.1497|         0|     1.423|    74.902|
+[ INFO : 2022-06-19 03:02:33,925 ] - |        20|      1000|   0.14937|         0|    1.4199|    74.941|
+[ INFO : 2022-06-19 03:06:47,759 ] - |        20|      1100|   0.14904|         0|    1.4174|    74.973|
+[ INFO : 2022-06-19 03:11:13,518 ] - |        20|      1200|   0.14871|         0|    1.4165|    75.007|
+[ INFO : 2022-06-19 03:15:19,611 ] - |        20|      1300|   0.14838|         0|    1.4146|    75.047|
+[ INFO : 2022-06-19 03:19:33,656 ] - |        20|      1400|   0.14805|         0|    1.4126|     75.07|
+[ INFO : 2022-06-19 03:23:59,882 ] - |        20|      1500|   0.14772|         0|    1.4099|    75.126|
+[ INFO : 2022-06-19 03:28:36,461 ] - |        20|      1600|   0.14739|         0|    1.4082|    75.159|
+[ INFO : 2022-06-19 03:33:15,442 ] - |        20|      1700|   0.14706|         0|    1.4065|    75.177|
+[ INFO : 2022-06-19 03:37:46,492 ] - |        20|      1800|   0.14673|         0|    1.4043|    75.223|
+[ INFO : 2022-06-19 03:42:09,599 ] - |        20|      1900|   0.14641|         0|    1.4025|     75.24|
+[ INFO : 2022-06-19 03:46:38,224 ] - |        20|      2000|   0.14608|         0|    1.4015|    75.271|
+[ INFO : 2022-06-19 03:51:09,274 ] - |        20|      2100|   0.14576|         0|    1.4013|    75.283|
+[ INFO : 2022-06-19 03:55:20,325 ] - |        20|      2200|   0.14543|         0|    1.3992|    75.293|
+[ INFO : 2022-06-19 03:57:59,943 ] - |        20|      2273|    0.1452|         0|    1.3987|    75.308|
+[ WARNING : 2022-06-19 03:59:18,428 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 04:03:15,873 ] - |        21|       100|   0.14487| 0.0029835|    1.3177|    76.927|
+[ INFO : 2022-06-19 04:08:00,623 ] - |        21|       200|   0.14454|  0.005952|    1.3265|    76.516|
+[ INFO : 2022-06-19 04:12:37,700 ] - |        21|       300|   0.14422| 0.0088758|    1.3578|     75.97|
+[ INFO : 2022-06-19 04:17:05,827 ] - |        21|       400|    0.1439|  0.011755|      1.38|    75.634|
+[ INFO : 2022-06-19 04:21:28,199 ] - |        21|       500|   0.14358|  0.014592|    1.3933|     75.32|
+[ INFO : 2022-06-19 04:25:42,666 ] - |        21|       600|   0.14326|  0.017385|    1.4162|    74.943|
+[ WARNING : 2022-06-19 04:28:19,548 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 04:30:11,333 ] - |        21|       700|   0.14294|  0.020137|    1.4311|    74.686|
+[ INFO : 2022-06-19 04:34:39,401 ] - |        21|       800|   0.14262|  0.022847|    1.4508|    74.398|
+[ INFO : 2022-06-19 04:38:58,673 ] - |        21|       900|   0.14231|  0.025516|    1.4672|    74.067|
+[ INFO : 2022-06-19 04:43:27,278 ] - |        21|      1000|   0.14199|  0.028145|    1.4853|     73.69|
+[ INFO : 2022-06-19 04:47:47,664 ] - |        21|      1100|   0.14167|  0.030735|    1.5035|    73.347|
+[ INFO : 2022-06-19 04:52:13,995 ] - |        21|      1200|   0.14136|  0.033285|    1.5217|    73.012|
+[ INFO : 2022-06-19 04:56:03,514 ] - |        21|      1300|   0.14104|  0.035797|     1.538|    72.693|
+[ INFO : 2022-06-19 05:00:29,960 ] - |        21|      1400|   0.14073|  0.038271|    1.5563|    72.391|
+[ WARNING : 2022-06-19 05:04:04,401 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 05:04:06,162 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 05:04:58,235 ] - |        21|      1500|   0.14042|  0.040708|    1.5719|     72.08|
+[ INFO : 2022-06-19 05:09:13,903 ] - |        21|      1600|   0.14011|  0.043108|    1.5895|    71.743|
+[ INFO : 2022-06-19 05:13:49,213 ] - |        21|      1700|   0.13979|  0.045472|    1.6069|    71.434|
+[ INFO : 2022-06-19 05:18:25,153 ] - |        21|      1800|   0.13948|    0.0478|    1.6229|    71.143|
+[ WARNING : 2022-06-19 05:21:46,764 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 05:22:52,605 ] - |        21|      1900|   0.13917|  0.050093|    1.6396|    70.861|
+[ INFO : 2022-06-19 05:27:17,905 ] - |        21|      2000|   0.13886|  0.052352|    1.6557|    70.587|
+[ INFO : 2022-06-19 05:31:47,351 ] - |        21|      2100|   0.13855|  0.054577|     1.672|    70.311|
+[ INFO : 2022-06-19 05:35:55,693 ] - |        21|      2200|   0.13825|  0.056768|    1.6869|    70.045|
+[ INFO : 2022-06-19 05:38:40,449 ] - |        21|      2273|   0.13802|  0.058346|    1.6982|    69.841|
+[ INFO : 2022-06-19 05:43:58,491 ] - |        22|       100|   0.13771|  0.060523|    2.0393|    63.453|
+[ INFO : 2022-06-19 05:48:35,309 ] - |        22|       200|    0.1374|  0.062625|    2.0314|    63.654|
+[ INFO : 2022-06-19 05:53:17,097 ] - |        22|       300|    0.1371|  0.064694|    2.0534|    63.391|
+[ WARNING : 2022-06-19 05:55:05,535 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 05:56:40,520 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 05:57:44,246 ] - |        22|       400|   0.13679|  0.066733|    2.0775|    62.965|
+[ INFO : 2022-06-19 06:02:05,009 ] - |        22|       500|   0.13649|  0.068741|     2.088|    62.695|
+[ INFO : 2022-06-19 06:06:22,356 ] - |        22|       600|   0.13618|  0.070719|    2.1006|    62.425|
+[ WARNING : 2022-06-19 06:09:00,867 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 06:10:42,102 ] - |        22|       700|   0.13588|  0.072667|    2.1127|    62.208|
+[ INFO : 2022-06-19 06:15:02,491 ] - |        22|       800|   0.13558|  0.074585|    2.1265|    61.957|
+[ INFO : 2022-06-19 06:19:33,841 ] - |        22|       900|   0.13528|  0.076475|     2.141|    61.751|
+[ INFO : 2022-06-19 06:24:17,519 ] - |        22|      1000|   0.13497|  0.078336|    2.1503|    61.649|
+[ INFO : 2022-06-19 06:28:47,323 ] - |        22|      1100|   0.13467|  0.080169|    2.1664|    61.387|
+[ INFO : 2022-06-19 06:33:33,670 ] - |        22|      1200|   0.13437|  0.081975|    2.1741|    61.203|
+[ INFO : 2022-06-19 06:37:17,915 ] - |        22|      1300|   0.13408|  0.083753|    2.1868|    61.001|
+[ INFO : 2022-06-19 06:41:45,402 ] - |        22|      1400|   0.13378|  0.085505|    2.1975|    60.805|
+[ INFO : 2022-06-19 06:46:08,482 ] - |        22|      1500|   0.13348|   0.08723|    2.2086|     60.62|
+[ INFO : 2022-06-19 06:50:35,445 ] - |        22|      1600|   0.13318|  0.088929|    2.2198|    60.463|
+[ WARNING : 2022-06-19 06:53:14,592 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 06:55:07,164 ] - |        22|      1700|   0.13289|  0.090602|    2.2277|    60.315|
+[ WARNING : 2022-06-19 06:56:40,281 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 06:59:40,465 ] - |        22|      1800|   0.13259|  0.092251|    2.2365|    60.188|
+[ WARNING : 2022-06-19 07:01:56,627 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 07:02:51,937 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 07:03:50,866 ] - |        22|      1900|    0.1323|  0.093874|     2.248|    59.994|
+[ INFO : 2022-06-19 07:08:19,903 ] - |        22|      2000|     0.132|  0.095473|    2.2597|    59.815|
+[ INFO : 2022-06-19 07:12:43,979 ] - |        22|      2100|   0.13171|  0.097048|    2.2707|    59.632|
+[ INFO : 2022-06-19 07:16:55,749 ] - |        22|      2200|   0.13141|  0.098599|    2.2813|    59.464|
+[ INFO : 2022-06-19 07:18:58,086 ] - |        22|      2273|    0.1312|  0.099717|    2.2879|     59.35|
+[ INFO : 2022-06-19 07:24:13,882 ] - |        23|       100|    0.1309|   0.10126|    2.4935|    55.714|
+[ INFO : 2022-06-19 07:28:51,942 ] - |        23|       200|   0.13061|   0.10275|    2.4961|    55.513|
+[ WARNING : 2022-06-19 07:31:52,085 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 07:33:36,099 ] - |        23|       300|   0.13032|   0.10421|     2.511|    55.398|
+[ WARNING : 2022-06-19 07:34:47,523 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 07:37:58,212 ] - |        23|       400|   0.13003|   0.10565|    2.5328|     55.24|
+[ INFO : 2022-06-19 07:42:17,417 ] - |        23|       500|   0.12974|   0.10708|     2.545|    55.005|
+[ INFO : 2022-06-19 07:46:40,366 ] - |        23|       600|   0.12945|   0.10848|    2.5526|    54.854|
+[ INFO : 2022-06-19 07:51:09,994 ] - |        23|       700|   0.12917|   0.10985|    2.5593|    54.795|
+[ INFO : 2022-06-19 07:55:38,471 ] - |        23|       800|   0.12888|   0.11121|    2.5717|    54.545|
+[ WARNING : 2022-06-19 07:58:17,225 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:00:02,515 ] - |        23|       900|   0.12859|   0.11255|    2.5805|    54.429|
+[ INFO : 2022-06-19 08:04:39,397 ] - |        23|      1000|   0.12831|   0.11387|    2.5934|    54.253|
+[ WARNING : 2022-06-19 08:05:43,567 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:09:03,348 ] - |        23|      1100|   0.12802|   0.11517|    2.6071|    54.125|
+[ INFO : 2022-06-19 08:13:09,147 ] - |        23|      1200|   0.12774|   0.11644|    2.6144|    53.984|
+[ INFO : 2022-06-19 08:16:51,731 ] - |        23|      1300|   0.12745|    0.1177|    2.6241|    53.857|
+[ WARNING : 2022-06-19 08:20:56,354 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:21:13,107 ] - |        23|      1400|   0.12717|   0.11894|    2.6351|    53.688|
+[ WARNING : 2022-06-19 08:25:26,990 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 08:25:27,157 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:25:46,012 ] - |        23|      1500|   0.12688|   0.12016|    2.6419|    53.572|
+[ INFO : 2022-06-19 08:30:18,405 ] - |        23|      1600|    0.1266|   0.12137|    2.6519|    53.447|
+[ INFO : 2022-06-19 08:34:36,790 ] - |        23|      1700|   0.12632|   0.12255|    2.6619|    53.293|
+[ WARNING : 2022-06-19 08:34:52,416 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 08:38:50,971 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:39:07,180 ] - |        23|      1800|   0.12604|   0.12372|    2.6721|    53.153|
+[ INFO : 2022-06-19 08:43:26,042 ] - |        23|      1900|   0.12576|   0.12487|    2.6806|    53.035|
+[ INFO : 2022-06-19 08:47:58,694 ] - |        23|      2000|   0.12548|     0.126|    2.6894|    52.905|
+[ INFO : 2022-06-19 08:52:24,167 ] - |        23|      2100|    0.1252|   0.12712|    2.6984|    52.751|
+[ WARNING : 2022-06-19 08:56:06,245 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:56:44,621 ] - |        23|      2200|   0.12492|   0.12821|    2.7059|    52.631|
+[ WARNING : 2022-06-19 08:57:25,417 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 08:58:57,518 ] - |        23|      2273|   0.12472|   0.12901|     2.712|    52.553|
+[ INFO : 2022-06-19 09:03:55,317 ] - |        24|       100|   0.12444|    0.1301|    2.8335|     50.01|
+[ INFO : 2022-06-19 09:08:47,440 ] - |        24|       200|   0.12416|   0.13115|    2.8504|    49.898|
+[ INFO : 2022-06-19 09:13:31,527 ] - |        24|       300|   0.12388|   0.13219|     2.859|    49.905|
+[ WARNING : 2022-06-19 09:15:22,141 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 09:17:52,781 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 09:17:53,617 ] - |        24|       400|   0.12361|   0.13321|    2.8689|    49.917|
+[ INFO : 2022-06-19 09:22:11,161 ] - |        24|       500|   0.12333|   0.13421|    2.8897|    49.702|
+[ INFO : 2022-06-19 09:26:26,178 ] - |        24|       600|   0.12306|   0.13521|    2.9017|    49.503|
+[ INFO : 2022-06-19 09:30:44,796 ] - |        24|       700|   0.12278|   0.13618|    2.9107|    49.394|
+[ INFO : 2022-06-19 09:35:24,617 ] - |        24|       800|   0.12251|   0.13714|    2.9257|    49.214|
+[ INFO : 2022-06-19 09:39:48,194 ] - |        24|       900|   0.12224|   0.13809|    2.9305|    49.109|
+[ WARNING : 2022-06-19 09:40:11,648 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 09:41:32,917 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 09:44:08,688 ] - |        24|      1000|   0.12197|   0.13902|    2.9398|    48.996|
+[ WARNING : 2022-06-19 09:48:22,573 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 09:48:35,282 ] - |        24|      1100|   0.12169|   0.13994|    2.9432|    48.965|
+[ INFO : 2022-06-19 09:52:54,849 ] - |        24|      1200|   0.12142|   0.14085|    2.9546|    48.804|
+[ WARNING : 2022-06-19 09:53:10,333 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 09:57:12,200 ] - |        24|      1300|   0.12115|   0.14174|    2.9615|    48.692|
+[ INFO : 2022-06-19 10:01:35,694 ] - |        24|      1400|   0.12088|   0.14262|    2.9662|    48.589|
+[ INFO : 2022-06-19 10:05:52,066 ] - |        24|      1500|   0.12062|   0.14348|    2.9756|    48.433|
+[ INFO : 2022-06-19 10:10:13,507 ] - |        24|      1600|   0.12035|   0.14433|    2.9804|    48.366|
+[ INFO : 2022-06-19 10:14:40,710 ] - |        24|      1700|   0.12008|   0.14517|    2.9858|    48.258|
+[ WARNING : 2022-06-19 10:15:56,600 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 10:19:05,462 ] - |        24|      1800|   0.11981|     0.146|    2.9889|    48.176|
+[ INFO : 2022-06-19 10:23:35,495 ] - |        24|      1900|   0.11955|   0.14681|    2.9968|    48.076|
+[ WARNING : 2022-06-19 10:25:57,837 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 10:28:26,946 ] - |        24|      2000|   0.11928|   0.14761|    3.0021|    48.007|
+[ INFO : 2022-06-19 10:32:54,039 ] - |        24|      2100|   0.11901|    0.1484|     3.008|    47.901|
+[ INFO : 2022-06-19 10:37:06,719 ] - |        24|      2200|   0.11875|   0.14918|     3.014|    47.821|
+[ INFO : 2022-06-19 10:39:13,492 ] - |        24|      2273|   0.11856|   0.14974|    3.0192|    47.751|
+[ INFO : 2022-06-19 10:44:33,594 ] - |        25|       100|   0.11829|   0.15051|    3.1432|     46.13|
+[ INFO : 2022-06-19 10:49:06,538 ] - |        25|       200|   0.11802|   0.15126|    3.1459|    46.047|
+[ WARNING : 2022-06-19 10:53:19,795 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 10:53:49,341 ] - |        25|       300|   0.11776|   0.15199|     3.144|    45.873|
+[ INFO : 2022-06-19 10:58:10,663 ] - |        25|       400|    0.1175|   0.15272|    3.1431|     45.79|
+[ INFO : 2022-06-19 11:02:32,779 ] - |        25|       500|   0.11724|   0.15343|    3.1454|    45.806|
+[ WARNING : 2022-06-19 11:02:34,873 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 11:06:59,728 ] - |        25|       600|   0.11698|   0.15413|     3.159|    45.707|
+[ WARNING : 2022-06-19 11:07:21,097 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 11:11:34,135 ] - |        25|       700|   0.11672|   0.15482|    3.1685|    45.621|
+[ WARNING : 2022-06-19 11:11:42,659 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 11:13:55,080 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 11:14:56,738 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 11:15:53,428 ] - |        25|       800|   0.11646|    0.1555|    3.1713|    45.609|
+[ WARNING : 2022-06-19 11:18:22,010 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 11:18:28,210 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 11:20:12,301 ] - |        25|       900|    0.1162|   0.15617|    3.1752|    45.559|
+[ INFO : 2022-06-19 11:24:37,024 ] - |        25|      1000|   0.11594|   0.15683|    3.1826|    45.495|
+[ INFO : 2022-06-19 11:29:09,934 ] - |        25|      1100|   0.11568|   0.15748|    3.1923|    45.304|
+[ WARNING : 2022-06-19 11:29:39,516 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 11:33:24,987 ] - |        25|      1200|   0.11542|   0.15812|    3.2016|    45.173|
+[ INFO : 2022-06-19 11:37:16,696 ] - |        25|      1300|   0.11517|   0.15875|    3.2067|    45.116|
+[ INFO : 2022-06-19 11:41:32,056 ] - |        25|      1400|   0.11491|   0.15938|    3.2105|    45.068|
+[ INFO : 2022-06-19 11:45:59,612 ] - |        25|      1500|   0.11466|   0.15999|    3.2137|    45.029|
+[ INFO : 2022-06-19 11:50:20,415 ] - |        25|      1600|    0.1144|   0.16059|    3.2222|    44.934|
+[ INFO : 2022-06-19 11:54:45,158 ] - |        25|      1700|   0.11415|   0.16118|     3.228|    44.862|
+[ INFO : 2022-06-19 11:59:04,488 ] - |        25|      1800|   0.11389|   0.16177|    3.2316|    44.815|
+[ INFO : 2022-06-19 12:03:26,480 ] - |        25|      1900|   0.11364|   0.16235|    3.2365|    44.743|
+[ INFO : 2022-06-19 12:07:43,722 ] - |        25|      2000|   0.11339|   0.16291|    3.2407|    44.693|
+[ INFO : 2022-06-19 12:12:14,583 ] - |        25|      2100|   0.11313|   0.16347|    3.2437|     44.65|
+[ INFO : 2022-06-19 12:16:38,842 ] - |        25|      2200|   0.11288|   0.16402|     3.247|    44.615|
+[ INFO : 2022-06-19 12:19:04,424 ] - |        25|      2273|    0.1127|   0.16442|    3.2495|    44.583|
+[ WARNING : 2022-06-19 12:23:18,198 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 12:23:24,260 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 12:24:28,445 ] - |        26|       100|   0.11244|   0.16496|     3.327|    43.542|
+[ INFO : 2022-06-19 12:29:05,556 ] - |        26|       200|   0.11219|   0.16549|    3.2951|    43.602|
+[ INFO : 2022-06-19 12:33:43,892 ] - |        26|       300|   0.11194|   0.16601|    3.3106|     43.72|
+[ INFO : 2022-06-19 12:38:22,065 ] - |        26|       400|   0.11169|   0.16652|    3.3009|    43.931|
+[ INFO : 2022-06-19 12:42:41,270 ] - |        26|       500|   0.11145|   0.16703|    3.3114|    43.809|
+[ INFO : 2022-06-19 12:47:13,183 ] - |        26|       600|    0.1112|   0.16753|    3.3214|    43.622|
+[ WARNING : 2022-06-19 12:49:42,838 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 12:51:34,247 ] - |        26|       700|   0.11095|   0.16802|    3.3235|    43.646|
+[ INFO : 2022-06-19 12:55:55,817 ] - |        26|       800|    0.1107|    0.1685|    3.3301|    43.523|
+[ INFO : 2022-06-19 13:00:33,678 ] - |        26|       900|   0.11046|   0.16897|    3.3337|    43.425|
+[ WARNING : 2022-06-19 13:03:42,130 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 13:04:53,629 ] - |        26|      1000|   0.11021|   0.16944|    3.3441|    43.293|
+[ INFO : 2022-06-19 13:09:20,847 ] - |        26|      1100|   0.10997|    0.1699|    3.3517|    43.205|
+[ INFO : 2022-06-19 13:13:49,987 ] - |        26|      1200|   0.10972|   0.17035|    3.3559|    43.175|
+[ WARNING : 2022-06-19 13:15:59,669 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 13:17:05,282 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 13:17:53,481 ] - |        26|      1300|   0.10948|    0.1708|    3.3583|     43.12|
+[ INFO : 2022-06-19 13:22:38,273 ] - |        26|      1400|   0.10923|   0.17124|    3.3618|    43.054|
+[ INFO : 2022-06-19 13:27:03,614 ] - |        26|      1500|   0.10899|   0.17167|    3.3684|    42.942|
+[ INFO : 2022-06-19 13:31:40,176 ] - |        26|      1600|   0.10875|    0.1721|    3.3725|    42.868|
+[ INFO : 2022-06-19 13:36:13,673 ] - |        26|      1700|   0.10851|   0.17252|    3.3759|    42.812|
+[ INFO : 2022-06-19 13:40:36,762 ] - |        26|      1800|   0.10826|   0.17293|    3.3779|    42.781|
+[ WARNING : 2022-06-19 13:42:29,272 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 13:44:59,119 ] - |        26|      1900|   0.10802|   0.17334|    3.3814|     42.73|
+[ INFO : 2022-06-19 13:49:17,685 ] - |        26|      2000|   0.10778|   0.17374|    3.3842|    42.702|
+[ INFO : 2022-06-19 13:53:39,024 ] - |        26|      2100|   0.10754|   0.17414|    3.3868|    42.677|
+[ INFO : 2022-06-19 13:57:35,005 ] - |        26|      2200|    0.1073|   0.17453|    3.3887|    42.663|
+[ INFO : 2022-06-19 13:59:41,950 ] - |        26|      2273|   0.10713|   0.17481|    3.3931|    42.614|
+[ WARNING : 2022-06-19 14:01:33,595 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 14:04:56,389 ] - |        27|       100|   0.10689|    0.1752|    3.4039|    42.349|
+[ INFO : 2022-06-19 14:09:30,132 ] - |        27|       200|   0.10665|   0.17557|     3.432|    41.885|
+[ INFO : 2022-06-19 14:14:04,975 ] - |        27|       300|   0.10641|   0.17594|    3.4337|    41.773|
+[ INFO : 2022-06-19 14:18:35,425 ] - |        27|       400|   0.10617|    0.1763|    3.4402|    41.806|
+[ INFO : 2022-06-19 14:23:03,895 ] - |        27|       500|   0.10594|   0.17666|    3.4474|    41.717|
+[ WARNING : 2022-06-19 14:24:37,286 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 14:27:44,223 ] - |        27|       600|    0.1057|   0.17701|    3.4514|    41.704|
+[ INFO : 2022-06-19 14:32:07,972 ] - |        27|       700|   0.10547|   0.17736|    3.4543|    41.725|
+[ INFO : 2022-06-19 14:36:27,044 ] - |        27|       800|   0.10523|    0.1777|    3.4589|    41.723|
+[ INFO : 2022-06-19 14:41:00,037 ] - |        27|       900|     0.105|   0.17803|    3.4564|    41.682|
+[ INFO : 2022-06-19 14:45:40,828 ] - |        27|      1000|   0.10477|   0.17836|    3.4563|    41.696|
+[ INFO : 2022-06-19 14:50:15,836 ] - |        27|      1100|   0.10453|   0.17869|    3.4603|    41.644|
+[ WARNING : 2022-06-19 14:52:24,308 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 14:54:40,365 ] - |        27|      1200|    0.1043|   0.17901|    3.4614|    41.638|
+[ WARNING : 2022-06-19 14:57:26,016 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 14:58:27,982 ] - |        27|      1300|   0.10407|   0.17933|    3.4609|    41.649|
+[ WARNING : 2022-06-19 15:00:08,540 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 15:02:57,263 ] - |        27|      1400|   0.10384|   0.17964|    3.4665|    41.578|
+[ INFO : 2022-06-19 15:07:28,956 ] - |        27|      1500|   0.10361|   0.17995|    3.4725|    41.522|
+[ INFO : 2022-06-19 15:12:06,644 ] - |        27|      1600|   0.10337|   0.18025|    3.4764|    41.507|
+[ INFO : 2022-06-19 15:16:31,023 ] - |        27|      1700|   0.10314|   0.18055|    3.4757|    41.483|
+[ INFO : 2022-06-19 15:20:57,574 ] - |        27|      1800|   0.10292|   0.18084|    3.4776|    41.461|
+[ INFO : 2022-06-19 15:25:20,599 ] - |        27|      1900|   0.10269|   0.18113|    3.4774|    41.456|
+[ INFO : 2022-06-19 15:29:49,793 ] - |        27|      2000|   0.10246|   0.18141|    3.4803|    41.433|
+[ INFO : 2022-06-19 15:34:08,413 ] - |        27|      2100|   0.10223|   0.18169|    3.4791|    41.435|
+[ INFO : 2022-06-19 15:38:21,159 ] - |        27|      2200|     0.102|   0.18197|    3.4822|    41.393|
+[ INFO : 2022-06-19 15:41:05,559 ] - |        27|      2273|   0.10184|   0.18217|    3.4834|    41.383|
+[ WARNING : 2022-06-19 15:44:04,863 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 15:46:30,888 ] - |        28|       100|   0.10161|   0.18244|     3.508|    41.547|
+[ INFO : 2022-06-19 15:51:06,198 ] - |        28|       200|   0.10138|   0.18271|    3.4992|    41.396|
+[ INFO : 2022-06-19 15:55:38,907 ] - |        28|       300|   0.10115|   0.18297|    3.5077|    41.137|
+[ INFO : 2022-06-19 16:00:01,010 ] - |        28|       400|   0.10093|   0.18322|    3.5046|    41.129|
+[ INFO : 2022-06-19 16:04:28,721 ] - |        28|       500|    0.1007|   0.18348|    3.5132|    40.979|
+[ INFO : 2022-06-19 16:08:56,095 ] - |        28|       600|   0.10048|   0.18372|    3.5156|     41.04|
+[ WARNING : 2022-06-19 16:10:11,100 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 16:13:21,708 ] - |        28|       700|   0.10026|   0.18397|    3.5139|    41.094|
+[ INFO : 2022-06-19 16:17:53,706 ] - |        28|       800|   0.10003|   0.18421|    3.5195|    41.035|
+[ INFO : 2022-06-19 16:22:32,483 ] - |        28|       900|  0.099811|   0.18445|    3.5169|    41.056|
+[ WARNING : 2022-06-19 16:22:59,603 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 16:26:49,432 ] - |        28|      1000|  0.099589|   0.18468|    3.5164|    41.077|
+[ WARNING : 2022-06-19 16:27:23,360 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 16:30:59,655 ] - |        28|      1100|  0.099367|   0.18491|    3.5177|    41.049|
+[ INFO : 2022-06-19 16:35:22,229 ] - |        28|      1200|  0.099146|   0.18514|    3.5195|    41.009|
+[ INFO : 2022-06-19 16:39:07,887 ] - |        28|      1300|  0.098926|   0.18537|     3.523|    41.006|
+[ INFO : 2022-06-19 16:43:38,413 ] - |        28|      1400|  0.098706|   0.18559|     3.526|    40.968|
+[ WARNING : 2022-06-19 16:44:25,815 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 16:47:59,327 ] - |        28|      1500|  0.098486|    0.1858|    3.5266|    40.952|
+[ INFO : 2022-06-19 16:52:19,656 ] - |        28|      1600|  0.098267|   0.18602|    3.5304|    40.927|
+[ INFO : 2022-06-19 16:56:43,439 ] - |        28|      1700|  0.098048|   0.18623|    3.5308|    40.944|
+[ INFO : 2022-06-19 17:01:16,080 ] - |        28|      1800|   0.09783|   0.18644|    3.5333|    40.918|
+[ INFO : 2022-06-19 17:05:38,832 ] - |        28|      1900|  0.097612|   0.18664|    3.5343|    40.907|
+[ INFO : 2022-06-19 17:10:06,775 ] - |        28|      2000|  0.097395|   0.18684|    3.5343|    40.901|
+[ INFO : 2022-06-19 17:14:29,087 ] - |        28|      2100|  0.097179|   0.18704|    3.5366|    40.877|
+[ WARNING : 2022-06-19 17:17:05,078 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 17:18:33,427 ] - |        28|      2200|  0.096962|   0.18723|    3.5379|    40.858|
+[ INFO : 2022-06-19 17:21:23,356 ] - |        28|      2270|  0.096811|   0.18737|    3.5387|    40.843|
+[ INFO : 2022-06-19 17:26:44,038 ] - |        29|       100|  0.096585|   0.18757|    3.8396|    36.719|
+[ WARNING : 2022-06-19 17:27:06,964 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 17:31:20,130 ] - |        29|       200|   0.09637|   0.18776|    3.7472|    38.081|
+[ INFO : 2022-06-19 17:36:13,649 ] - |        29|       300|  0.096156|   0.18794|    3.7138|    38.321|
+[ INFO : 2022-06-19 17:40:33,009 ] - |        29|       400|  0.095942|   0.18812|    3.7026|    38.521|
+[ WARNING : 2022-06-19 17:42:06,421 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 17:44:53,387 ] - |        29|       500|  0.095728|    0.1883|    3.6833|    38.887|
+[ WARNING : 2022-06-19 17:46:34,726 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 17:49:11,559 ] - |        29|       600|  0.095515|   0.18848|    3.6793|    38.901|
+[ INFO : 2022-06-19 17:53:23,211 ] - |        29|       700|  0.095303|   0.18865|    3.6691|    39.047|
+[ WARNING : 2022-06-19 17:53:35,434 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 17:57:39,059 ] - |        29|       800|  0.095091|   0.18882|     3.663|    39.127|
+[ WARNING : 2022-06-19 18:01:08,289 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 18:02:17,795 ] - |        29|       900|  0.094879|   0.18899|    3.6566|    39.159|
+[ INFO : 2022-06-19 18:06:44,073 ] - |        29|      1000|  0.094668|   0.18916|    3.6551|    39.244|
+[ INFO : 2022-06-19 18:11:13,854 ] - |        29|      1100|  0.094458|   0.18932|    3.6549|    39.271|
+[ INFO : 2022-06-19 18:15:33,120 ] - |        29|      1200|  0.094247|   0.18948|    3.6511|    39.352|
+[ WARNING : 2022-06-19 18:18:01,492 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 18:19:22,827 ] - |        29|      1300|  0.094038|   0.18964|    3.6519|    39.309|
+[ INFO : 2022-06-19 18:23:45,542 ] - |        29|      1400|  0.093828|    0.1898|    3.6525|    39.322|
+[ INFO : 2022-06-19 18:28:09,264 ] - |        29|      1500|   0.09362|   0.18995|    3.6502|    39.343|
+[ INFO : 2022-06-19 18:32:35,030 ] - |        29|      1600|  0.093411|    0.1901|    3.6475|    39.344|
+[ INFO : 2022-06-19 18:36:48,363 ] - |        29|      1700|  0.093204|   0.19025|    3.6457|    39.368|
+[ INFO : 2022-06-19 18:41:22,312 ] - |        29|      1800|  0.092996|    0.1904|    3.6459|    39.353|
+[ WARNING : 2022-06-19 18:44:39,120 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 18:45:43,493 ] - |        29|      1900|  0.092789|   0.19054|    3.6444|     39.38|
+[ INFO : 2022-06-19 18:50:16,776 ] - |        29|      2000|  0.092583|   0.19068|    3.6448|    39.372|
+[ INFO : 2022-06-19 18:54:32,146 ] - |        29|      2100|  0.092377|   0.19082|    3.6438|    39.392|
+[ INFO : 2022-06-19 18:58:48,911 ] - |        29|      2200|  0.092171|   0.19096|    3.6423|    39.437|
+[ WARNING : 2022-06-19 18:59:53,353 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 19:01:33,633 ] - |        29|      2273|  0.092022|   0.19106|    3.6416|    39.465|
+[ INFO : 2022-06-19 19:06:57,646 ] - |        30|       100|  0.091813|    0.1912|    3.4777|    40.661|
+[ INFO : 2022-06-19 19:11:47,098 ] - |        30|       200|  0.091609|   0.19133|    3.4848|    40.826|
+[ INFO : 2022-06-19 19:16:19,348 ] - |        30|       300|  0.091405|   0.19146|    3.4952|    40.944|
+[ INFO : 2022-06-19 19:20:38,535 ] - |        30|       400|  0.091201|   0.19159|    3.5063|    40.872|
+[ INFO : 2022-06-19 19:24:55,971 ] - |        30|       500|  0.090998|   0.19172|    3.5156|    40.798|
+[ INFO : 2022-06-19 19:29:29,285 ] - |        30|       600|  0.090796|   0.19184|    3.5271|     40.76|
+[ WARNING : 2022-06-19 19:32:35,746 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 19:33:43,200 ] - |        30|       700|  0.090594|   0.19197|    3.5265|    40.725|
+[ INFO : 2022-06-19 19:37:49,737 ] - |        30|       800|  0.090392|   0.19209|    3.5299|    40.715|
+[ INFO : 2022-06-19 19:42:21,436 ] - |        30|       900|  0.090191|   0.19221|    3.5335|    40.659|
+[ INFO : 2022-06-19 19:46:48,384 ] - |        30|      1000|  0.089991|   0.19232|    3.5348|    40.629|
+[ INFO : 2022-06-19 19:51:17,628 ] - |        30|      1100|   0.08979|   0.19244|    3.5355|    40.647|
+[ WARNING : 2022-06-19 19:55:21,402 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 19:55:32,790 ] - |        30|      1200|  0.089591|   0.19255|    3.5372|     40.68|
+[ WARNING : 2022-06-19 19:56:07,512 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 19:59:28,370 ] - |        30|      1300|  0.089391|   0.19267|    3.5373|    40.677|
+[ INFO : 2022-06-19 20:04:07,380 ] - |        30|      1400|  0.089192|   0.19278|    3.5375|    40.666|
+[ WARNING : 2022-06-19 20:07:12,740 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 20:07:58,008 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 20:08:30,685 ] - |        30|      1500|  0.088994|   0.19288|    3.5363|    40.682|
+[ INFO : 2022-06-19 20:12:49,920 ] - |        30|      1600|  0.088796|   0.19299|    3.5372|    40.668|
+[ INFO : 2022-06-19 20:17:10,931 ] - |        30|      1700|  0.088598|    0.1931|    3.5416|    40.618|
+[ INFO : 2022-06-19 20:21:28,795 ] - |        30|      1800|  0.088401|    0.1932|    3.5424|     40.62|
+[ INFO : 2022-06-19 20:26:00,080 ] - |        30|      1900|  0.088205|    0.1933|     3.542|    40.633|
+[ INFO : 2022-06-19 20:30:27,862 ] - |        30|      2000|  0.088008|    0.1934|    3.5443|    40.624|
+[ INFO : 2022-06-19 20:34:54,143 ] - |        30|      2100|  0.087813|    0.1935|    3.5458|    40.607|
+[ WARNING : 2022-06-19 20:37:14,199 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 20:37:38,628 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 20:39:06,056 ] - |        30|      2200|  0.087617|    0.1936|    3.5481|    40.599|
+[ INFO : 2022-06-19 20:41:52,855 ] - |        30|      2270|  0.087481|   0.19367|    3.5494|    40.609|
+[ INFO : 2022-06-19 20:47:09,015 ] - |        31|       100|  0.087276|   0.19377|    3.7192|    38.266|
+[ WARNING : 2022-06-19 20:51:22,125 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 20:51:45,185 ] - |        31|       200|  0.087082|   0.19386|    3.6986|    38.682|
+[ INFO : 2022-06-19 20:56:11,831 ] - |        31|       300|  0.086888|   0.19396|    3.6669|    38.957|
+[ WARNING : 2022-06-19 20:58:35,338 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:00:51,498 ] - |        31|       400|  0.086695|   0.19405|    3.6593|    39.143|
+[ INFO : 2022-06-19 21:05:22,528 ] - |        31|       500|  0.086502|   0.19414|    3.6494|    39.252|
+[ WARNING : 2022-06-19 21:05:34,960 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:09:55,531 ] - |        31|       600|   0.08631|   0.19423|    3.6454|    39.324|
+[ WARNING : 2022-06-19 21:13:34,778 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:14:18,800 ] - |        31|       700|  0.086118|   0.19431|    3.6463|    39.319|
+[ INFO : 2022-06-19 21:18:31,149 ] - |        31|       800|  0.085926|    0.1944|    3.6439|     39.38|
+[ INFO : 2022-06-19 21:22:49,189 ] - |        31|       900|  0.085735|   0.19448|    3.6377|    39.454|
+[ INFO : 2022-06-19 21:27:08,188 ] - |        31|      1000|  0.085544|   0.19457|    3.6372|    39.536|
+[ WARNING : 2022-06-19 21:29:01,991 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:31:41,255 ] - |        31|      1100|  0.085354|   0.19465|    3.6357|    39.513|
+[ WARNING : 2022-06-19 21:32:51,897 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 21:35:06,492 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:36:08,519 ] - |        31|      1200|  0.085164|   0.19473|    3.6336|    39.577|
+[ INFO : 2022-06-19 21:40:14,547 ] - |        31|      1300|  0.084974|   0.19481|    3.6321|    39.595|
+[ WARNING : 2022-06-19 21:41:02,304 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 21:44:57,066 ] - |        31|      1400|  0.084785|   0.19489|    3.6306|    39.625|
+[ INFO : 2022-06-19 21:49:13,920 ] - |        31|      1500|  0.084597|   0.19496|    3.6309|    39.639|
+[ INFO : 2022-06-19 21:53:56,043 ] - |        31|      1600|  0.084409|   0.19504|    3.6314|     39.65|
+[ INFO : 2022-06-19 21:58:20,088 ] - |        31|      1700|  0.084221|   0.19511|    3.6289|    39.694|
+[ WARNING : 2022-06-19 22:00:19,456 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:02:40,746 ] - |        31|      1800|  0.084033|   0.19519|    3.6271|    39.739|
+[ INFO : 2022-06-19 22:07:08,174 ] - |        31|      1900|  0.083846|   0.19526|    3.6244|    39.765|
+[ WARNING : 2022-06-19 22:11:00,892 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:11:31,484 ] - |        31|      2000|   0.08366|   0.19533|    3.6249|    39.774|
+[ INFO : 2022-06-19 22:16:04,141 ] - |        31|      2100|  0.083474|    0.1954|    3.6219|    39.785|
+[ INFO : 2022-06-19 22:20:14,909 ] - |        31|      2200|  0.083288|   0.19547|    3.6214|    39.825|
+[ INFO : 2022-06-19 22:23:01,818 ] - |        31|      2273|  0.083153|   0.19552|    3.6216|    39.833|
+[ WARNING : 2022-06-19 22:25:37,258 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:28:01,007 ] - |        32|       100|  0.082964|   0.19559|    3.4892|    41.458|
+[ WARNING : 2022-06-19 22:29:31,236 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:32:50,860 ] - |        32|       200|  0.082779|   0.19566|    3.4844|    41.581|
+[ INFO : 2022-06-19 22:37:25,334 ] - |        32|       300|  0.082595|   0.19572|    3.4903|    41.536|
+[ INFO : 2022-06-19 22:42:09,071 ] - |        32|       400|  0.082411|   0.19579|     3.495|     41.56|
+[ WARNING : 2022-06-19 22:44:20,851 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 22:46:09,853 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:46:49,539 ] - |        32|       500|  0.082228|   0.19585|    3.4947|    41.581|
+[ WARNING : 2022-06-19 22:48:31,013 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 22:51:09,682 ] - |        32|       600|  0.082045|   0.19591|    3.4906|    41.653|
+[ INFO : 2022-06-19 22:55:33,847 ] - |        32|       700|  0.081863|   0.19597|    3.4959|    41.519|
+[ INFO : 2022-06-19 23:00:09,828 ] - |        32|       800|   0.08168|   0.19603|    3.5003|    41.471|
+[ WARNING : 2022-06-19 23:00:44,584 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-19 23:03:17,183 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 23:04:45,048 ] - |        32|       900|  0.081499|   0.19609|    3.5041|    41.412|
+[ WARNING : 2022-06-19 23:07:07,590 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00027 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 23:09:37,463 ] - |        32|      1000|  0.081317|   0.19615|    3.5052|    41.369|
+[ WARNING : 2022-06-19 23:10:56,978 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 23:14:09,216 ] - |        32|      1100|  0.081136|   0.19621|    3.5051|    41.343|
+[ INFO : 2022-06-19 23:18:44,653 ] - |        32|      1200|  0.080956|   0.19627|    3.5077|    41.304|
+[ INFO : 2022-06-19 23:22:38,425 ] - |        32|      1300|  0.080776|   0.19632|    3.5057|    41.345|
+[ WARNING : 2022-06-19 23:26:08,866 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-19 23:27:04,738 ] - |        32|      1400|  0.080596|   0.19638|    3.5055|    41.323|
+[ INFO : 2022-06-19 23:31:32,660 ] - |        32|      1500|  0.080417|   0.19643|    3.5051|    41.323|
+[ INFO : 2022-06-19 23:36:06,282 ] - |        32|      1600|  0.080238|   0.19649|    3.5035|    41.335|
+[ INFO : 2022-06-19 23:40:30,455 ] - |        32|      1700|  0.080059|   0.19654|    3.5074|    41.309|
+[ INFO : 2022-06-19 23:44:49,802 ] - |        32|      1800|  0.079881|   0.19659|    3.5098|    41.291|
+[ INFO : 2022-06-19 23:49:20,187 ] - |        32|      1900|  0.079704|   0.19664|     3.511|    41.289|
+[ INFO : 2022-06-19 23:53:48,405 ] - |        32|      2000|  0.079526|   0.19669|    3.5125|    41.278|
+[ INFO : 2022-06-19 23:58:15,727 ] - |        32|      2100|  0.079349|   0.19674|    3.5122|    41.281|
+[ INFO : 2022-06-20 00:02:14,448 ] - |        32|      2200|  0.079173|   0.19679|    3.5114|    41.316|
+[ INFO : 2022-06-20 00:04:22,025 ] - |        32|      2273|  0.079044|   0.19683|     3.512|    41.311|
+[ INFO : 2022-06-20 00:09:43,047 ] - |        33|       100|  0.078865|   0.19688|    3.4848|    41.443|
+[ INFO : 2022-06-20 00:14:20,571 ] - |        33|       200|  0.078689|   0.19692|    3.4928|    41.206|
+[ INFO : 2022-06-20 00:18:44,568 ] - |        33|       300|  0.078514|   0.19697|    3.4773|    41.476|
+[ WARNING : 2022-06-20 00:18:59,282 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 00:23:25,179 ] - |        33|       400|  0.078339|   0.19702|    3.4704|    41.599|
+[ INFO : 2022-06-20 00:27:50,670 ] - |        33|       500|  0.078165|   0.19706|    3.4687|    41.694|
+[ INFO : 2022-06-20 00:32:24,004 ] - |        33|       600|  0.077991|   0.19711|    3.4686|    41.708|
+[ INFO : 2022-06-20 00:36:41,323 ] - |        33|       700|  0.077818|   0.19715|    3.4717|     41.79|
+[ INFO : 2022-06-20 00:41:09,729 ] - |        33|       800|  0.077645|   0.19719|    3.4735|    41.809|
+[ INFO : 2022-06-20 00:45:30,338 ] - |        33|       900|  0.077472|   0.19723|     3.476|    41.797|
+[ INFO : 2022-06-20 00:49:53,281 ] - |        33|      1000|  0.077299|   0.19728|    3.4733|    41.823|
+[ INFO : 2022-06-20 00:54:15,653 ] - |        33|      1100|  0.077127|   0.19732|    3.4777|    41.794|
+[ INFO : 2022-06-20 00:58:49,344 ] - |        33|      1200|  0.076956|   0.19736|    3.4779|    41.761|
+[ WARNING : 2022-06-20 00:59:44,790 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 01:02:50,657 ] - |        33|      1300|  0.076785|    0.1974|    3.4765|    41.827|
+[ INFO : 2022-06-20 01:07:11,330 ] - |        33|      1400|  0.076614|   0.19744|    3.4769|      41.8|
+[ WARNING : 2022-06-20 01:11:28,262 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 01:11:30,049 ] - |        33|      1500|  0.076443|   0.19748|    3.4775|    41.775|
+[ WARNING : 2022-06-20 01:11:43,825 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 01:15:49,155 ] - |        33|      1600|  0.076273|   0.19751|    3.4793|    41.758|
+[ INFO : 2022-06-20 01:20:11,562 ] - |        33|      1700|  0.076104|   0.19755|    3.4791|    41.739|
+[ INFO : 2022-06-20 01:24:55,874 ] - |        33|      1800|  0.075934|   0.19759|    3.4805|    41.741|
+[ INFO : 2022-06-20 01:29:21,167 ] - |        33|      1900|  0.075765|   0.19762|     3.479|    41.748|
+[ INFO : 2022-06-20 01:33:44,657 ] - |        33|      2000|  0.075597|   0.19766|    3.4779|    41.771|
+[ INFO : 2022-06-20 01:38:07,596 ] - |        33|      2100|  0.075429|    0.1977|    3.4779|    41.807|
+[ INFO : 2022-06-20 01:42:18,854 ] - |        33|      2200|  0.075261|   0.19773|    3.4783|    41.795|
+[ INFO : 2022-06-20 01:44:39,220 ] - |        33|      2273|  0.075138|   0.19775|    3.4794|    41.783|
+[ INFO : 2022-06-20 01:49:56,586 ] - |        34|       100|  0.074968|   0.19779|    3.4738|    42.083|
+[ INFO : 2022-06-20 01:54:33,035 ] - |        34|       200|  0.074801|   0.19782|    3.4619|    41.948|
+[ INFO : 2022-06-20 01:59:01,242 ] - |        34|       300|  0.074635|   0.19786|    3.4647|    41.845|
+[ INFO : 2022-06-20 02:03:35,455 ] - |        34|       400|  0.074469|   0.19789|    3.4624|    41.928|
+[ INFO : 2022-06-20 02:07:58,715 ] - |        34|       500|  0.074303|   0.19792|    3.4542|    42.009|
+[ INFO : 2022-06-20 02:12:23,773 ] - |        34|       600|  0.074138|   0.19795|    3.4502|    42.072|
+[ WARNING : 2022-06-20 02:13:42,239 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 02:16:50,465 ] - |        34|       700|  0.073973|   0.19798|    3.4487|    42.062|
+[ INFO : 2022-06-20 02:21:09,534 ] - |        34|       800|  0.073808|   0.19801|    3.4512|    42.103|
+[ INFO : 2022-06-20 02:25:37,164 ] - |        34|       900|  0.073644|   0.19804|     3.445|    42.193|
+[ INFO : 2022-06-20 02:30:04,985 ] - |        34|      1000|   0.07348|   0.19807|    3.4457|    42.167|
+[ INFO : 2022-06-20 02:34:17,498 ] - |        34|      1100|  0.073317|    0.1981|    3.4459|    42.151|
+[ WARNING : 2022-06-20 02:34:58,767 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 02:38:38,818 ] - |        34|      1200|  0.073153|   0.19813|    3.4464|    42.141|
+[ INFO : 2022-06-20 02:42:28,304 ] - |        34|      1300|  0.072991|   0.19816|    3.4465|     42.16|
+[ INFO : 2022-06-20 02:46:51,481 ] - |        34|      1400|  0.072828|   0.19819|     3.446|    42.135|
+[ INFO : 2022-06-20 02:51:12,559 ] - |        34|      1500|  0.072666|   0.19821|    3.4485|    42.132|
+[ INFO : 2022-06-20 02:55:41,135 ] - |        34|      1600|  0.072505|   0.19824|    3.4512|    42.078|
+[ INFO : 2022-06-20 03:00:03,705 ] - |        34|      1700|  0.072343|   0.19827|    3.4464|    42.153|
+[ INFO : 2022-06-20 03:04:25,284 ] - |        34|      1800|  0.072182|   0.19829|    3.4457|    42.159|
+[ INFO : 2022-06-20 03:08:53,687 ] - |        34|      1900|  0.072022|   0.19832|    3.4455|    42.143|
+[ INFO : 2022-06-20 03:13:06,409 ] - |        34|      2000|  0.071862|   0.19834|    3.4463|    42.133|
+[ WARNING : 2022-06-20 03:13:52,330 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 03:17:27,982 ] - |        34|      2100|  0.071702|   0.19837|    3.4465|    42.164|
+[ WARNING : 2022-06-20 03:17:53,914 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 03:19:54,611 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 03:21:55,350 ] - |        34|      2200|  0.071542|   0.19839|    3.4459|    42.168|
+[ INFO : 2022-06-20 03:24:47,678 ] - |        34|      2270|  0.071431|   0.19841|    3.4444|    42.202|
+[ INFO : 2022-06-20 03:30:10,751 ] - |        35|       100|  0.071264|   0.19844|    3.6906|    38.958|
+[ INFO : 2022-06-20 03:34:39,902 ] - |        35|       200|  0.071105|   0.19846|    3.6336|    39.518|
+[ INFO : 2022-06-20 03:39:20,436 ] - |        35|       300|  0.070947|   0.19848|    3.6043|    39.842|
+[ INFO : 2022-06-20 03:43:40,863 ] - |        35|       400|  0.070789|    0.1985|    3.5912|    39.964|
+[ INFO : 2022-06-20 03:48:08,951 ] - |        35|       500|  0.070632|   0.19853|    3.5727|    40.277|
+[ INFO : 2022-06-20 03:52:40,749 ] - |        35|       600|  0.070475|   0.19855|    3.5586|    40.451|
+[ WARNING : 2022-06-20 03:56:20,216 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 03:57:01,100 ] - |        35|       700|  0.070318|   0.19857|    3.5554|    40.562|
+[ INFO : 2022-06-20 04:01:22,533 ] - |        35|       800|  0.070161|   0.19859|    3.5489|    40.652|
+[ INFO : 2022-06-20 04:05:37,659 ] - |        35|       900|  0.070005|   0.19861|    3.5424|    40.748|
+[ INFO : 2022-06-20 04:10:02,592 ] - |        35|      1000|  0.069849|   0.19863|    3.5372|    40.802|
+[ INFO : 2022-06-20 04:14:34,027 ] - |        35|      1100|  0.069694|   0.19866|    3.5339|      40.9|
+[ WARNING : 2022-06-20 04:14:58,495 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 04:17:23,226 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 04:19:10,136 ] - |        35|      1200|  0.069539|   0.19868|    3.5317|    40.965|
+[ INFO : 2022-06-20 04:23:04,172 ] - |        35|      1300|  0.069384|    0.1987|    3.5281|    41.022|
+[ INFO : 2022-06-20 04:27:45,755 ] - |        35|      1400|   0.06923|   0.19872|    3.5286|    41.033|
+[ INFO : 2022-06-20 04:32:28,675 ] - |        35|      1500|  0.069076|   0.19873|    3.5268|     41.09|
+[ INFO : 2022-06-20 04:37:11,694 ] - |        35|      1600|  0.068922|   0.19875|     3.524|    41.147|
+[ INFO : 2022-06-20 04:41:43,162 ] - |        35|      1700|  0.068769|   0.19877|    3.5216|    41.162|
+[ WARNING : 2022-06-20 04:42:14,699 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 04:46:09,803 ] - |        35|      1800|  0.068616|   0.19879|    3.5187|    41.197|
+[ INFO : 2022-06-20 04:50:36,250 ] - |        35|      1900|  0.068463|   0.19881|    3.5166|    41.212|
+[ WARNING : 2022-06-20 04:54:37,614 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 04:54:58,076 ] - |        35|      2000|  0.068311|   0.19883|    3.5136|    41.285|
+[ INFO : 2022-06-20 04:59:08,201 ] - |        35|      2100|  0.068159|   0.19884|    3.5132|    41.313|
+[ INFO : 2022-06-20 05:02:54,400 ] - |        35|      2200|  0.068007|   0.19886|    3.5105|    41.359|
+[ INFO : 2022-06-20 05:05:19,013 ] - |        35|      2273|  0.067897|   0.19887|    3.5085|     41.38|
+[ INFO : 2022-06-20 05:10:39,134 ] - |        36|       100|  0.067743|   0.19889|    3.3306|    43.703|
+[ INFO : 2022-06-20 05:15:24,193 ] - |        36|       200|  0.067592|   0.19891|    3.3385|    43.432|
+[ INFO : 2022-06-20 05:19:55,077 ] - |        36|       300|  0.067442|   0.19893|    3.3533|    43.323|
+[ WARNING : 2022-06-20 05:22:08,451 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 05:24:25,572 ] - |        36|       400|  0.067291|   0.19894|     3.341|    43.423|
+[ INFO : 2022-06-20 05:28:40,862 ] - |        36|       500|  0.067142|   0.19896|    3.3437|    43.364|
+[ INFO : 2022-06-20 05:33:12,169 ] - |        36|       600|  0.066992|   0.19897|    3.3504|     43.32|
+[ INFO : 2022-06-20 05:37:48,709 ] - |        36|       700|  0.066843|   0.19899|    3.3498|    43.375|
+[ INFO : 2022-06-20 05:42:05,472 ] - |        36|       800|  0.066695|     0.199|    3.3555|    43.337|
+[ INFO : 2022-06-20 05:46:25,310 ] - |        36|       900|  0.066546|   0.19902|     3.357|    43.318|
+[ INFO : 2022-06-20 05:50:35,036 ] - |        36|      1000|  0.066398|   0.19903|    3.3559|    43.351|
+[ INFO : 2022-06-20 05:54:57,615 ] - |        36|      1100|   0.06625|   0.19905|    3.3545|    43.385|
+[ INFO : 2022-06-20 05:59:33,472 ] - |        36|      1200|  0.066103|   0.19906|    3.3588|    43.319|
+[ INFO : 2022-06-20 06:03:33,817 ] - |        36|      1300|  0.065956|   0.19908|    3.3627|    43.317|
+[ INFO : 2022-06-20 06:07:58,088 ] - |        36|      1400|  0.065809|   0.19909|    3.3653|    43.266|
+[ WARNING : 2022-06-20 06:12:27,402 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 06:12:29,576 ] - |        36|      1500|  0.065663|    0.1991|    3.3683|    43.232|
+[ INFO : 2022-06-20 06:17:05,338 ] - |        36|      1600|  0.065517|   0.19912|    3.3655|    43.236|
+[ INFO : 2022-06-20 06:21:49,849 ] - |        36|      1700|  0.065371|   0.19913|    3.3661|    43.256|
+[ INFO : 2022-06-20 06:26:18,661 ] - |        36|      1800|  0.065225|   0.19914|    3.3669|    43.258|
+[ INFO : 2022-06-20 06:30:38,592 ] - |        36|      1900|   0.06508|   0.19916|    3.3692|    43.242|
+[ INFO : 2022-06-20 06:35:13,592 ] - |        36|      2000|  0.064936|   0.19917|    3.3697|    43.256|
+[ WARNING : 2022-06-20 06:37:19,554 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 06:37:47,900 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 06:39:52,682 ] - |        36|      2100|  0.064791|   0.19918|    3.3691|    43.265|
+[ INFO : 2022-06-20 06:43:45,619 ] - |        36|      2200|  0.064647|   0.19919|     3.371|    43.265|
+[ INFO : 2022-06-20 06:45:51,908 ] - |        36|      2273|  0.064542|    0.1992|    3.3697|    43.267|
+[ INFO : 2022-06-20 06:51:10,268 ] - |        37|       100|  0.064395|   0.19922|      3.28|    44.563|
+[ INFO : 2022-06-20 06:55:47,550 ] - |        37|       200|  0.064252|   0.19923|    3.3214|    43.672|
+[ INFO : 2022-06-20 07:00:17,872 ] - |        37|       300|  0.064109|   0.19924|    3.3242|    43.724|
+[ INFO : 2022-06-20 07:04:53,391 ] - |        37|       400|  0.063967|   0.19925|    3.3195|    43.885|
+[ INFO : 2022-06-20 07:09:26,880 ] - |        37|       500|  0.063824|   0.19926|     3.322|    43.973|
+[ INFO : 2022-06-20 07:14:05,692 ] - |        37|       600|  0.063682|   0.19927|    3.3281|    43.886|
+[ INFO : 2022-06-20 07:18:35,016 ] - |        37|       700|  0.063541|   0.19928|    3.3302|    43.847|
+[ INFO : 2022-06-20 07:23:01,988 ] - |        37|       800|  0.063399|   0.19929|    3.3285|    43.869|
+[ INFO : 2022-06-20 07:27:17,282 ] - |        37|       900|  0.063258|   0.19931|    3.3287|    43.909|
+[ INFO : 2022-06-20 07:31:49,681 ] - |        37|      1000|  0.063117|   0.19932|    3.3313|    43.855|
+[ WARNING : 2022-06-20 07:36:02,405 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 07:36:11,549 ] - |        37|      1100|  0.062977|   0.19933|    3.3346|    43.823|
+[ INFO : 2022-06-20 07:40:38,549 ] - |        37|      1200|  0.062837|   0.19934|    3.3358|    43.844|
+[ INFO : 2022-06-20 07:44:35,237 ] - |        37|      1300|  0.062697|   0.19935|    3.3369|    43.834|
+[ WARNING : 2022-06-20 07:48:52,427 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 07:49:05,784 ] - |        37|      1400|  0.062558|   0.19936|    3.3377|    43.845|
+[ WARNING : 2022-06-20 07:49:57,541 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 07:53:38,722 ] - |        37|      1500|  0.062418|   0.19937|     3.336|    43.823|
+[ INFO : 2022-06-20 07:58:06,466 ] - |        37|      1600|  0.062279|   0.19938|    3.3332|    43.854|
+[ INFO : 2022-06-20 08:02:40,427 ] - |        37|      1700|  0.062141|   0.19938|    3.3331|    43.871|
+[ INFO : 2022-06-20 08:07:06,085 ] - |        37|      1800|  0.062003|   0.19939|    3.3322|    43.835|
+[ INFO : 2022-06-20 08:11:33,510 ] - |        37|      1900|  0.061865|    0.1994|    3.3349|    43.799|
+[ WARNING : 2022-06-20 08:14:08,521 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 08:14:19,406 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 08:15:58,809 ] - |        37|      2000|  0.061727|   0.19941|    3.3356|    43.798|
+[ INFO : 2022-06-20 08:20:24,905 ] - |        37|      2100|   0.06159|   0.19942|    3.3344|    43.846|
+[ WARNING : 2022-06-20 08:21:43,631 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 08:24:31,788 ] - |        37|      2200|  0.061453|   0.19943|    3.3359|    43.826|
+[ INFO : 2022-06-20 08:26:34,765 ] - |        37|      2273|  0.061353|   0.19944|    3.3352|    43.846|
+[ INFO : 2022-06-20 08:31:46,421 ] - |        38|       100|  0.061214|   0.19944|    3.2627|    44.563|
+[ WARNING : 2022-06-20 08:35:04,000 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 08:36:34,829 ] - |        38|       200|  0.061077|   0.19945|    3.2591|    44.589|
+[ WARNING : 2022-06-20 08:39:39,938 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 08:40:50,763 ] - |        38|       300|  0.060942|   0.19946|    3.2694|    44.627|
+[ INFO : 2022-06-20 08:45:29,229 ] - |        38|       400|  0.060806|   0.19947|    3.2702|    44.587|
+[ INFO : 2022-06-20 08:49:46,816 ] - |        38|       500|  0.060671|   0.19948|    3.2731|    44.504|
+[ INFO : 2022-06-20 08:54:20,840 ] - |        38|       600|  0.060536|   0.19949|    3.2815|    44.457|
+[ WARNING : 2022-06-20 08:57:14,372 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 08:58:50,195 ] - |        38|       700|  0.060401|   0.19949|    3.2799|     44.52|
+[ INFO : 2022-06-20 09:03:15,380 ] - |        38|       800|  0.060267|    0.1995|    3.2829|    44.434|
+[ INFO : 2022-06-20 09:07:20,533 ] - |        38|       900|  0.060133|   0.19951|    3.2837|     44.42|
+[ INFO : 2022-06-20 09:11:49,043 ] - |        38|      1000|  0.059999|   0.19952|    3.2839|    44.446|
+[ INFO : 2022-06-20 09:16:15,535 ] - |        38|      1100|  0.059865|   0.19952|    3.2857|    44.433|
+[ INFO : 2022-06-20 09:20:32,225 ] - |        38|      1200|  0.059732|   0.19953|    3.2832|    44.436|
+[ INFO : 2022-06-20 09:24:15,203 ] - |        38|      1300|  0.059599|   0.19954|    3.2805|    44.455|
+[ WARNING : 2022-06-20 09:27:43,591 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 09:28:40,653 ] - |        38|      1400|  0.059467|   0.19954|    3.2822|    44.439|
+[ WARNING : 2022-06-20 09:30:15,092 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 09:33:00,264 ] - |        38|      1500|  0.059334|   0.19955|    3.2836|    44.451|
+[ INFO : 2022-06-20 09:37:32,088 ] - |        38|      1600|  0.059202|   0.19956|     3.286|    44.408|
+[ INFO : 2022-06-20 09:41:54,418 ] - |        38|      1700|  0.059071|   0.19956|    3.2869|    44.402|
+[ INFO : 2022-06-20 09:46:24,946 ] - |        38|      1800|  0.058939|   0.19957|    3.2867|    44.413|
+[ WARNING : 2022-06-20 09:47:08,775 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 09:50:59,066 ] - |        38|      1900|  0.058808|   0.19958|    3.2863|    44.423|
+[ INFO : 2022-06-20 09:55:14,523 ] - |        38|      2000|  0.058677|   0.19958|    3.2853|    44.443|
+[ WARNING : 2022-06-20 09:56:08,458 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 09:58:51,888 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 09:59:41,278 ] - |        38|      2100|  0.058547|   0.19959|    3.2856|    44.461|
+[ INFO : 2022-06-20 10:04:11,431 ] - |        38|      2200|  0.058416|    0.1996|    3.2867|    44.448|
+[ INFO : 2022-06-20 10:06:15,488 ] - |        38|      2273|  0.058321|    0.1996|    3.2871|    44.452|
+[ WARNING : 2022-06-20 10:09:09,680 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 10:11:31,063 ] - |        39|       100|  0.058189|   0.19961|    3.2066|    45.339|
+[ INFO : 2022-06-20 10:16:06,586 ] - |        39|       200|   0.05806|   0.19961|    3.2132|    45.526|
+[ INFO : 2022-06-20 10:20:51,432 ] - |        39|       300|   0.05793|   0.19962|    3.2176|    45.406|
+[ WARNING : 2022-06-20 10:24:10,955 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 10:25:16,658 ] - |        39|       400|  0.057802|   0.19962|     3.229|    45.189|
+[ INFO : 2022-06-20 10:29:33,811 ] - |        39|       500|  0.057673|   0.19963|    3.2228|    45.234|
+[ INFO : 2022-06-20 10:33:51,813 ] - |        39|       600|  0.057545|   0.19964|    3.2303|    45.105|
+[ INFO : 2022-06-20 10:38:32,118 ] - |        39|       700|  0.057417|   0.19964|    3.2381|    45.051|
+[ INFO : 2022-06-20 10:42:56,176 ] - |        39|       800|  0.057289|   0.19965|    3.2419|    44.996|
+[ INFO : 2022-06-20 10:47:03,704 ] - |        39|       900|  0.057161|   0.19965|    3.2435|    45.019|
+[ INFO : 2022-06-20 10:51:38,902 ] - |        39|      1000|  0.057034|   0.19966|    3.2447|    45.041|
+[ INFO : 2022-06-20 10:56:01,433 ] - |        39|      1100|  0.056907|   0.19966|     3.244|    45.047|
+[ INFO : 2022-06-20 11:00:29,481 ] - |        39|      1200|  0.056781|   0.19967|    3.2425|    45.049|
+[ INFO : 2022-06-20 11:04:20,892 ] - |        39|      1300|  0.056654|   0.19967|     3.241|    45.076|
+[ INFO : 2022-06-20 11:08:45,992 ] - |        39|      1400|  0.056528|   0.19968|    3.2427|    45.032|
+[ INFO : 2022-06-20 11:13:08,842 ] - |        39|      1500|  0.056403|   0.19968|    3.2468|    45.022|
+[ INFO : 2022-06-20 11:17:43,186 ] - |        39|      1600|  0.056277|   0.19969|    3.2459|    45.055|
+[ INFO : 2022-06-20 11:22:18,832 ] - |        39|      1700|  0.056152|   0.19969|     3.246|    45.064|
+[ INFO : 2022-06-20 11:26:55,304 ] - |        39|      1800|  0.056027|    0.1997|    3.2466|    45.043|
+[ INFO : 2022-06-20 11:31:12,029 ] - |        39|      1900|  0.055902|    0.1997|    3.2465|    45.029|
+[ INFO : 2022-06-20 11:35:39,432 ] - |        39|      2000|  0.055778|   0.19971|    3.2452|    45.053|
+[ INFO : 2022-06-20 11:40:10,102 ] - |        39|      2100|  0.055654|   0.19971|    3.2425|    45.072|
+[ INFO : 2022-06-20 11:44:13,827 ] - |        39|      2200|   0.05553|   0.19971|    3.2429|    45.062|
+[ INFO : 2022-06-20 11:46:18,192 ] - |        39|      2270|  0.055443|   0.19972|    3.2413|    45.086|
+[ WARNING : 2022-06-20 11:47:57,235 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 11:49:39,029 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 11:51:29,908 ] - |        40|       100|  0.055314|   0.19972|    3.4233|    42.193|
+[ INFO : 2022-06-20 11:56:14,686 ] - |        40|       200|  0.055191|   0.19973|    3.4008|    42.508|
+[ INFO : 2022-06-20 12:00:44,142 ] - |        40|       300|  0.055068|   0.19973|    3.3871|    42.774|
+[ INFO : 2022-06-20 12:05:14,663 ] - |        40|       400|  0.054946|   0.19973|    3.3583|    43.259|
+[ INFO : 2022-06-20 12:09:27,821 ] - |        40|       500|  0.054823|   0.19974|    3.3511|    43.447|
+[ WARNING : 2022-06-20 12:12:57,499 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 12:13:45,046 ] - |        40|       600|  0.054701|   0.19974|    3.3456|     43.52|
+[ WARNING : 2022-06-20 12:14:14,767 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 12:18:09,161 ] - |        40|       700|   0.05458|   0.19975|    3.3387|    43.712|
+[ INFO : 2022-06-20 12:22:37,243 ] - |        40|       800|  0.054458|   0.19975|    3.3343|    43.812|
+[ WARNING : 2022-06-20 12:24:45,698 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 12:26:54,513 ] - |        40|       900|  0.054337|   0.19975|    3.3269|    43.907|
+[ INFO : 2022-06-20 12:31:39,042 ] - |        40|      1000|  0.054216|   0.19976|    3.3193|     44.01|
+[ WARNING : 2022-06-20 12:34:11,657 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 12:36:14,988 ] - |        40|      1100|  0.054096|   0.19976|    3.3158|    44.045|
+[ INFO : 2022-06-20 12:40:27,627 ] - |        40|      1200|  0.053975|   0.19976|    3.3124|    44.096|
+[ INFO : 2022-06-20 12:44:22,871 ] - |        40|      1300|  0.053855|   0.19977|     3.309|    44.108|
+[ INFO : 2022-06-20 12:48:41,857 ] - |        40|      1400|  0.053735|   0.19977|    3.3067|    44.144|
+[ WARNING : 2022-06-20 12:50:33,586 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 12:53:03,698 ] - |        40|      1500|  0.053616|   0.19977|    3.3057|    44.174|
+[ INFO : 2022-06-20 12:57:23,061 ] - |        40|      1600|  0.053496|   0.19978|    3.3037|    44.201|
+[ INFO : 2022-06-20 13:01:36,470 ] - |        40|      1700|  0.053377|   0.19978|    3.2986|    44.284|
+[ INFO : 2022-06-20 13:06:09,042 ] - |        40|      1800|  0.053259|   0.19979|     3.298|    44.291|
+[ INFO : 2022-06-20 13:10:35,500 ] - |        40|      1900|   0.05314|   0.19979|    3.2957|    44.322|
+[ INFO : 2022-06-20 13:15:04,373 ] - |        40|      2000|  0.053022|   0.19979|    3.2936|    44.371|
+[ WARNING : 2022-06-20 13:15:14,323 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 13:18:17,031 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 13:19:26,765 ] - |        40|      2100|  0.052904|   0.19979|    3.2911|      44.4|
+[ WARNING : 2022-06-20 13:20:16,544 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 13:23:46,026 ] - |        40|      2200|  0.052786|    0.1998|    3.2889|    44.443|
+[ INFO : 2022-06-20 13:25:48,429 ] - |        40|      2270|  0.052704|    0.1998|    3.2891|    44.436|
+[ INFO : 2022-06-20 13:30:57,252 ] - |        41|       100|  0.052581|       0.2|    3.4265|    42.969|
+[ WARNING : 2022-06-20 13:34:10,964 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 13:35:43,642 ] - |        41|       200|  0.052464|       0.2|    3.3835|    43.518|
+[ INFO : 2022-06-20 13:40:11,589 ] - |        41|       300|  0.052347|       0.2|    3.3658|    43.821|
+[ WARNING : 2022-06-20 13:44:37,825 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 13:44:45,727 ] - |        41|       400|  0.052231|       0.2|    3.3462|    43.915|
+[ INFO : 2022-06-20 13:49:31,661 ] - |        41|       500|  0.052114|       0.2|    3.3353|    43.967|
+[ INFO : 2022-06-20 13:53:51,003 ] - |        41|       600|  0.051999|       0.2|    3.3279|    44.079|
+[ INFO : 2022-06-20 13:58:14,495 ] - |        41|       700|  0.051883|       0.2|    3.3222|    44.154|
+[ INFO : 2022-06-20 14:02:33,823 ] - |        41|       800|  0.051767|       0.2|    3.3117|    44.271|
+[ INFO : 2022-06-20 14:06:41,314 ] - |        41|       900|  0.051652|       0.2|    3.3026|    44.355|
+[ WARNING : 2022-06-20 14:07:31,624 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 14:11:00,528 ] - |        41|      1000|  0.051537|       0.2|    3.3004|    44.431|
+[ INFO : 2022-06-20 14:15:31,305 ] - |        41|      1100|  0.051423|       0.2|    3.2945|    44.491|
+[ INFO : 2022-06-20 14:19:56,390 ] - |        41|      1200|  0.051308|       0.2|    3.2948|    44.454|
+[ WARNING : 2022-06-20 14:23:18,277 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 14:23:37,675 ] - |        41|      1300|  0.051194|       0.2|    3.2918|    44.475|
+[ INFO : 2022-06-20 14:27:53,818 ] - |        41|      1400|   0.05108|       0.2|    3.2922|      44.5|
+[ WARNING : 2022-06-20 14:31:52,689 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 14:32:18,125 ] - |        41|      1500|  0.050967|       0.2|    3.2903|    44.515|
+[ INFO : 2022-06-20 14:36:32,454 ] - |        41|      1600|  0.050853|       0.2|     3.289|    44.545|
+[ WARNING : 2022-06-20 14:38:32,318 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 14:41:02,543 ] - |        41|      1700|   0.05074|       0.2|     3.284|    44.597|
+[ WARNING : 2022-06-20 14:41:52,954 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 14:45:34,954 ] - |        41|      1800|  0.050627|       0.2|    3.2817|    44.661|
+[ INFO : 2022-06-20 14:49:55,869 ] - |        41|      1900|  0.050514|       0.2|    3.2793|    44.712|
+[ INFO : 2022-06-20 14:54:13,903 ] - |        41|      2000|  0.050402|       0.2|    3.2761|    44.765|
+[ INFO : 2022-06-20 14:58:36,790 ] - |        41|      2100|   0.05029|       0.2|    3.2759|    44.777|
+[ INFO : 2022-06-20 15:02:56,470 ] - |        41|      2200|  0.050178|       0.2|    3.2754|    44.781|
+[ INFO : 2022-06-20 15:05:04,189 ] - |        41|      2273|  0.050097|       0.2|    3.2731|    44.802|
+[ INFO : 2022-06-20 15:10:10,627 ] - |        42|       100|  0.049983|       0.2|    3.1611|    46.146|
+[ INFO : 2022-06-20 15:14:44,772 ] - |        42|       200|  0.049872|       0.2|    3.1531|    46.365|
+[ INFO : 2022-06-20 15:19:26,991 ] - |        42|       300|  0.049761|       0.2|    3.1691|    46.142|
+[ INFO : 2022-06-20 15:24:16,545 ] - |        42|       400|   0.04965|       0.2|    3.1658|    46.266|
+[ INFO : 2022-06-20 15:28:41,008 ] - |        42|       500|  0.049539|       0.2|    3.1648|    46.253|
+[ INFO : 2022-06-20 15:33:04,735 ] - |        42|       600|  0.049429|       0.2|     3.161|    46.326|
+[ INFO : 2022-06-20 15:37:32,649 ] - |        42|       700|  0.049319|       0.2|    3.1577|    46.405|
+[ INFO : 2022-06-20 15:41:53,381 ] - |        42|       800|   0.04921|       0.2|    3.1526|    46.393|
+[ INFO : 2022-06-20 15:46:36,326 ] - |        42|       900|    0.0491|       0.2|    3.1481|    46.447|
+[ INFO : 2022-06-20 15:51:02,075 ] - |        42|      1000|  0.048991|       0.2|     3.143|    46.503|
+[ WARNING : 2022-06-20 15:53:35,432 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 15:55:28,435 ] - |        42|      1100|  0.048882|       0.2|    3.1444|    46.548|
+[ INFO : 2022-06-20 15:59:53,464 ] - |        42|      1200|  0.048773|       0.2|    3.1467|    46.505|
+[ INFO : 2022-06-20 16:03:33,232 ] - |        42|      1300|  0.048665|       0.2|    3.1482|    46.511|
+[ WARNING : 2022-06-20 16:05:40,683 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 16:07:59,143 ] - |        42|      1400|  0.048556|       0.2|    3.1442|    46.567|
+[ INFO : 2022-06-20 16:12:34,228 ] - |        42|      1500|  0.048448|       0.2|    3.1408|    46.584|
+[ WARNING : 2022-06-20 16:15:22,993 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 16:15:29,681 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 16:16:47,800 ] - |        42|      1600|   0.04834|       0.2|    3.1393|    46.607|
+[ INFO : 2022-06-20 16:21:15,856 ] - |        42|      1700|  0.048233|       0.2|    3.1382|    46.584|
+[ INFO : 2022-06-20 16:25:44,133 ] - |        42|      1800|  0.048126|       0.2|    3.1394|    46.579|
+[ INFO : 2022-06-20 16:30:06,958 ] - |        42|      1900|  0.048019|       0.2|    3.1409|    46.567|
+[ INFO : 2022-06-20 16:34:29,065 ] - |        42|      2000|  0.047912|       0.2|    3.1401|    46.591|
+[ WARNING : 2022-06-20 16:36:12,802 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 16:38:23,318 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 16:38:53,279 ] - |        42|      2100|  0.047805|       0.2|    3.1374|    46.614|
+[ INFO : 2022-06-20 16:43:04,857 ] - |        42|      2200|  0.047699|       0.2|    3.1377|    46.631|
+[ INFO : 2022-06-20 16:45:12,643 ] - |        42|      2270|  0.047624|       0.2|    3.1393|    46.622|
+[ INFO : 2022-06-20 16:50:27,724 ] - |        43|       100|  0.047513|       0.2|    3.3106|    43.911|
+[ INFO : 2022-06-20 16:55:03,914 ] - |        43|       200|  0.047407|       0.2|    3.2928|    44.258|
+[ WARNING : 2022-06-20 16:57:45,804 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 16:59:44,591 ] - |        43|       300|  0.047302|       0.2|    3.2651|    44.705|
+[ WARNING : 2022-06-20 17:00:15,478 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 17:04:14,931 ] - |        43|       400|  0.047197|       0.2|    3.2532|    44.984|
+[ WARNING : 2022-06-20 17:05:17,539 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00027 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 17:08:33,365 ] - |        43|       500|  0.047092|       0.2|    3.2379|     45.11|
+[ INFO : 2022-06-20 17:12:51,638 ] - |        43|       600|  0.046987|       0.2|    3.2337|     45.27|
+[ INFO : 2022-06-20 17:17:32,867 ] - |        43|       700|  0.046882|       0.2|    3.2329|    45.272|
+[ INFO : 2022-06-20 17:22:06,739 ] - |        43|       800|  0.046778|       0.2|    3.2294|    45.334|
+[ INFO : 2022-06-20 17:26:31,885 ] - |        43|       900|  0.046674|       0.2|    3.2215|    45.439|
+[ INFO : 2022-06-20 17:31:13,433 ] - |        43|      1000|   0.04657|       0.2|    3.2164|    45.532|
+[ WARNING : 2022-06-20 17:32:06,298 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 17:35:46,383 ] - |        43|      1100|  0.046467|       0.2|     3.213|    45.609|
+[ INFO : 2022-06-20 17:40:12,110 ] - |        43|      1200|  0.046363|       0.2|     3.208|     45.69|
+[ INFO : 2022-06-20 17:43:51,671 ] - |        43|      1300|   0.04626|       0.2|    3.2056|    45.701|
+[ INFO : 2022-06-20 17:48:21,499 ] - |        43|      1400|  0.046157|       0.2|     3.205|    45.701|
+[ INFO : 2022-06-20 17:52:55,894 ] - |        43|      1500|  0.046054|       0.2|    3.2024|    45.769|
+[ INFO : 2022-06-20 17:57:28,575 ] - |        43|      1600|  0.045952|       0.2|    3.2011|    45.773|
+[ INFO : 2022-06-20 18:01:56,603 ] - |        43|      1700|   0.04585|       0.2|    3.1992|     45.79|
+[ INFO : 2022-06-20 18:06:19,779 ] - |        43|      1800|  0.045748|       0.2|    3.2003|    45.781|
+[ INFO : 2022-06-20 18:10:44,630 ] - |        43|      1900|  0.045646|       0.2|    3.1988|    45.806|
+[ WARNING : 2022-06-20 18:11:04,092 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 18:15:13,505 ] - |        43|      2000|  0.045544|       0.2|    3.1979|    45.812|
+[ INFO : 2022-06-20 18:19:50,424 ] - |        43|      2100|  0.045443|       0.2|    3.1947|    45.841|
+[ INFO : 2022-06-20 18:23:48,258 ] - |        43|      2200|  0.045342|       0.2|    3.1955|    45.855|
+[ INFO : 2022-06-20 18:25:58,801 ] - |        43|      2273|  0.045268|       0.2|    3.1937|    45.886|
+[ INFO : 2022-06-20 18:31:24,639 ] - |        44|       100|  0.045166|       0.2|    3.0349|    48.047|
+[ INFO : 2022-06-20 18:36:04,094 ] - |        44|       200|  0.045065|       0.2|     3.036|     48.12|
+[ INFO : 2022-06-20 18:40:32,797 ] - |        44|       300|  0.044965|       0.2|    3.0318|    48.101|
+[ INFO : 2022-06-20 18:44:58,607 ] - |        44|       400|  0.044865|       0.2|    3.0409|    47.917|
+[ INFO : 2022-06-20 18:49:25,720 ] - |        44|       500|  0.044765|       0.2|    3.0481|    47.841|
+[ INFO : 2022-06-20 18:53:49,935 ] - |        44|       600|  0.044665|       0.2|    3.0592|    47.716|
+[ WARNING : 2022-06-20 18:56:38,152 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 18:58:20,463 ] - |        44|       700|  0.044566|       0.2|    3.0582|    47.688|
+[ WARNING : 2022-06-20 18:58:23,646 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 19:04:59,397 ] - |        44|       800|  0.044467|       0.2|    3.0608|    47.626|
+[ WARNING : 2022-06-20 19:05:32,750 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 19:10:02,689 ] - |        44|       900|  0.044368|       0.2|    3.0631|    47.668|
+[ INFO : 2022-06-20 19:14:38,508 ] - |        44|      1000|  0.044269|       0.2|    3.0697|    47.634|
+[ INFO : 2022-06-20 19:19:02,088 ] - |        44|      1100|  0.044171|       0.2|    3.0715|    47.628|
+[ INFO : 2022-06-20 19:23:29,082 ] - |        44|      1200|  0.044072|       0.2|    3.0729|    47.638|
+[ INFO : 2022-06-20 19:27:10,864 ] - |        44|      1300|  0.043974|       0.2|    3.0741|    47.619|
+[ INFO : 2022-06-20 19:31:35,659 ] - |        44|      1400|  0.043876|       0.2|     3.077|    47.595|
+[ INFO : 2022-06-20 19:35:52,538 ] - |        44|      1500|  0.043779|       0.2|     3.075|    47.611|
+[ INFO : 2022-06-20 19:40:21,636 ] - |        44|      1600|  0.043681|       0.2|    3.0752|    47.613|
+[ INFO : 2022-06-20 19:44:36,338 ] - |        44|      1700|  0.043584|       0.2|     3.072|    47.658|
+[ INFO : 2022-06-20 19:48:57,817 ] - |        44|      1800|  0.043487|       0.2|    3.0741|    47.658|
+[ WARNING : 2022-06-20 19:51:19,751 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 19:53:33,581 ] - |        44|      1900|  0.043391|       0.2|    3.0747|    47.641|
+[ INFO : 2022-06-20 19:57:45,301 ] - |        44|      2000|  0.043294|       0.2|    3.0744|     47.64|
+[ WARNING : 2022-06-20 20:00:01,391 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 20:02:03,587 ] - |        44|      2100|  0.043198|       0.2|    3.0723|    47.663|
+[ INFO : 2022-06-20 20:06:01,785 ] - |        44|      2200|  0.043102|       0.2|    3.0735|    47.648|
+[ INFO : 2022-06-20 20:08:03,111 ] - |        44|      2273|  0.043032|       0.2|    3.0743|     47.65|
+[ INFO : 2022-06-20 20:13:24,675 ] - |        45|       100|  0.042934|       0.2|    3.0197|    47.875|
+[ INFO : 2022-06-20 20:18:07,102 ] - |        45|       200|  0.042838|       0.2|     3.028|    48.102|
+[ WARNING : 2022-06-20 20:20:16,618 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 20:22:24,115 ] - |        45|       300|  0.042743|       0.2|    3.0328|    48.057|
+[ INFO : 2022-06-20 20:27:05,037 ] - |        45|       400|  0.042648|       0.2|     3.034|    48.017|
+[ INFO : 2022-06-20 20:31:30,313 ] - |        45|       500|  0.042553|       0.2|    3.0403|    48.009|
+[ WARNING : 2022-06-20 20:32:58,785 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 20:35:51,490 ] - |        45|       600|  0.042458|       0.2|    3.0403|    48.047|
+[ INFO : 2022-06-20 20:40:21,501 ] - |        45|       700|  0.042364|       0.2|    3.0403|     48.08|
+[ INFO : 2022-06-20 20:45:06,369 ] - |        45|       800|   0.04227|       0.2|    3.0394|    48.116|
+[ INFO : 2022-06-20 20:49:13,481 ] - |        45|       900|  0.042176|       0.2|    3.0429|    48.083|
+[ INFO : 2022-06-20 20:53:28,119 ] - |        45|      1000|  0.042082|       0.2|    3.0452|    48.041|
+[ WARNING : 2022-06-20 20:56:29,351 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 20:58:00,953 ] - |        45|      1100|  0.041988|       0.2|    3.0456|    48.059|
+[ WARNING : 2022-06-20 21:00:20,726 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 21:02:39,859 ] - |        45|      1200|  0.041895|       0.2|     3.043|    48.025|
+[ INFO : 2022-06-20 21:06:36,329 ] - |        45|      1300|  0.041802|       0.2|    3.0448|    47.993|
+[ INFO : 2022-06-20 21:10:59,663 ] - |        45|      1400|  0.041709|       0.2|    3.0432|    48.023|
+[ INFO : 2022-06-20 21:15:32,691 ] - |        45|      1500|  0.041616|       0.2|     3.046|    47.985|
+[ WARNING : 2022-06-20 21:16:36,920 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 21:20:02,662 ] - |        45|      1600|  0.041523|       0.2|    3.0473|    47.973|
+[ INFO : 2022-06-20 21:24:37,491 ] - |        45|      1700|  0.041431|       0.2|     3.048|     47.96|
+[ INFO : 2022-06-20 21:29:02,113 ] - |        45|      1800|  0.041339|       0.2|    3.0483|    47.985|
+[ INFO : 2022-06-20 21:33:24,586 ] - |        45|      1900|  0.041247|       0.2|    3.0473|    47.979|
+[ INFO : 2022-06-20 21:37:57,279 ] - |        45|      2000|  0.041155|       0.2|    3.0472|    47.996|
+[ INFO : 2022-06-20 21:42:05,237 ] - |        45|      2100|  0.041063|       0.2|    3.0478|    48.004|
+[ INFO : 2022-06-20 21:46:14,238 ] - |        45|      2200|  0.040972|       0.2|    3.0477|    48.011|
+[ INFO : 2022-06-20 21:48:22,484 ] - |        45|      2273|  0.040905|       0.2|    3.0474|    48.023|
+[ INFO : 2022-06-20 21:53:20,582 ] - |        46|       100|  0.040813|       0.2|    2.9795|    48.547|
+[ INFO : 2022-06-20 21:58:01,778 ] - |        46|       200|  0.040722|       0.2|    3.0054|     48.38|
+[ INFO : 2022-06-20 22:02:38,538 ] - |        46|       300|  0.040631|       0.2|    2.9924|    48.698|
+[ WARNING : 2022-06-20 22:04:56,254 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 22:07:04,509 ] - |        46|       400|  0.040541|       0.2|    2.9956|    48.624|
+[ INFO : 2022-06-20 22:11:26,231 ] - |        46|       500|  0.040451|       0.2|    2.9964|    48.566|
+[ INFO : 2022-06-20 22:15:46,582 ] - |        46|       600|  0.040361|       0.2|    2.9943|    48.611|
+[ INFO : 2022-06-20 22:20:18,626 ] - |        46|       700|  0.040271|       0.2|    2.9922|    48.604|
+[ INFO : 2022-06-20 22:24:40,871 ] - |        46|       800|  0.040181|       0.2|    2.9936|    48.592|
+[ INFO : 2022-06-20 22:29:11,567 ] - |        46|       900|  0.040092|       0.2|    2.9928|    48.668|
+[ INFO : 2022-06-20 22:33:28,204 ] - |        46|      1000|  0.040003|       0.2|    2.9964|    48.644|
+[ INFO : 2022-06-20 22:37:55,742 ] - |        46|      1100|  0.039914|       0.2|    2.9961|    48.654|
+[ INFO : 2022-06-20 22:42:09,666 ] - |        46|      1200|  0.039825|       0.2|    2.9981|    48.658|
+[ INFO : 2022-06-20 22:45:51,660 ] - |        46|      1300|  0.039736|       0.2|    2.9985|    48.677|
+[ INFO : 2022-06-20 22:50:03,222 ] - |        46|      1400|  0.039648|       0.2|    3.0024|    48.621|
+[ WARNING : 2022-06-20 22:50:05,999 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 22:50:55,352 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 22:54:17,266 ] - |        46|      1500|  0.039559|       0.2|    3.0055|    48.619|
+[ INFO : 2022-06-20 22:58:53,499 ] - |        46|      1600|  0.039471|       0.2|    3.0067|    48.611|
+[ INFO : 2022-06-20 23:03:29,061 ] - |        46|      1700|  0.039384|       0.2|    3.0053|    48.632|
+[ INFO : 2022-06-20 23:07:48,391 ] - |        46|      1800|  0.039296|       0.2|    3.0044|    48.663|
+[ WARNING : 2022-06-20 23:09:23,534 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 23:12:08,581 ] - |        46|      1900|  0.039209|       0.2|     3.007|    48.628|
+[ INFO : 2022-06-20 23:16:29,567 ] - |        46|      2000|  0.039121|       0.2|     3.008|    48.627|
+[ INFO : 2022-06-20 23:21:06,187 ] - |        46|      2100|  0.039034|       0.2|    3.0078|    48.645|
+[ INFO : 2022-06-20 23:25:25,699 ] - |        46|      2200|  0.038947|       0.2|    3.0071|    48.663|
+[ INFO : 2022-06-20 23:28:14,360 ] - |        46|      2270|  0.038887|       0.2|    3.0067|    48.661|
+[ WARNING : 2022-06-20 23:29:29,596 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 23:33:43,502 ] - |        47|       100|  0.038796|       0.2|    3.1759|    46.276|
+[ WARNING : 2022-06-20 23:36:32,999 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 23:38:26,429 ] - |        47|       200|   0.03871|       0.2|    3.1329|    46.732|
+[ INFO : 2022-06-20 23:42:51,794 ] - |        47|       300|  0.038624|       0.2|     3.116|    46.955|
+[ INFO : 2022-06-20 23:47:20,368 ] - |        47|       400|  0.038538|       0.2|    3.1014|    47.158|
+[ INFO : 2022-06-20 23:51:42,718 ] - |        47|       500|  0.038452|       0.2|     3.098|    47.306|
+[ WARNING : 2022-06-20 23:51:48,762 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 23:55:48,984 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-20 23:56:03,077 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-20 23:56:05,336 ] - |        47|       600|  0.038366|       0.2|    3.0897|      47.4|
+[ INFO : 2022-06-21 00:00:43,278 ] - |        47|       700|  0.038281|       0.2|    3.0835|    47.522|
+[ INFO : 2022-06-21 00:05:10,883 ] - |        47|       800|  0.038196|       0.2|    3.0788|    47.585|
+[ INFO : 2022-06-21 00:09:18,845 ] - |        47|       900|  0.038111|       0.2|    3.0684|    47.727|
+[ INFO : 2022-06-21 00:13:50,175 ] - |        47|      1000|  0.038026|       0.2|    3.0641|    47.793|
+[ INFO : 2022-06-21 00:18:09,140 ] - |        47|      1100|  0.037941|       0.2|    3.0601|    47.848|
+[ WARNING : 2022-06-21 00:19:33,374 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 00:22:35,242 ] - |        47|      1200|  0.037857|       0.2|    3.0558|    47.913|
+[ INFO : 2022-06-21 00:26:22,645 ] - |        47|      1300|  0.037773|       0.2|    3.0563|    47.914|
+[ INFO : 2022-06-21 00:30:45,137 ] - |        47|      1400|  0.037689|       0.2|    3.0532|    47.946|
+[ INFO : 2022-06-21 00:35:06,224 ] - |        47|      1500|  0.037605|       0.2|    3.0518|    47.972|
+[ INFO : 2022-06-21 00:39:39,054 ] - |        47|      1600|  0.037521|       0.2|    3.0481|    48.021|
+[ INFO : 2022-06-21 00:44:02,424 ] - |        47|      1700|  0.037438|       0.2|    3.0476|     48.02|
+[ INFO : 2022-06-21 00:48:24,592 ] - |        47|      1800|  0.037354|       0.2|     3.044|    48.047|
+[ INFO : 2022-06-21 00:52:48,508 ] - |        47|      1900|  0.037271|       0.2|    3.0429|    48.075|
+[ INFO : 2022-06-21 00:57:18,066 ] - |        47|      2000|  0.037188|       0.2|     3.045|    48.073|
+[ INFO : 2022-06-21 01:01:49,581 ] - |        47|      2100|  0.037106|       0.2|    3.0431|    48.083|
+[ INFO : 2022-06-21 01:06:12,633 ] - |        47|      2200|  0.037023|       0.2|    3.0421|     48.11|
+[ INFO : 2022-06-21 01:08:18,287 ] - |        47|      2273|  0.036963|       0.2|    3.0425|    48.097|
+[ WARNING : 2022-06-21 01:09:50,723 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 01:11:22,261 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 01:13:35,079 ] - |        48|       100|  0.036879|       0.2|    2.8923|    50.089|
+[ INFO : 2022-06-21 01:18:29,487 ] - |        48|       200|  0.036797|       0.2|    2.8896|    50.313|
+[ WARNING : 2022-06-21 01:21:19,752 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 01:22:47,680 ] - |        48|       300|  0.036715|       0.2|    2.8924|    50.104|
+[ INFO : 2022-06-21 01:27:23,922 ] - |        48|       400|  0.036633|       0.2|    2.9051|    50.013|
+[ INFO : 2022-06-21 01:31:46,200 ] - |        48|       500|  0.036552|       0.2|    2.9067|    49.993|
+[ INFO : 2022-06-21 01:36:04,325 ] - |        48|       600|  0.036471|       0.2|    2.9169|    49.962|
+[ INFO : 2022-06-21 01:40:34,040 ] - |        48|       700|  0.036389|       0.2|    2.9143|        50|
+[ WARNING : 2022-06-21 01:40:47,385 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 01:44:57,072 ] - |        48|       800|  0.036308|       0.2|    2.9213|    49.882|
+[ INFO : 2022-06-21 01:49:19,824 ] - |        48|       900|  0.036228|       0.2|    2.9202|    49.884|
+[ WARNING : 2022-06-21 01:51:50,117 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 01:53:49,914 ] - |        48|      1000|  0.036147|       0.2|    2.9221|    49.914|
+[ WARNING : 2022-06-21 01:57:06,657 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 01:58:28,958 ] - |        48|      1100|  0.036067|       0.2|    2.9222|    49.901|
+[ WARNING : 2022-06-21 01:58:48,653 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 02:01:26,222 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 02:02:54,709 ] - |        48|      1200|  0.035986|       0.2|    2.9234|    49.891|
+[ INFO : 2022-06-21 02:06:46,277 ] - |        48|      1300|  0.035906|       0.2|    2.9221|     49.87|
+[ INFO : 2022-06-21 02:11:21,335 ] - |        48|      1400|  0.035826|       0.2|    2.9229|    49.868|
+[ INFO : 2022-06-21 02:15:45,006 ] - |        48|      1500|  0.035747|       0.2|    2.9241|    49.847|
+[ WARNING : 2022-06-21 02:19:49,236 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00040 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 02:20:14,129 ] - |        48|      1600|  0.035667|       0.2|     2.926|    49.832|
+[ WARNING : 2022-06-21 02:20:41,454 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00084 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 02:24:44,685 ] - |        48|      1700|  0.035588|       0.2|    2.9267|     49.84|
+[ INFO : 2022-06-21 02:29:02,298 ] - |        48|      1800|  0.035509|       0.2|     2.926|    49.839|
+[ INFO : 2022-06-21 02:33:12,884 ] - |        48|      1900|   0.03543|       0.2|    2.9267|    49.821|
+[ INFO : 2022-06-21 02:37:31,571 ] - |        48|      2000|  0.035351|       0.2|    2.9256|    49.815|
+[ INFO : 2022-06-21 02:42:14,884 ] - |        48|      2100|  0.035272|       0.2|    2.9257|     49.83|
+[ WARNING : 2022-06-21 02:45:59,747 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00054 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 02:46:25,394 ] - |        48|      2200|  0.035194|       0.2|    2.9259|    49.835|
+[ INFO : 2022-06-21 02:48:28,456 ] - |        48|      2273|  0.035137|       0.2|    2.9271|    49.795|
+[ INFO : 2022-06-21 02:53:50,286 ] - |        49|       100|  0.035057|       0.2|     2.931|    49.807|
+[ INFO : 2022-06-21 02:58:28,927 ] - |        49|       200|  0.034979|       0.2|    2.9079|    50.068|
+[ INFO : 2022-06-21 03:03:06,606 ] - |        49|       300|  0.034901|       0.2|    2.9035|    50.196|
+[ WARNING : 2022-06-21 03:05:01,364 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 03:07:42,036 ] - |        49|       400|  0.034823|       0.2|    2.9033|    50.124|
+[ INFO : 2022-06-21 03:12:18,813 ] - |        49|       500|  0.034746|       0.2|    2.8964|    50.254|
+[ INFO : 2022-06-21 03:16:42,378 ] - |        49|       600|  0.034669|       0.2|    2.8955|    50.296|
+[ INFO : 2022-06-21 03:21:12,656 ] - |        49|       700|  0.034591|       0.2|    2.9042|    50.175|
+[ INFO : 2022-06-21 03:25:47,872 ] - |        49|       800|  0.034514|       0.2|    2.9029|    50.256|
+[ INFO : 2022-06-21 03:30:24,372 ] - |        49|       900|  0.034438|       0.2|    2.9024|    50.278|
+[ WARNING : 2022-06-21 03:32:59,056 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 03:34:48,405 ] - |        49|      1000|  0.034361|       0.2|    2.9064|     50.23|
+[ INFO : 2022-06-21 03:39:21,971 ] - |        49|      1100|  0.034285|       0.2|    2.9068|     50.24|
+[ WARNING : 2022-06-21 03:43:17,189 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 03:43:57,536 ] - |        49|      1200|  0.034208|       0.2|    2.9074|    50.224|
+[ INFO : 2022-06-21 03:47:48,749 ] - |        49|      1300|  0.034132|       0.2|    2.9073|    50.196|
+[ WARNING : 2022-06-21 03:48:02,630 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 03:52:15,356 ] - |        49|      1400|  0.034056|       0.2|    2.9092|    50.168|
+[ INFO : 2022-06-21 03:56:41,508 ] - |        49|      1500|  0.033981|       0.2|    2.9097|    50.156|
+[ INFO : 2022-06-21 04:01:08,425 ] - |        49|      1600|  0.033905|       0.2|     2.908|    50.167|
+[ INFO : 2022-06-21 04:05:34,398 ] - |        49|      1700|  0.033829|       0.2|    2.9087|    50.126|
+[ INFO : 2022-06-21 04:09:47,626 ] - |        49|      1800|  0.033754|       0.2|    2.9066|    50.152|
+[ INFO : 2022-06-21 04:14:12,311 ] - |        49|      1900|  0.033679|       0.2|    2.9066|     50.14|
+[ INFO : 2022-06-21 04:18:42,087 ] - |        49|      2000|  0.033604|       0.2|    2.9061|    50.152|
+[ INFO : 2022-06-21 04:23:00,867 ] - |        49|      2100|  0.033529|       0.2|    2.9063|    50.145|
+[ WARNING : 2022-06-21 04:26:19,380 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 04:26:59,807 ] - |        49|      2200|  0.033455|       0.2|    2.9055|    50.161|
+[ INFO : 2022-06-21 04:29:42,591 ] - |        49|      2273|    0.0334|       0.2|    2.9066|    50.139|
+[ INFO : 2022-06-21 04:35:07,638 ] - |        50|       100|  0.033325|       0.2|    2.8534|    51.161|
+[ INFO : 2022-06-21 04:39:46,010 ] - |        50|       200|  0.033251|       0.2|     2.856|    51.023|
+[ WARNING : 2022-06-21 04:41:52,999 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 04:44:07,680 ] - |        50|       300|  0.033177|       0.2|    2.8504|    51.064|
+[ INFO : 2022-06-21 04:48:36,495 ] - |        50|       400|  0.033103|       0.2|     2.858|    51.013|
+[ WARNING : 2022-06-21 04:50:01,607 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 04:53:00,365 ] - |        50|       500|  0.033029|       0.2|    2.8546|     50.97|
+[ INFO : 2022-06-21 04:57:32,542 ] - |        50|       600|  0.032956|       0.2|    2.8597|    50.911|
+[ INFO : 2022-06-21 05:01:56,705 ] - |        50|       700|  0.032882|       0.2|    2.8678|    50.873|
+[ WARNING : 2022-06-21 05:05:11,885 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00034 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 05:06:06,032 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:06:14,169 ] - |        50|       800|  0.032809|       0.2|    2.8674|    50.841|
+[ WARNING : 2022-06-21 05:08:41,069 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:10:36,952 ] - |        50|       900|  0.032736|       0.2|      2.87|    50.773|
+[ INFO : 2022-06-21 05:15:10,758 ] - |        50|      1000|  0.032663|       0.2|     2.869|    50.763|
+[ INFO : 2022-06-21 05:19:35,252 ] - |        50|      1100|  0.032591|       0.2|     2.867|     50.79|
+[ INFO : 2022-06-21 05:23:52,809 ] - |        50|      1200|  0.032518|       0.2|    2.8712|    50.756|
+[ WARNING : 2022-06-21 05:24:18,148 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:27:38,647 ] - |        50|      1300|  0.032446|       0.2|    2.8732|    50.689|
+[ WARNING : 2022-06-21 05:29:40,238 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:32:10,386 ] - |        50|      1400|  0.032374|       0.2|    2.8701|    50.717|
+[ INFO : 2022-06-21 05:36:43,032 ] - |        50|      1500|  0.032302|       0.2|    2.8713|    50.718|
+[ INFO : 2022-06-21 05:40:56,402 ] - |        50|      1600|   0.03223|       0.2|     2.873|    50.717|
+[ WARNING : 2022-06-21 05:42:30,196 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:45:24,184 ] - |        50|      1700|  0.032158|       0.2|    2.8726|    50.714|
+[ WARNING : 2022-06-21 05:45:36,608 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:49:46,823 ] - |        50|      1800|  0.032086|       0.2|    2.8741|    50.706|
+[ WARNING : 2022-06-21 05:53:17,355 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 05:54:13,506 ] - |        50|      1900|  0.032015|       0.2|    2.8749|    50.711|
+[ INFO : 2022-06-21 05:58:39,877 ] - |        50|      2000|  0.031944|       0.2|    2.8737|    50.728|
+[ INFO : 2022-06-21 06:03:02,311 ] - |        50|      2100|  0.031873|       0.2|    2.8739|    50.724|
+[ WARNING : 2022-06-21 06:05:53,593 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 06:07:22,408 ] - |        50|      2200|  0.031802|       0.2|     2.874|    50.731|
+[ INFO : 2022-06-21 06:09:55,725 ] - |        50|      2273|   0.03175|       0.2|    2.8726|    50.741|
+[ WARNING : 2022-06-21 06:11:59,302 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 06:15:20,517 ] - |        51|       100|  0.031678|       0.2|    2.8316|    51.266|
+[ WARNING : 2022-06-21 06:15:24,222 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00081 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 06:19:52,311 ] - |        51|       200|  0.031608|       0.2|    2.8258|    51.289|
+[ INFO : 2022-06-21 06:24:32,125 ] - |        51|       300|  0.031537|       0.2|    2.8213|    51.418|
+[ WARNING : 2022-06-21 06:25:02,219 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 06:29:00,084 ] - |        51|       400|  0.031467|       0.2|     2.823|    51.361|
+[ INFO : 2022-06-21 06:33:31,525 ] - |        51|       500|  0.031397|       0.2|    2.8312|    51.283|
+[ INFO : 2022-06-21 06:37:48,527 ] - |        51|       600|  0.031327|       0.2|     2.829|    51.286|
+[ WARNING : 2022-06-21 06:40:43,939 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 06:42:06,562 ] - |        51|       700|  0.031258|       0.2|    2.8287|    51.292|
+[ INFO : 2022-06-21 06:46:30,247 ] - |        51|       800|  0.031188|       0.2|     2.826|    51.342|
+[ INFO : 2022-06-21 06:50:48,139 ] - |        51|       900|  0.031119|       0.2|    2.8316|    51.276|
+[ INFO : 2022-06-21 06:55:16,884 ] - |        51|      1000|  0.031049|       0.2|    2.8339|    51.238|
+[ INFO : 2022-06-21 06:59:40,647 ] - |        51|      1100|   0.03098|       0.2|    2.8352|    51.189|
+[ WARNING : 2022-06-21 07:02:56,941 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00026 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:03:58,539 ] - |        51|      1200|  0.030911|       0.2|    2.8369|    51.193|
+[ INFO : 2022-06-21 07:08:00,314 ] - |        51|      1300|  0.030843|       0.2|    2.8367|     51.21|
+[ INFO : 2022-06-21 07:12:16,496 ] - |        51|      1400|  0.030774|       0.2|    2.8346|    51.221|
+[ INFO : 2022-06-21 07:16:34,691 ] - |        51|      1500|  0.030706|       0.2|    2.8357|    51.215|
+[ INFO : 2022-06-21 07:20:58,975 ] - |        51|      1600|  0.030637|       0.2|    2.8349|    51.242|
+[ WARNING : 2022-06-21 07:21:25,314 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00083 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:25:31,221 ] - |        51|      1700|  0.030569|       0.2|    2.8364|    51.256|
+[ WARNING : 2022-06-21 07:26:35,367 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:30:05,729 ] - |        51|      1800|  0.030501|       0.2|    2.8378|    51.213|
+[ WARNING : 2022-06-21 07:31:09,340 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00691 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 07:32:55,545 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00055 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:34:30,464 ] - |        51|      1900|  0.030433|       0.2|    2.8378|    51.194|
+[ INFO : 2022-06-21 07:38:58,413 ] - |        51|      2000|  0.030365|       0.2|    2.8363|    51.212|
+[ WARNING : 2022-06-21 07:39:09,130 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00018 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 07:39:12,500 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00022 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 07:39:38,506 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00027 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:43:24,716 ] - |        51|      2100|  0.030298|       0.2|    2.8375|    51.183|
+[ INFO : 2022-06-21 07:47:53,880 ] - |        51|      2200|   0.03023|       0.2|    2.8356|    51.213|
+[ INFO : 2022-06-21 07:49:58,696 ] - |        51|      2270|  0.030183|       0.2|    2.8347|    51.216|
+[ WARNING : 2022-06-21 07:51:10,190 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00028 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 07:54:26,348 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:55:24,080 ] - |        52|       100|  0.030113|       0.2|    3.0476|     48.49|
+[ WARNING : 2022-06-21 07:56:45,524 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 07:58:40,178 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 07:59:54,054 ] - |        52|       200|  0.030046|       0.2|    3.0061|    48.956|
+[ INFO : 2022-06-21 08:04:29,374 ] - |        52|       300|  0.029979|       0.2|    2.9702|    49.399|
+[ INFO : 2022-06-21 08:08:50,763 ] - |        52|       400|  0.029912|       0.2|    2.9503|     49.52|
+[ INFO : 2022-06-21 08:13:31,935 ] - |        52|       500|  0.029846|       0.2|    2.9355|    49.694|
+[ INFO : 2022-06-21 08:18:22,542 ] - |        52|       600|  0.029779|       0.2|    2.9292|     49.81|
+[ WARNING : 2022-06-21 08:22:40,470 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 08:22:44,855 ] - |        52|       700|  0.029713|       0.2|    2.9213|     49.87|
+[ WARNING : 2022-06-21 08:23:01,674 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00027 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 08:27:14,977 ] - |        52|       800|  0.029647|       0.2|    2.9207|     49.96|
+[ INFO : 2022-06-21 08:31:43,429 ] - |        52|       900|  0.029581|       0.2|    2.9179|     50.03|
+[ INFO : 2022-06-21 08:36:15,949 ] - |        52|      1000|  0.029515|       0.2|    2.9149|    50.053|
+[ INFO : 2022-06-21 08:40:41,822 ] - |        52|      1100|   0.02945|       0.2|    2.9143|    50.064|
+[ INFO : 2022-06-21 08:45:01,412 ] - |        52|      1200|  0.029384|       0.2|    2.9138|    50.107|
+[ INFO : 2022-06-21 08:49:03,784 ] - |        52|      1300|  0.029319|       0.2|    2.9092|    50.133|
+[ INFO : 2022-06-21 08:53:35,712 ] - |        52|      1400|  0.029253|       0.2|    2.9059|    50.193|
+[ INFO : 2022-06-21 08:57:58,069 ] - |        52|      1500|  0.029188|       0.2|    2.9072|    50.198|
+[ INFO : 2022-06-21 09:02:29,849 ] - |        52|      1600|  0.029123|       0.2|    2.9063|    50.181|
+[ INFO : 2022-06-21 09:06:56,879 ] - |        52|      1700|  0.029059|       0.2|    2.9052|    50.178|
+[ INFO : 2022-06-21 09:11:31,187 ] - |        52|      1800|  0.028994|       0.2|    2.9016|    50.217|
+[ INFO : 2022-06-21 09:16:01,611 ] - |        52|      1900|  0.028929|       0.2|    2.8979|     50.26|
+[ INFO : 2022-06-21 09:20:24,996 ] - |        52|      2000|  0.028865|       0.2|    2.8946|    50.305|
+[ INFO : 2022-06-21 09:24:50,807 ] - |        52|      2100|  0.028801|       0.2|    2.8938|    50.343|
+[ INFO : 2022-06-21 09:28:47,120 ] - |        52|      2200|  0.028737|       0.2|    2.8927|    50.381|
+[ INFO : 2022-06-21 09:30:47,080 ] - |        52|      2273|   0.02869|       0.2|    2.8916|    50.404|
+[ INFO : 2022-06-21 09:36:09,446 ] - |        53|       100|  0.028625|       0.2|    2.7942|    51.922|
+[ WARNING : 2022-06-21 09:38:23,799 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 09:40:53,448 ] - |        53|       200|  0.028561|       0.2|    2.7824|    51.935|
+[ INFO : 2022-06-21 09:45:26,429 ] - |        53|       300|  0.028498|       0.2|    2.7827|    51.877|
+[ INFO : 2022-06-21 09:49:56,034 ] - |        53|       400|  0.028434|       0.2|    2.7849|    51.928|
+[ WARNING : 2022-06-21 09:51:55,591 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00049 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 09:54:11,802 ] - |        53|       500|  0.028371|       0.2|    2.7693|    52.102|
+[ INFO : 2022-06-21 09:58:34,883 ] - |        53|       600|  0.028308|       0.2|    2.7708|    52.101|
+[ INFO : 2022-06-21 10:02:51,553 ] - |        53|       700|  0.028245|       0.2|    2.7753|    52.098|
+[ INFO : 2022-06-21 10:07:10,680 ] - |        53|       800|  0.028182|       0.2|    2.7739|    52.131|
+[ INFO : 2022-06-21 10:11:28,202 ] - |        53|       900|  0.028119|       0.2|    2.7741|    52.146|
+[ INFO : 2022-06-21 10:15:57,616 ] - |        53|      1000|  0.028057|       0.2|    2.7742|    52.172|
+[ INFO : 2022-06-21 10:20:22,150 ] - |        53|      1100|  0.027994|       0.2|    2.7786|    52.151|
+[ WARNING : 2022-06-21 10:21:19,112 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00036 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 10:24:38,738 ] - |        53|      1200|  0.027932|       0.2|    2.7775|    52.179|
+[ WARNING : 2022-06-21 10:27:24,213 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00017 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 10:28:36,022 ] - |        53|      1300|   0.02787|       0.2|    2.7787|    52.181|
+[ INFO : 2022-06-21 10:32:56,087 ] - |        53|      1400|  0.027808|       0.2|    2.7815|    52.126|
+[ INFO : 2022-06-21 10:37:25,273 ] - |        53|      1500|  0.027746|       0.2|    2.7791|     52.12|
+[ INFO : 2022-06-21 10:41:56,021 ] - |        53|      1600|  0.027684|       0.2|     2.779|    52.145|
+[ WARNING : 2022-06-21 10:44:23,768 ] - TC0745902439P-1.aligned.wav_speaker00001-TC0745902439P-1.m4a-A-00695 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 10:46:17,467 ] - |        53|      1700|  0.027623|       0.2|    2.7768|    52.194|
+[ WARNING : 2022-06-21 10:47:05,126 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00023 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 10:50:44,132 ] - |        53|      1800|  0.027561|       0.2|    2.7776|    52.181|
+[ INFO : 2022-06-21 10:55:25,291 ] - |        53|      1900|    0.0275|       0.2|     2.778|     52.17|
+[ WARNING : 2022-06-21 10:57:06,874 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00035 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 10:59:54,750 ] - |        53|      2000|  0.027439|       0.2|    2.7782|    52.143|
+[ WARNING : 2022-06-21 11:02:30,206 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00082 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 11:04:07,500 ] - |        53|      2100|  0.027378|       0.2|    2.7773|    52.162|
+[ INFO : 2022-06-21 11:08:20,529 ] - |        53|      2200|  0.027317|       0.2|    2.7771|    52.151|
+[ INFO : 2022-06-21 11:10:26,181 ] - |        53|      2273|  0.027273|       0.2|    2.7765|    52.162|
+[ INFO : 2022-06-21 11:15:41,613 ] - |        54|       100|  0.027211|       0.2|    2.7359|    52.911|
+[ INFO : 2022-06-21 11:20:20,719 ] - |        54|       200|   0.02715|       0.2|    2.7307|    52.742|
+[ INFO : 2022-06-21 11:24:46,019 ] - |        54|       300|   0.02709|       0.2|    2.7578|    52.345|
+[ INFO : 2022-06-21 11:29:16,969 ] - |        54|       400|  0.027029|       0.2|    2.7424|    52.464|
+[ INFO : 2022-06-21 11:33:37,124 ] - |        54|       500|  0.026969|       0.2|    2.7553|    52.445|
+[ INFO : 2022-06-21 11:38:06,183 ] - |        54|       600|  0.026909|       0.2|    2.7564|    52.461|
+[ INFO : 2022-06-21 11:42:28,561 ] - |        54|       700|  0.026849|       0.2|    2.7512|    52.525|
+[ INFO : 2022-06-21 11:46:47,660 ] - |        54|       800|   0.02679|       0.2|    2.7508|    52.573|
+[ INFO : 2022-06-21 11:51:11,829 ] - |        54|       900|   0.02673|       0.2|    2.7487|    52.543|
+[ INFO : 2022-06-21 11:55:26,246 ] - |        54|      1000|  0.026671|       0.2|    2.7462|    52.557|
+[ WARNING : 2022-06-21 11:56:45,329 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 11:59:59,171 ] - |        54|      1100|  0.026611|       0.2|    2.7466|    52.549|
+[ INFO : 2022-06-21 12:04:12,521 ] - |        54|      1200|  0.026552|       0.2|    2.7487|    52.534|
+[ WARNING : 2022-06-21 12:07:13,148 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00033 probably empty. If you see this error often there might be a problem with your data.
+[ WARNING : 2022-06-21 12:08:13,159 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00047 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 12:08:20,610 ] - |        54|      1300|  0.026493|       0.2|     2.749|    52.532|
+[ INFO : 2022-06-21 12:12:51,569 ] - |        54|      1400|  0.026434|       0.2|    2.7489|    52.593|
+[ WARNING : 2022-06-21 12:13:59,810 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00085 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 12:17:15,340 ] - |        54|      1500|  0.026375|       0.2|    2.7492|    52.618|
+[ INFO : 2022-06-21 12:21:38,505 ] - |        54|      1600|  0.026317|       0.2|    2.7468|     52.66|
+[ INFO : 2022-06-21 12:26:10,554 ] - |        54|      1700|  0.026258|       0.2|     2.748|    52.656|
+[ INFO : 2022-06-21 12:30:49,321 ] - |        54|      1800|    0.0262|       0.2|    2.7455|    52.711|
+[ WARNING : 2022-06-21 12:33:31,614 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 12:35:06,568 ] - |        54|      1900|  0.026141|       0.2|    2.7462|    52.673|
+[ INFO : 2022-06-21 12:39:17,207 ] - |        54|      2000|  0.026083|       0.2|     2.746|     52.66|
+[ INFO : 2022-06-21 12:43:42,572 ] - |        54|      2100|  0.026025|       0.2|    2.7474|    52.677|
+[ INFO : 2022-06-21 12:47:58,699 ] - |        54|      2200|  0.025967|       0.2|    2.7476|    52.669|
+[ INFO : 2022-06-21 12:50:20,207 ] - |        54|      2273|  0.025925|       0.2|    2.7479|    52.665|
+[ WARNING : 2022-06-21 12:53:32,387 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00065 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 12:55:42,481 ] - |        55|       100|  0.025866|       0.2|    2.6826|    53.313|
+[ INFO : 2022-06-21 13:00:21,058 ] - |        55|       200|  0.025809|       0.2|    2.6853|    53.253|
+[ INFO : 2022-06-21 13:05:08,411 ] - |        55|       300|  0.025751|       0.2|    2.7124|    53.097|
+[ WARNING : 2022-06-21 13:07:28,767 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00048 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 13:09:26,523 ] - |        55|       400|  0.025694|       0.2|     2.717|    53.023|
+[ WARNING : 2022-06-21 13:13:07,884 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00053 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 13:13:37,682 ] - |        55|       500|  0.025637|       0.2|    2.7139|     53.02|
+[ INFO : 2022-06-21 13:17:59,051 ] - |        55|       600|   0.02558|       0.2|    2.7195|    52.953|
+[ INFO : 2022-06-21 13:22:21,275 ] - |        55|       700|  0.025523|       0.2|     2.709|    53.056|
+[ INFO : 2022-06-21 13:26:42,249 ] - |        55|       800|  0.025466|       0.2|    2.7111|    52.977|
+[ INFO : 2022-06-21 13:31:11,532 ] - |        55|       900|  0.025409|       0.2|    2.7123|    53.009|
+[ INFO : 2022-06-21 13:35:45,965 ] - |        55|      1000|  0.025353|       0.2|    2.7098|    53.001|
+[ INFO : 2022-06-21 13:40:09,765 ] - |        55|      1100|  0.025296|       0.2|    2.7069|    53.075|
+[ INFO : 2022-06-21 13:44:33,418 ] - |        55|      1200|   0.02524|       0.2|    2.7088|    53.092|
+[ INFO : 2022-06-21 13:48:24,746 ] - |        55|      1300|  0.025184|       0.2|    2.7095|    53.089|
+[ INFO : 2022-06-21 13:52:59,184 ] - |        55|      1400|  0.025128|       0.2|    2.7081|     53.11|
+[ WARNING : 2022-06-21 13:55:05,099 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00064 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 13:57:07,252 ] - |        55|      1500|  0.025072|       0.2|    2.7071|    53.136|
+[ INFO : 2022-06-21 14:01:43,403 ] - |        55|      1600|  0.025016|       0.2|    2.7081|    53.152|
+[ WARNING : 2022-06-21 14:01:51,635 ] - TC0569244830P-4.aligned.wav_speaker00000-TC0569244830P-4.m4a-A-00027 probably empty. If you see this error often there might be a problem with your data.
+[ INFO : 2022-06-21 14:06:12,031 ] - |        55|      1700|  0.024961|       0.2|    2.7092|    53.132|
+[ INFO : 2022-06-21 14:10:31,315 ] - |        55|      1800|  0.024905|       0.2|    2.7097|    53.137|
+[ WARNING : 2022-06-21 14:11:23,100 ] - TC0569244830P-4.aligned.wav_speaker00001-TC0569244830P-4.m4a-A-00078 probably empty. If you see this error often there might be a problem with your data.

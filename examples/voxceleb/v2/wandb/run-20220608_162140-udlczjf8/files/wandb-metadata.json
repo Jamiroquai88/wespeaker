@@ -1,0 +1,43 @@
+{
+    "os": "Linux-5.4.0-1066-aws-x86_64-with-glibc2.27",
+    "python": "3.9.12",
+    "heartbeatAt": "2022-06-08T16:21:41.318798",
+    "startedAt": "2022-06-08T16:21:40.218134",
+    "docker": null,
+    "gpu": "Tesla V100-SXM2-16GB",
+    "gpu_count": 4,
+    "cpu_count": 32,
+    "cuda": null,
+    "args": [
+        "--config",
+        "conf/resnet.yaml",
+        "--exp_dir",
+        "exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150",
+        "--gpus",
+        "[0,1,2,3]",
+        "--num_avg",
+        "10",
+        "--data_type",
+        "shard",
+        "--train_data",
+        "data/voxceleb2/shard.list",
+        "--train_label",
+        "data/voxceleb2/utt2spk",
+        "--reverb_data",
+        "data/rirs/lmdb",
+        "--noise_data",
+        "data/musan/lmdb"
+    ],
+    "state": "running",
+    "program": "/shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wespeaker/bin/train.py",
+    "codePath": "examples/voxceleb/v2/wespeaker/bin/train.py",
+    "git": {
+        "remote": "https://github.com/wenet-e2e/wespeaker.git",
+        "commit": "d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48"
+    },
+    "email": "jan.profant@rev.com",
+    "root": "/shared/workspaces/jprofant/GitHub/wespeaker",
+    "host": "ip-172-31-90-127",
+    "username": "jprofant",
+    "executable": "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/bin/python"
+}

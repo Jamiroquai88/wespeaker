@@ -1,0 +1,499 @@
+diff --git a/examples/voxceleb/v2/conf/resnet.yaml b/examples/voxceleb/v2/conf/resnet.yaml
+index 1ca0bf6..489d49c 100644
+--- a/examples/voxceleb/v2/conf/resnet.yaml
++++ b/examples/voxceleb/v2/conf/resnet.yaml
+@@ -37,7 +37,7 @@ dataset_args:
+     prob: 0.6
+ 
+ model: ResNet34 # ResNet18, ResNet34, ResNet50, ResNet101, ResNet152
+-model_init: exp/ResNet101-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_45.pt
++model_init: exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_150.pt
+ model_args:
+   feat_dim: 80
+   embed_dim: 256
+diff --git a/examples/voxceleb/v2/run_rev.sh b/examples/voxceleb/v2/run_rev.sh
+index 5b207a7..f294433 100755
+--- a/examples/voxceleb/v2/run_rev.sh
++++ b/examples/voxceleb/v2/run_rev.sh
+@@ -8,11 +8,11 @@ stage=-1
+ stop_stage=-1
+ 
+ config=conf/resnet.yaml
+-exp_dir=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150
++exp_dir=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data
+ data_type="shard"  # shard/raw
+ gpus="[0,1,2,3]"
+ num_avg=10
+-checkpoint=exp/ResNet101-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_45.pt
++checkpoint=
+ 
+ score_norm_method="asnorm"  # asnorm/snorm
+ top_n=100
+@@ -27,23 +27,23 @@ fi
+ 
+ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
+   echo "Covert train and test data to ${data_type}..."
+-  for dset in voxceleb1 voxceleb2; do
++  for dset in train; do
+     if [ $data_type == "shard" ]; then
+-      python tools/make_shard_list.py --num_utts_per_shard 1000 \
++      python tools/make_shard_list_segments.py --num_utts_per_shard 1000 \
+           --num_threads 8 \
+           --prefix shards \
+           --shuffle \
+-          data/$dset/wav.scp data/$dset/utt2spk \
+-          data/$dset/shards data/$dset/shard.list
++          data/$dset/wav.scp data/$dset/utt2spk data/$dset/segments \
++          data/$dset/audio data/$dset/shards data/$dset/shard.list
+     else
+       python tools/make_raw_list.py data/$dset/wav.scp \
+           data/$dset/utt2spk data/$dset/raw.list
+     fi
+   done
+   # Convert all musan data to LMDB
+-  python tools/make_lmdb.py data/musan/wav.scp data/musan/lmdb
++  # FIXME python tools/make_lmdb.py data/musan/wav.scp data/musan/lmdb
+   # Convert all rirs data to LMDB
+-  python tools/make_lmdb.py data/rirs/wav.scp data/rirs/lmdb
++  # FIXME python tools/make_lmdb.py data/rirs/wav.scp data/rirs/lmdb
+ fi
+ 
+ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
+@@ -55,8 +55,8 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
+       --gpus $gpus \
+       --num_avg ${num_avg} \
+       --data_type "${data_type}" \
+-      --train_data data/voxceleb2/${data_type}.list \
+-      --train_label data/voxceleb2/utt2spk \
++      --train_data data/train/${data_type}.list \
++      --train_label data/train/utt2spk \
+       --reverb_data data/rirs/lmdb \
+       --noise_data data/musan/lmdb \
+       ${checkpoint:+--checkpoint $checkpoint}
+@@ -65,15 +65,15 @@ fi
+ if [ ${stage} -le 4 ] && [ ${stop_stage} -ge 4 ]; then
+   echo "Do model average ..."
+   avg_model=$exp_dir/models/avg_model.pt
+-  python wespeaker/bin/average_model.py \
+-    --dst_model $avg_model \
+-    --src_path $exp_dir/models \
+-    --num ${num_avg}
++  #python wespeaker/bin/average_model.py \
++  #  --dst_model $avg_model \
++  #  --src_path $exp_dir/models \
++  #  --num ${num_avg}
+ 
+   echo "Extract embeddings ..."
+   local/extract_vox.sh \
+     --exp_dir $exp_dir --model_path $avg_model \
+-    --nj 4 --gpus $gpus --data_type $data_type
++    --nj 1 --gpus [0] --data_type $data_type
+ fi
+ 
+ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ]; then
+diff --git a/wespeaker/dataset/dataset.py b/wespeaker/dataset/dataset.py
+index 4b13ed2..175e815 100644
+--- a/wespeaker/dataset/dataset.py
++++ b/wespeaker/dataset/dataset.py
+@@ -1,4 +1,6 @@
+-# Copyright (c) 2022 Horizon Robtics. (authors: Binbin Zhang)
++# Copyright (c) 2021 Mobvoi Inc. (authors: Binbin Zhang)
++#               2022 Chengdong Liang (liangchengdong@mail.nwpu.edu.cn)
++#               2022 Hongji Wang (jijijiang77@gmail.com)
+ #
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+@@ -11,7 +13,7 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+-
++import os.path
+ import random
+ 
+ import torch
+@@ -123,23 +125,24 @@ def Dataset(data_type,
+             spk2id_dict,
+             whole_utt=False,
+             reverb_lmdb_file=None,
+-            noise_lmdb_file=None):
++            noise_lmdb_file=None,
++            base_path=None):
+     """ Construct dataset from arguments
+ 
+         We have two shuffle stage in the Dataset. The first is global
+-        shuffle at shards tar/raw file level. The second is local shuffle
++        shuffle at shards tar/raw/feat file level. The second is local shuffle
+         at training samples level.
+ 
+         Args:
+-            data_type(str): raw/shard
+-            data_list_file: shard list file
++            data_type(str): shard/raw/feat
++            data_list_file: data list file
+             configs: dataset configs
+             spk2id_dict: spk2id dict
+             reverb_lmdb_file: reverb data source lmdb file
+             noise_lmdb_file: noise data source lmdb file
+             whole_utt: use whole utt or random chunk
+     """
+-    assert data_type in ['raw', 'shard']
++    assert data_type in ['shard', 'raw', 'feat', 'segments']
+     lists = read_lists(data_list_file)
+     shuffle = configs.get('shuffle', False)
+     # Global shuffle
+@@ -147,8 +150,12 @@ def Dataset(data_type,
+     if data_type == 'shard':
+         dataset = Processor(dataset, processor.url_opener)
+         dataset = Processor(dataset, processor.tar_file_and_group)
+-    else:
++    elif data_type == 'raw':
+         dataset = Processor(dataset, processor.parse_raw)
++    elif data_type == 'segments':
++        dataset = Processor((base_path, dataset), processor.parse_segments)
++    else:
++        dataset = Processor(dataset, processor.parse_feat)
+     # Local shuffle
+     if shuffle:
+         dataset = Processor(dataset, processor.shuffle, **configs['shuffle_args'])
+@@ -156,25 +163,32 @@ def Dataset(data_type,
+     # spk2id
+     dataset = Processor(dataset, processor.spk_to_id, spk2id_dict)
+ 
+-    # speed perturb
+-    speed_perturb_flag = configs.get('speed_perturb', True)
+-    if speed_perturb_flag:
+-        dataset = Processor(dataset, processor.speed_perturb, len(spk2id_dict))
+-
+-    if not whole_utt:
+-        # random chunk
+-        num_frms = configs.get('num_frms', 200)
+-        dataset = Processor(dataset, processor.random_chunk, num_frms)
+-
+-    # add reverb & noise
+-    if reverb_lmdb_file and noise_lmdb_file:
+-        reverb_data = LmdbData(reverb_lmdb_file)
+-        noise_data = LmdbData(noise_lmdb_file)
+-        dataset = Processor(dataset, processor.add_reverb_noise, reverb_data,
+-                            noise_data, configs['aug_prob'])
+-
+-    # compute fbank
+-    dataset = Processor(dataset, processor.compute_fbank, **configs['fbank_args'])
++    if data_type == 'feat':
++        if not whole_utt:
++            # random chunk
++            num_frms = configs.get('num_frms', 200)
++            dataset = Processor(dataset, processor.random_chunk, 'feat', num_frms)
++        # apply cmvn
++        dataset = Processor(dataset, processor.apply_cmvn)
++    else:
++        # speed perturb
++        speed_perturb_flag = configs.get('speed_perturb', True)
++        if speed_perturb_flag:
++            dataset = Processor(dataset, processor.speed_perturb, len(spk2id_dict))
++        if not whole_utt:
++            # random chunk
++            num_frms = configs.get('num_frms', 200)
++            dataset = Processor(dataset, processor.random_chunk, data_type, num_frms)
++        # add reverb & noise
++        if reverb_lmdb_file and noise_lmdb_file:
++            reverb_data = LmdbData(reverb_lmdb_file)
++            noise_data = LmdbData(noise_lmdb_file)
++            dataset = Processor(dataset, processor.add_reverb_noise, reverb_data,
++                                noise_data, configs['aug_prob'])
++        # compute fbank
++        dataset = Processor(dataset, processor.compute_fbank, **configs['fbank_args'])
++        # apply cmvn
++        dataset = Processor(dataset, processor.apply_cmvn)
+ 
+     # spec augmentation
+     spec_aug_flag = configs.get('spec_aug', True)
+diff --git a/wespeaker/dataset/processor.py b/wespeaker/dataset/processor.py
+index b3b54f8..5db5364 100644
+--- a/wespeaker/dataset/processor.py
++++ b/wespeaker/dataset/processor.py
+@@ -1,4 +1,6 @@
+-# Copyright (c) 2022 Horizon Robtics. (authors: Binbin Zhang)
++# Copyright (c) 2021 Mobvoi Inc. (authors: Binbin Zhang)
++#               2022 Chengdong Liang (liangchengdong@mail.nwpu.edu.cn)
++#               2022 Hongji Wang (jijijiang77@gmail.com)
+ #
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+@@ -13,9 +15,12 @@
+ # limitations under the License.
+ 
+ import io
++import kaldiio
+ import json
+ import logging
++import os
+ import random
++import re
+ import tarfile
+ from subprocess import PIPE, Popen
+ from urllib.parse import urlparse
+@@ -142,6 +147,85 @@ def parse_raw(data):
+             logging.warning('Failed to read {}'.format(wav_file))
+ 
+ 
++def parse_segments(data):
++    bdir, data = data
++    with open(os.path.join(bdir, 'wav.scp')) as f:
++        lines = f.readlines()
++        assert len(lines) == 1
++        wav = lines[0].split()[1]
++        assert os.path.isfile(wav), f'Missing wave file {wav}.'
++
++    waveform, sample_rate = None, None
++    for sample_idx, sample in enumerate(data):
++        assert 'src' in sample
++        segment, utt, start_sec, end_sec = sample['src'].split()
++        utt = utt[:-2]
++        start_sec, end_sec = float(start_sec), float(end_sec)
++
++        if waveform is None:
++            waveform, sample_rate = torchaudio.load(wav)
++
++        # print(start_sec, end_sec)
++        waveform_segment = waveform[:, int(start_sec * sample_rate):int(end_sec * sample_rate)]
++        slen = waveform_segment.shape[1]
++        seg_len, seg_jump = int(1.2 * sample_rate), int(0.24 * sample_rate)
++        start = 0
++        # print(f'{bdir} {waveform_segment.shape} {start_sec} {end_sec} {slen} {seg_len} {seg_jump}\n')
++        for start in range(0, slen - seg_len, seg_jump):
++            key = f'{utt}-A_{sample_idx:04}-' \
++                  f'{int(start / sample_rate * 100):08}-{int((start + seg_len) / sample_rate * 100):08}'
++            assert start <= start + seg_len <= waveform_segment.shape[1], \
++                f'Start: {start}, end: {start + seg_len}, shape: {waveform_segment.shape[1]}'
++            example = dict(key=key,
++                           spk=(start / sample_rate + start_sec, (start + seg_len) / sample_rate + start_sec),
++                           wav=waveform_segment[:, start:start + seg_len],
++                           sample_rate=sample_rate)
++            # print(f'{start} {slen} {seg_len} {seg_jump} {key} {waveform_segment[:, start:start + seg_len].shape}\n')
++            yield example
++
++        # print(slen, start, seg_jump)
++        if slen - start - seg_jump > 0.12 * sample_rate:
++            key = f'{utt}-A_{sample_idx:04}-' \
++                  f'{int((start + seg_jump) / sample_rate * 100):08}-{int(slen / sample_rate * 100):08}'
++            assert start + seg_jump <= slen <= waveform_segment.shape[1],\
++                f'Start: {start + seg_jump}, end: {slen}, shape: {waveform_segment.shape[1]}'
++            example = dict(key=key,
++                           spk=((start + seg_jump) / sample_rate + start_sec, slen / sample_rate + start_sec),
++                           wav=waveform_segment[:, start + seg_jump:slen],
++                           sample_rate=sample_rate)
++            # print(f'{start} {slen} {seg_len} {seg_jump} {key}\n')
++            yield example
++
++
++def parse_feat(data):
++    """ Parse key/feat/spk from json line
++
++        Args:
++            data: Iterable[str], str is a json line has key/feat/spk
++
++        Returns:
++            Iterable[{key, feat, spk}]
++    """
++    for sample in data:
++        assert 'src' in sample
++        json_line = sample['src']
++        obj = json.loads(json_line)
++        assert 'key' in obj
++        assert 'feat' in obj
++        assert 'spk' in obj
++        key = obj['key']
++        feat_ark = obj['feat']
++        spk = obj['spk']
++        try:
++            feat = torch.from_numpy(kaldiio.load_mat(feat_ark))
++            example = dict(key=key,
++                           spk=spk,
++                           feat=feat)
++            yield example
++        except Exception as ex:
++            logging.warning('Failed to load {}'.format(feat_ark))
++
++
+ def shuffle(data, shuffle_size=2500):
+     """ Local shuffle the data
+ 
+@@ -181,7 +265,7 @@ def spk_to_id(data, spk2id):
+         if sample['spk'] in spk2id:
+             label = spk2id[sample['spk']]
+         else:
+-            label = -1
++            label = sample['spk']
+         sample['label'] = label
+         yield sample
+ 
+@@ -215,6 +299,15 @@ def speed_perturb(data, num_spks):
+ 
+ 
+ def get_random_chunk(data, chunk_len):
++    """ Get random chunk
++
++        Args:
++            data: torch.Tensor (random len)
++            chunk_len: chunk length
++
++        Returns:
++            torch.Tensor (exactly chunk_len)
++    """
+     data_len = len(data)
+     data_shape = data.shape
+     # random chunk
+@@ -223,33 +316,49 @@ def get_random_chunk(data, chunk_len):
+         data = data[chunk_start:chunk_start + chunk_len]
+     else:
+         # padding
+-        chunk_shape = chunk_len if len(data_shape) == 1 else (chunk_len,
+-                                                              data.shape[1])
+-        data = np.resize(data, chunk_shape)  # resize will repeat copy
++        repeat_factor = chunk_len // data_len + 1
++        repeat_shape = repeat_factor if len(data_shape) == 1 else (repeat_factor, 1)
++        data = data.repeat(repeat_shape)
++        data = data[:chunk_len]
+ 
+     return data
+ 
+ 
+-def random_chunk(data, num_frms=200):
++def random_chunk(data, data_type='shard/raw/feat', num_frms=200):
+     """ Random chunk the data into `num_frms` frames
+ 
+         Args:
+-            data: Iterable[{key, wav, label, sample_rate}]
++            data: Iterable[{key, wav/feat, label, sample_rate}]
+             num_frms: num of frames for each training sample
+ 
+         Returns:
+-            Iterable[{key, wav, label, sample_rate}]
++            Iterable[{key, wav/feat, label, sample_rate}]
+     """
+     # Note(Binbin Zhang): We assume the sample rate is 16000,
+     #                     frame shift 10ms, frame length 25ms
+-    chunk_len = (num_frms - 1) * 160 + 400
++    if data_type == 'feat':
++        chunk_len = num_frms
++    else:
++        chunk_len = (num_frms - 1) * 160 + 400
++
+     for sample in data:
+         assert 'key' in sample
+-        assert 'wav' in sample
+ 
+-        wav = sample['wav'].numpy()[0]
+-        wav = get_random_chunk(wav, chunk_len)
+-        sample['wav'] = torch.from_numpy(wav).unsqueeze(0)
++        if data_type == 'feat':
++            assert 'feat' in sample
++            feat = sample['feat']
++            feat = get_random_chunk(feat, chunk_len)
++            sample['feat'] = feat
++        else:
++            assert 'wav' in sample
++            wav = sample['wav'][0]
++            try:
++                wav = get_random_chunk(wav, chunk_len)
++            except:
++                logging.warning(f'{sample["key"]} probably empty. '
++                                f'If you see this error often there might be a problem with your data.')
++                continue
++            sample['wav'] = wav.unsqueeze(0)
+         yield sample
+ 
+ 
+@@ -343,8 +452,27 @@ def compute_fbank(data,
+                           window_type='hamming',
+                           htk_compat=True,
+                           use_energy=False)
+-        # CMN, without CVN
+-        mat = mat - torch.mean(mat, dim=0)
++        yield dict(key=sample['key'], label=sample['label'], feat=mat)
++
++
++def apply_cmvn(data, norm_mean=True, norm_var=False):
++    """ Apply CMVN
++
++        Args:
++            data: Iterable[{key, feat, label}]
++
++        Returns:
++            Iterable[{key, feat, label}]
++    """
++    for sample in data:
++        assert 'key' in sample
++        assert 'feat' in sample
++        assert 'label' in sample
++        mat = sample['feat']
++        if norm_mean:
++            mat = mat - torch.mean(mat, dim=0)
++        if norm_var:
++            mat = mat / torch.sqrt(torch.var(mat, dim=0) + 1e-8)
+         yield dict(key=sample['key'], label=sample['label'], feat=mat)
+ 
+ 
+diff --git a/wespeaker/utils/checkpoint.py b/wespeaker/utils/checkpoint.py
+index 0879ae0..b95ebe7 100644
+--- a/wespeaker/utils/checkpoint.py
++++ b/wespeaker/utils/checkpoint.py
+@@ -1,6 +1,19 @@
+-#!/usr/bin/env python3
+-# coding=utf-8
+-# Author: Hongji Wang
++# Copyright (c) 2020 Mobvoi Inc. (authors: Binbin Zhang)
++#               2021 Hongji Wang (jijijiang77@gmail.com)
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#     http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++import logging
+ 
+ import torch
+ 
+@@ -10,7 +23,33 @@ def load_checkpoint(model: torch.nn.Module, path: str):
+         checkpoint = torch.load(path)
+     else:
+         checkpoint = torch.load(path, map_location='cpu')
+-    model.load_state_dict(checkpoint, strict=False)
++    # print(model_state_dict.keys())
++    # print(model_state_dict['projection.weight'].shape)
++    # 1/0
++
++    model_state_dict = model.state_dict()
++    state_dict = checkpoint
++    is_changed = False
++    for k in state_dict:
++        if k in model_state_dict:
++            if state_dict[k].shape != model_state_dict[k].shape:
++                logging.info(f"Skip loading parameter: {k}, "
++                             f"required shape: {model_state_dict[k].shape}, "
++                             f"loaded shape: {state_dict[k].shape}")
++                state_dict[k] = model_state_dict[k]
++                is_changed = True
++        else:
++            logging.info(f"Dropping parameter {k}")
++            is_changed = True
++
++    if is_changed:
++        checkpoint.pop("optimizer_states", None)
++
++    # print(model_state_dict.keys())
++    # print(checkpoint.keys())
++    # print(checkpoint['projection.weight'].shape)
++    # 1/0
++    # model.load_state_dict(checkpoint, strict=False)
+ 
+ 
+ def save_checkpoint(model: torch.nn.Module, path: str):

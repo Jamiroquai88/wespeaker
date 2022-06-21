@@ -1,0 +1,214 @@
+[ INFO : 2022-06-16 12:16:51,278 ] - training on multiple gpus, this gpu 0
+[ INFO : 2022-06-16 12:16:51,279 ] - exp_dir is: exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data
+[ INFO : 2022-06-16 12:16:51,279 ] - <== Passed Arguments ==>
+[ INFO : 2022-06-16 12:16:51,280 ] - {'data_type': 'shard',
+[ INFO : 2022-06-16 12:16:51,280 ] -  'dataloader_args': {'batch_size': 192,
+[ INFO : 2022-06-16 12:16:51,280 ] -                      'drop_last': True,
+[ INFO : 2022-06-16 12:16:51,280 ] -                      'num_workers': 4,
+[ INFO : 2022-06-16 12:16:51,280 ] -                      'pin_memory': False,
+[ INFO : 2022-06-16 12:16:51,280 ] -                      'prefetch_factor': 4},
+[ INFO : 2022-06-16 12:16:51,281 ] -  'dataset_args': {'aug_prob': 0.6,
+[ INFO : 2022-06-16 12:16:51,281 ] -                   'fbank_args': {'dither': 1.0,
+[ INFO : 2022-06-16 12:16:51,281 ] -                                  'frame_length': 25,
+[ INFO : 2022-06-16 12:16:51,281 ] -                                  'frame_shift': 10,
+[ INFO : 2022-06-16 12:16:51,281 ] -                                  'num_mel_bins': 80},
+[ INFO : 2022-06-16 12:16:51,281 ] -                   'num_frms': 200,
+[ INFO : 2022-06-16 12:16:51,281 ] -                   'shuffle': True,
+[ INFO : 2022-06-16 12:16:51,281 ] -                   'shuffle_args': {'shuffle_size': 2500},
+[ INFO : 2022-06-16 12:16:51,281 ] -                   'spec_aug': False,
+[ INFO : 2022-06-16 12:16:51,282 ] -                   'spec_aug_args': {'max_f': 8,
+[ INFO : 2022-06-16 12:16:51,282 ] -                                     'max_t': 10,
+[ INFO : 2022-06-16 12:16:51,282 ] -                                     'num_f_mask': 1,
+[ INFO : 2022-06-16 12:16:51,282 ] -                                     'num_t_mask': 1,
+[ INFO : 2022-06-16 12:16:51,282 ] -                                     'prob': 0.6},
+[ INFO : 2022-06-16 12:16:51,282 ] -                   'speed_perturb': True},
+[ INFO : 2022-06-16 12:16:51,282 ] -  'exp_dir': 'exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data',
+[ INFO : 2022-06-16 12:16:51,282 ] -  'gpus': [0, 1, 2, 3],
+[ INFO : 2022-06-16 12:16:51,282 ] -  'log_batch_interval': 100,
+[ INFO : 2022-06-16 12:16:51,282 ] -  'loss': 'CrossEntropyLoss',
+[ INFO : 2022-06-16 12:16:51,283 ] -  'loss_args': {},
+[ INFO : 2022-06-16 12:16:51,283 ] -  'margin_scheduler': 'MarginScheduler',
+[ INFO : 2022-06-16 12:16:51,283 ] -  'margin_update': {'final_margin': 0.2,
+[ INFO : 2022-06-16 12:16:51,283 ] -                    'fix_start_epoch': 40,
+[ INFO : 2022-06-16 12:16:51,283 ] -                    'increase_start_epoch': 20,
+[ INFO : 2022-06-16 12:16:51,283 ] -                    'increase_type': 'exp',
+[ INFO : 2022-06-16 12:16:51,283 ] -                    'initial_margin': 0.0,
+[ INFO : 2022-06-16 12:16:51,284 ] -                    'update_margin': True},
+[ INFO : 2022-06-16 12:16:51,284 ] -  'model': 'ResNet34',
+[ INFO : 2022-06-16 12:16:51,284 ] -  'model_args': {'embed_dim': 256, 'feat_dim': 80, 'pooling_func': 'TSTP'},
+[ INFO : 2022-06-16 12:16:51,284 ] -  'model_init': 'exp/ResNet101-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_45.pt',
+[ INFO : 2022-06-16 12:16:51,284 ] -  'noise_data': 'data/musan/lmdb',
+[ INFO : 2022-06-16 12:16:51,284 ] -  'num_avg': 10,
+[ INFO : 2022-06-16 12:16:51,284 ] -  'num_epochs': 150,
+[ INFO : 2022-06-16 12:16:51,284 ] -  'optimizer': 'SGD',
+[ INFO : 2022-06-16 12:16:51,285 ] -  'optimizer_args': {'momentum': 0.9, 'nesterov': True, 'weight_decay': 0.0001},
+[ INFO : 2022-06-16 12:16:51,285 ] -  'projection_args': {'easy_margin': False,
+[ INFO : 2022-06-16 12:16:51,285 ] -                      'project_type': 'arc_margin',
+[ INFO : 2022-06-16 12:16:51,285 ] -                      'scale': 32.0},
+[ INFO : 2022-06-16 12:16:51,285 ] -  'reverb_data': 'data/rirs/lmdb',
+[ INFO : 2022-06-16 12:16:51,285 ] -  'save_epoch_interval': 5,
+[ INFO : 2022-06-16 12:16:51,285 ] -  'scheduler': 'ExponentialDecrease',
+[ INFO : 2022-06-16 12:16:51,285 ] -  'scheduler_args': {'final_lr': 5e-05, 'initial_lr': 0.1, 'warm_up_epoch': 6},
+[ INFO : 2022-06-16 12:16:51,285 ] -  'seed': 42,
+[ INFO : 2022-06-16 12:16:51,286 ] -  'train_data': 'data/train/shard.list',
+[ INFO : 2022-06-16 12:16:51,286 ] -  'train_label': 'data/train/utt2spk'}
+[ INFO : 2022-06-16 12:16:55,850 ] - <== Data statistics ==>
+[ INFO : 2022-06-16 12:16:55,851 ] - train data num: 1747308, spk num: 29501
+[ INFO : 2022-06-16 12:16:55,860 ] - <== Dataloaders ==>
+[ INFO : 2022-06-16 12:16:55,860 ] - train dataloaders created
+[ INFO : 2022-06-16 12:16:55,861 ] - loader size: 2275
+[ INFO : 2022-06-16 12:16:55,861 ] - <== Model ==>
+[ INFO : 2022-06-16 12:16:55,921 ] - Load initial model from exp/ResNet101-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150/models/model_45.pt
+[ INFO : 2022-06-16 12:16:56,197 ] - ResNet(
+[ INFO : 2022-06-16 12:16:56,198 ] -   (conv1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,198 ] -   (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,198 ] -   (layer1): Sequential(
+[ INFO : 2022-06-16 12:16:56,198 ] -     (0): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,198 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,198 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,198 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,198 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,199 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,199 ] -     )
+[ INFO : 2022-06-16 12:16:56,199 ] -     (1): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,199 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,199 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,199 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,199 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,199 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,200 ] -     )
+[ INFO : 2022-06-16 12:16:56,200 ] -     (2): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,200 ] -       (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,200 ] -       (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,200 ] -       (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,200 ] -       (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,200 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,200 ] -     )
+[ INFO : 2022-06-16 12:16:56,200 ] -   )
+[ INFO : 2022-06-16 12:16:56,200 ] -   (layer2): Sequential(
+[ INFO : 2022-06-16 12:16:56,201 ] -     (0): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,201 ] -       (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,201 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,201 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,201 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,201 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-16 12:16:56,201 ] -         (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-16 12:16:56,201 ] -         (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,202 ] -       )
+[ INFO : 2022-06-16 12:16:56,202 ] -     )
+[ INFO : 2022-06-16 12:16:56,202 ] -     (1): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,202 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,202 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,202 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,202 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,202 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,202 ] -     )
+[ INFO : 2022-06-16 12:16:56,203 ] -     (2): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,203 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,203 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,203 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,203 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,203 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,203 ] -     )
+[ INFO : 2022-06-16 12:16:56,203 ] -     (3): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,203 ] -       (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,203 ] -       (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,204 ] -       (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,204 ] -       (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,204 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,204 ] -     )
+[ INFO : 2022-06-16 12:16:56,204 ] -   )
+[ INFO : 2022-06-16 12:16:56,204 ] -   (layer3): Sequential(
+[ INFO : 2022-06-16 12:16:56,204 ] -     (0): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,204 ] -       (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,204 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,205 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,205 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,205 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-16 12:16:56,205 ] -         (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-16 12:16:56,205 ] -         (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,205 ] -       )
+[ INFO : 2022-06-16 12:16:56,205 ] -     )
+[ INFO : 2022-06-16 12:16:56,205 ] -     (1): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,205 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,206 ] -     )
+[ INFO : 2022-06-16 12:16:56,206 ] -     (2): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,206 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,206 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,207 ] -     )
+[ INFO : 2022-06-16 12:16:56,207 ] -     (3): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,207 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,207 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,208 ] -     )
+[ INFO : 2022-06-16 12:16:56,208 ] -     (4): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,208 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,208 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,208 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,208 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,208 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,208 ] -     )
+[ INFO : 2022-06-16 12:16:56,208 ] -     (5): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,209 ] -       (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,209 ] -       (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,209 ] -       (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,209 ] -       (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,209 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,209 ] -     )
+[ INFO : 2022-06-16 12:16:56,209 ] -   )
+[ INFO : 2022-06-16 12:16:56,209 ] -   (layer4): Sequential(
+[ INFO : 2022-06-16 12:16:56,209 ] -     (0): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,210 ] -       (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,210 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,210 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,210 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,210 ] -       (shortcut): Sequential(
+[ INFO : 2022-06-16 12:16:56,210 ] -         (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+[ INFO : 2022-06-16 12:16:56,210 ] -         (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,210 ] -       )
+[ INFO : 2022-06-16 12:16:56,210 ] -     )
+[ INFO : 2022-06-16 12:16:56,211 ] -     (1): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,211 ] -       (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,211 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,211 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,211 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,211 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,211 ] -     )
+[ INFO : 2022-06-16 12:16:56,211 ] -     (2): BasicBlock(
+[ INFO : 2022-06-16 12:16:56,211 ] -       (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,211 ] -       (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,212 ] -       (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+[ INFO : 2022-06-16 12:16:56,212 ] -       (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,212 ] -       (shortcut): Sequential()
+[ INFO : 2022-06-16 12:16:56,212 ] -     )
+[ INFO : 2022-06-16 12:16:56,212 ] -   )
+[ INFO : 2022-06-16 12:16:56,212 ] -   (pool): TSTP()
+[ INFO : 2022-06-16 12:16:56,212 ] -   (seg_1): Linear(in_features=5120, out_features=256, bias=True)
+[ INFO : 2022-06-16 12:16:56,212 ] -   (seg_bn_1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+[ INFO : 2022-06-16 12:16:56,212 ] -   (seg_2): Linear(in_features=256, out_features=256, bias=True)
+[ INFO : 2022-06-16 12:16:56,212 ] -   (projection): ArcMarginProduct(
+[ INFO : 2022-06-16 12:16:56,213 ] -     in_features=256, out_features=88503, scale=32.0,
+[ INFO : 2022-06-16 12:16:56,213 ] -                       margin=0.0, easy_margin=False
+[ INFO : 2022-06-16 12:16:56,213 ] -   )
+[ INFO : 2022-06-16 12:16:56,213 ] - )
+[ INFO : 2022-06-16 12:16:57,014 ] - start_epoch: 1
+[ INFO : 2022-06-16 12:16:57,052 ] - <== Loss ==>
+[ INFO : 2022-06-16 12:16:57,052 ] - loss criterion is: CrossEntropyLoss
+[ INFO : 2022-06-16 12:16:57,052 ] - <== Optimizer ==>
+[ INFO : 2022-06-16 12:16:57,052 ] - optimizer is: SGD
+[ INFO : 2022-06-16 12:16:57,053 ] - <== Scheduler ==>
+[ INFO : 2022-06-16 12:16:57,053 ] - scheduler is: ExponentialDecrease
+[ INFO : 2022-06-16 12:16:57,053 ] - <== MarginScheduler ==>
+[ INFO : 2022-06-16 12:16:57,064 ] - <========== Training process ==========>
+[ INFO : 2022-06-16 12:16:57,064 ] - +----------+----------+----------+----------+----------+----------+
+[ INFO : 2022-06-16 12:16:57,064 ] - |     Epoch|     Batch|        Lr|    Margin|      Loss|       Acc|
+[ INFO : 2022-06-16 12:16:57,065 ] - +----------+----------+----------+----------+----------+----------+

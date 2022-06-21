@@ -1,0 +1,163 @@
+2022-06-16 11:41:13,564 INFO    MainThread:3909 [internal.py:wandb_internal():90] W&B internal server running at pid: 3909, started at: 2022-06-16 11:41:13.563019
+2022-06-16 11:41:13,566 INFO    WriterThread:3909 [datastore.py:open_for_write():75] open: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/run-21p5p3yf.wandb
+2022-06-16 11:41:13,569 DEBUG   SenderThread:3909 [sender.py:send():232] send: header
+2022-06-16 11:41:13,569 DEBUG   SenderThread:3909 [sender.py:send():232] send: run
+2022-06-16 11:41:13,661 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: check_version
+2022-06-16 11:41:13,670 INFO    SenderThread:3909 [dir_watcher.py:__init__():197] watching files in: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files
+2022-06-16 11:41:13,670 INFO    SenderThread:3909 [sender.py:_start_run_threads():811] run started: 21p5p3yf with start time 1655379672
+2022-06-16 11:41:13,670 DEBUG   SenderThread:3909 [sender.py:send():232] send: summary
+2022-06-16 11:41:13,672 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file wandb-summary.json with policy end
+2022-06-16 11:41:13,672 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: check_version
+2022-06-16 11:41:13,758 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: run_start
+2022-06-16 11:41:13,770 DEBUG   HandlerThread:3909 [meta.py:__init__():35] meta init
+2022-06-16 11:41:13,770 DEBUG   HandlerThread:3909 [meta.py:__init__():49] meta init done
+2022-06-16 11:41:13,770 DEBUG   HandlerThread:3909 [meta.py:probe():209] probe
+2022-06-16 11:41:13,777 DEBUG   HandlerThread:3909 [meta.py:_setup_git():199] setup git
+2022-06-16 11:41:13,797 DEBUG   HandlerThread:3909 [meta.py:_setup_git():206] setup git done
+2022-06-16 11:41:13,797 DEBUG   HandlerThread:3909 [meta.py:_save_code():87] save code
+2022-06-16 11:41:13,811 DEBUG   HandlerThread:3909 [meta.py:_save_code():108] save code done
+2022-06-16 11:41:13,811 DEBUG   HandlerThread:3909 [meta.py:_save_patches():125] save patches
+2022-06-16 11:41:13,965 DEBUG   HandlerThread:3909 [meta.py:_save_patches():167] save patches done
+2022-06-16 11:41:13,966 DEBUG   HandlerThread:3909 [meta.py:_save_pip():53] save pip
+2022-06-16 11:41:13,967 DEBUG   HandlerThread:3909 [meta.py:_save_pip():67] save pip done
+2022-06-16 11:41:13,967 DEBUG   HandlerThread:3909 [meta.py:_save_conda():74] save conda
+2022-06-16 11:41:14,676 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/upstream_diff_d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48.patch
+2022-06-16 11:41:14,676 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/requirements.txt
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/diff.patch
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb/v2/wespeaker/bin/train.py
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-summary.json
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/conda-environment.yaml
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb/v2/wespeaker
+2022-06-16 11:41:14,677 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code
+2022-06-16 11:41:14,678 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb/v2
+2022-06-16 11:41:14,678 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb/v2/wespeaker/bin
+2022-06-16 11:41:14,678 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples
+2022-06-16 11:41:14,678 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb
+2022-06-16 11:41:17,917 DEBUG   HandlerThread:3909 [meta.py:_save_conda():84] save conda done
+2022-06-16 11:41:17,917 DEBUG   HandlerThread:3909 [meta.py:probe():247] probe done
+2022-06-16 11:41:17,928 DEBUG   SenderThread:3909 [sender.py:send():232] send: files
+2022-06-16 11:41:17,928 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file wandb-metadata.json with policy now
+2022-06-16 11:41:17,928 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file code/examples/voxceleb/v2/wespeaker/bin/train.py with policy now
+2022-06-16 11:41:17,929 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file diff.patch with policy now
+2022-06-16 11:41:17,929 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file upstream_diff_d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48.patch with policy now
+2022-06-16 11:41:17,938 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-16 11:41:17,939 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: stop_status
+2022-06-16 11:41:17,957 DEBUG   SenderThread:3909 [sender.py:send():232] send: telemetry
+2022-06-16 11:41:18,044 INFO    Thread-11 :3909 [upload_job.py:push():132] Uploaded file /tmp/tmprmcp5v3gwandb/2wwtz6cr-wandb-metadata.json
+2022-06-16 11:41:18,045 INFO    Thread-12 :3909 [upload_job.py:push():132] Uploaded file /tmp/tmprmcp5v3gwandb/379how55-code/examples/voxceleb/v2/wespeaker/bin/train.py
+2022-06-16 11:41:18,069 INFO    Thread-13 :3909 [upload_job.py:push():132] Uploaded file /tmp/tmprmcp5v3gwandb/1u6jsosg-diff.patch
+2022-06-16 11:41:18,080 INFO    Thread-14 :3909 [upload_job.py:push():132] Uploaded file /tmp/tmprmcp5v3gwandb/r3mdj55w-upstream_diff_d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48.patch
+2022-06-16 11:41:18,683 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/conda-environment.yaml
+2022-06-16 11:41:18,684 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-metadata.json
+2022-06-16 11:41:18,684 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_created():244] file/dir created: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log
+2022-06-16 11:41:22,693 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log
+2022-06-16 11:41:27,774 DEBUG   SenderThread:3909 [sender.py:send():232] send: telemetry
+2022-06-16 11:41:28,708 INFO    Thread-7  :3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log
+2022-06-16 11:41:30,215 DEBUG   SenderThread:3909 [sender.py:send():232] send: exit
+2022-06-16 11:41:30,215 INFO    SenderThread:3909 [sender.py:send_exit():368] handling exit code: 1
+2022-06-16 11:41:30,215 INFO    SenderThread:3909 [sender.py:send_exit():370] handling runtime: 16
+2022-06-16 11:41:30,216 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:30,217 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file wandb-summary.json with policy end
+2022-06-16 11:41:30,218 INFO    SenderThread:3909 [sender.py:send_exit():376] send defer
+2022-06-16 11:41:30,218 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:30,218 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,218 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 0
+2022-06-16 11:41:30,219 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,219 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 0
+2022-06-16 11:41:30,219 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 1
+2022-06-16 11:41:30,219 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,219 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 1
+2022-06-16 11:41:30,288 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,288 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 1
+2022-06-16 11:41:30,288 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 2
+2022-06-16 11:41:30,289 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,289 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 2
+2022-06-16 11:41:30,289 DEBUG   SenderThread:3909 [sender.py:send():232] send: stats
+2022-06-16 11:41:30,289 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,289 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 2
+2022-06-16 11:41:30,290 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 3
+2022-06-16 11:41:30,290 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,290 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 3
+2022-06-16 11:41:30,290 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,290 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 3
+2022-06-16 11:41:30,290 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 4
+2022-06-16 11:41:30,290 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,291 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 4
+2022-06-16 11:41:30,291 DEBUG   SenderThread:3909 [sender.py:send():232] send: summary
+2022-06-16 11:41:30,292 INFO    SenderThread:3909 [sender.py:_save_file():948] saving file wandb-summary.json with policy end
+2022-06-16 11:41:30,292 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,292 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 4
+2022-06-16 11:41:30,292 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 5
+2022-06-16 11:41:30,293 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,293 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 5
+2022-06-16 11:41:30,293 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,293 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 5
+2022-06-16 11:41:30,324 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:30,326 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 6
+2022-06-16 11:41:30,326 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:30,326 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,327 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 6
+2022-06-16 11:41:30,327 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,327 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 6
+2022-06-16 11:41:30,327 INFO    SenderThread:3909 [dir_watcher.py:finish():312] shutting down directory watcher
+2022-06-16 11:41:30,427 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:30,710 INFO    SenderThread:3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-summary.json
+2022-06-16 11:41:30,710 INFO    SenderThread:3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log
+2022-06-16 11:41:30,711 INFO    SenderThread:3909 [dir_watcher.py:_on_file_modified():257] file/dir modified: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/config.yaml
+2022-06-16 11:41:30,712 INFO    SenderThread:3909 [dir_watcher.py:finish():342] scan: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files
+2022-06-16 11:41:30,713 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log output.log
+2022-06-16 11:41:30,713 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-summary.json wandb-summary.json
+2022-06-16 11:41:30,716 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/requirements.txt requirements.txt
+2022-06-16 11:41:30,719 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/diff.patch diff.patch
+2022-06-16 11:41:30,719 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/conda-environment.yaml conda-environment.yaml
+2022-06-16 11:41:30,720 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-metadata.json wandb-metadata.json
+2022-06-16 11:41:30,720 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/upstream_diff_d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48.patch upstream_diff_d5ed5419dfc25b2ffa645df8ae2d4313b1a75b48.patch
+2022-06-16 11:41:30,720 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/config.yaml config.yaml
+2022-06-16 11:41:30,731 INFO    SenderThread:3909 [dir_watcher.py:finish():356] scan save: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/code/examples/voxceleb/v2/wespeaker/bin/train.py code/examples/voxceleb/v2/wespeaker/bin/train.py
+2022-06-16 11:41:30,731 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 7
+2022-06-16 11:41:30,731 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:30,732 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:30,732 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 7
+2022-06-16 11:41:30,733 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:30,733 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 7
+2022-06-16 11:41:30,733 INFO    SenderThread:3909 [file_pusher.py:finish():145] shutting down file pusher
+2022-06-16 11:41:30,831 INFO    Thread-16 :3909 [upload_job.py:push():132] Uploaded file /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/wandb-summary.json
+2022-06-16 11:41:30,832 INFO    Thread-18 :3909 [upload_job.py:push():132] Uploaded file /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/conda-environment.yaml
+2022-06-16 11:41:30,833 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:30,833 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:30,860 INFO    Thread-19 :3909 [upload_job.py:push():132] Uploaded file /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/config.yaml
+2022-06-16 11:41:30,865 INFO    Thread-15 :3909 [upload_job.py:push():132] Uploaded file /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/output.log
+2022-06-16 11:41:30,873 INFO    Thread-17 :3909 [upload_job.py:push():132] Uploaded file /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/files/requirements.txt
+2022-06-16 11:41:30,934 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:30,934 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:31,035 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:31,035 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:31,073 INFO    Thread-6  :3909 [sender.py:transition_state():389] send defer: 8
+2022-06-16 11:41:31,073 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:31,073 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 8
+2022-06-16 11:41:31,074 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:31,074 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 8
+2022-06-16 11:41:31,111 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 9
+2022-06-16 11:41:31,112 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:31,112 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 9
+2022-06-16 11:41:31,112 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:31,112 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 9
+2022-06-16 11:41:31,112 INFO    SenderThread:3909 [sender.py:transition_state():389] send defer: 10
+2022-06-16 11:41:31,113 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: defer
+2022-06-16 11:41:31,113 INFO    HandlerThread:3909 [handler.py:handle_request_defer():164] handle defer: 10
+2022-06-16 11:41:31,113 DEBUG   SenderThread:3909 [sender.py:send():232] send: final
+2022-06-16 11:41:31,113 DEBUG   SenderThread:3909 [sender.py:send():232] send: footer
+2022-06-16 11:41:31,113 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: defer
+2022-06-16 11:41:31,113 INFO    SenderThread:3909 [sender.py:send_request_defer():385] handle sender defer: 10
+2022-06-16 11:41:31,136 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: poll_exit
+2022-06-16 11:41:31,137 DEBUG   SenderThread:3909 [sender.py:send_request():246] send_request: poll_exit
+2022-06-16 11:41:31,137 INFO    SenderThread:3909 [file_pusher.py:join():150] waiting for file pusher
+2022-06-16 11:41:31,254 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: sampled_history
+2022-06-16 11:41:31,255 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: get_summary
+2022-06-16 11:41:31,256 DEBUG   HandlerThread:3909 [handler.py:handle_request():141] handle_request: shutdown
+2022-06-16 11:41:31,256 INFO    HandlerThread:3909 [handler.py:finish():806] shutting down handler
+2022-06-16 11:41:32,114 INFO    WriterThread:3909 [datastore.py:close():279] close: /shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wandb/run-20220616_114112-21p5p3yf/run-21p5p3yf.wandb
+2022-06-16 11:41:32,154 INFO    SenderThread:3909 [sender.py:finish():1110] shutting down sender
+2022-06-16 11:41:32,154 INFO    SenderThread:3909 [file_pusher.py:finish():145] shutting down file pusher
+2022-06-16 11:41:32,154 INFO    SenderThread:3909 [file_pusher.py:join():150] waiting for file pusher
+2022-06-16 11:41:32,155 INFO    MainThread:3909 [internal.py:handle_exit():80] Internal process exited

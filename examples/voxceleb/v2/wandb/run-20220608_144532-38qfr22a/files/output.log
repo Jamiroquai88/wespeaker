@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wespeaker/bin/train.py", line 216, in <module>
+    fire.Fire(train)
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/fire/core.py", line 141, in Fire
+    component_trace = _Fire(component, args, parsed_flag_args, context, name)
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/fire/core.py", line 466, in _Fire
+    component, remaining_args = _CallAndUpdateTrace(
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/fire/core.py", line 681, in _CallAndUpdateTrace
+    component = fn(*varargs, **kwargs)
+  File "/shared/workspaces/jprofant/GitHub/wespeaker/examples/voxceleb/v2/wespeaker/bin/train.py", line 47, in train
+    dist.init_process_group(backend='nccl')
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 583, in init_process_group
+    default_pg = _new_process_group_helper(
+  File "/shared/workspaces/jprofant/anaconda3/envs/wespeaker/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 719, in _new_process_group_helper
+    pg = ProcessGroupNCCL(prefix_store, rank, world_size, pg_options)
+RuntimeError: ProcessGroupNCCL is only supported with GPUs, no GPUs found!
