@@ -1,6 +1,18 @@
 #!/bin/bash
-# coding:utf-8
-# Author: Hongji Wang
+
+# Copyright (c) 2022 Hongji Wang (jijijiang77@gmail.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 stage=-1
 stop_stage=-1
@@ -37,6 +49,22 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
   echo "Decompress success !!!"
 fi
 
+<<<<<<< HEAD
+=======
+if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
+  echo "Convert voxceleb2 wav format from m4a to wav using ffmpeg."
+  echo "This could also take some time ..."
+
+  if [ ! -d ${rawdata_dir}/voxceleb2_wav ]; then
+    ./local/m4a2wav.pl ${rawdata_dir}/voxceleb2_m4a dev ${rawdata_dir}/voxceleb2_wav
+    # Here we use 8 parallel jobs
+    cat ${rawdata_dir}/voxceleb2_wav/dev/m4a2wav_dev.sh | xargs -P 8 -i sh -c "{}"
+  fi
+
+  echo "Convert m4a2wav success !!!"
+fi
+
+>>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
 if [ ${stage} -le 4 ] && [ ${stop_stage} -ge 4 ]; then
   echo "Prepare wav.scp for each dataset ..."
   export LC_ALL=C # kaldi config

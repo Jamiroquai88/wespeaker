@@ -1,5 +1,13 @@
 # WeSpeaker
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python-Version](https://img.shields.io/badge/Python-3.8%7C3.9-brightgreen)](https://github.com/wenet-e2e/wespeaker)
+
+[**Roadmap**](ROADMAP.md)
+| [**Awesome Papers**](speaker_recognition_papers.md)
+| [**Runtime (x86_gpu)**](https://github.com/wenet-e2e/wespeaker/tree/master/runtime/server/x86_gpu)
+
+
 WeSpeaker mainly focuses on speaker embedding learning, with application to the speaker verification task. We support
 online feature extraction or loading pre-extracted features in kaldi-format.
 
@@ -21,7 +29,7 @@ pip install -r requirements.txt
 ## Recipes
 
 * [VoxCeleb](https://github.com/wenet-e2e/wespeaker/tree/master/examples/voxceleb/v2)
-* CNCeleb
+* [CNCeleb](https://github.com/wenet-e2e/wespeaker/tree/master/examples/cnceleb/v2)
 
 ## Support List:
 
@@ -31,8 +39,9 @@ pip install -r requirements.txt
     - [x] [ECAPA_TDNN](https://arxiv.org/abs/2005.07143)
 * Pooling Functions
     - [x] TAP(mean) / TSDP(std) / TSTP(mean+std)
+        - Comparison of mean/std pooling can be found in [shuai_iscslp](https://x-lance.sjtu.edu.cn/en/papers/2021/iscslp21_shuai_1_.pdf), [anna_arxiv](https://arxiv.org/pdf/2203.10300.pdf)
     - [x] Attentive Statistics Pooling (ASTP)
-    - [ ] [Learnable Dictionary Encoding (LDE)](https://arxiv.org/pdf/1804.00385.pdf)
+        - mainly for ECAPA_TDNN
 * Criteria
     - [x] Softmax
     - [x] [Sphere (A-Softmax)](https://www.researchgate.net/publication/327389164)
@@ -41,14 +50,14 @@ pip install -r requirements.txt
 * Scoring
     - [x] Cosine
     - [ ] PLDA
-    - [ ] Score Normalization (AS-Norm)
+    - [x] Score Normalization (AS-Norm)
 * Metric
     - [x] EER
     - [x] minDCF
 * Online Augmentation
     - [x] Noise && RIR
     - [x] Speed Perturb
-    - [x] Specaug
+    - [x] SpecAug
 * Literature
     - [x] [Awesome Speaker Papers](https://github.com/wenet-e2e/wespeaker/blob/master/speaker_recognition_papers.md)
 

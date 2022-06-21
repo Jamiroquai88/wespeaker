@@ -1,6 +1,16 @@
-#!/usr/bin/env python3
-# coding=utf-8
-# Author: Hongji Wang
+# Copyright (c) 2021 Hongji Wang (jijijiang77@gmail.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import random
 import numpy as np
@@ -81,11 +91,10 @@ class FeatList_LableDict_Dataset(Dataset):
                                       num_mel_bins=self.feat_dim,
                                       frame_shift=10,
                                       frame_length=25,
-                                      energy_floor=0.0,
+                                      dither=1.0,
+                                      sample_frequency=16000,
                                       window_type='hamming',
-                                      htk_compat=True,
-                                      use_energy=False,
-                                      dither=1)
+                                      use_energy=False)
             feat = feat_tensor.detach().numpy()
         else:
             # load feat

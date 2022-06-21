@@ -1,6 +1,7 @@
 #!/bin/bash
-# coding:utf-8
-# Author: Hongji Wang
+
+# Copyright 2022 Hongji Wang (jijijiang77@gmail.com)
+#           2022 Chengdong Liang (liangchengdong@mail.nwpu.edu.cn)
 
 . ./path.sh
 
@@ -15,7 +16,7 @@ num_avg=10
 checkpoint=
 
 score_norm_method="asnorm"  # asnorm/snorm
-top_n=500
+top_n=300
 trials="CNC-Eval-Concat.lst CNC-Eval-Avg.lst"
 
 . tools/parse_options.sh || exit 1

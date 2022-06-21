@@ -1,8 +1,9 @@
 #!/bin/bash
-# coding:utf-8
-# Author: Hongji Wang
 
-. ./path.sh
+# Copyright 2022 Hongji Wang (jijijiang77@gmail.com)
+#           2022 Chengdong Liang (liangchengdong@mail.nwpu.edu.cn)
+
+. ./path.sh || exit 1;
 
 stage=-1
 stop_stage=-1
@@ -14,7 +15,7 @@ num_avg=10
 checkpoint=
 
 score_norm_method="asnorm"  # asnorm/snorm
-top_n=100
+top_n=300
 trials="vox1_O_cleaned.kaldi vox1_E_cleaned.kaldi vox1_H_cleaned.kaldi"
 
 . tools/parse_options.sh || exit 1
@@ -58,7 +59,7 @@ fi
 if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ]; then
   echo "Score norm ..."
   local/score_norm.sh \
-    --stage 0 --stop-stage 3 \
+    --stage 1 --stop-stage 3 \
     --score_norm_method $score_norm_method \
     --cohort_set vox2_dev \
     --top_n $top_n \
