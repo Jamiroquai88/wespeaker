@@ -62,7 +62,7 @@ def train(config='conf/config.yaml', **kwargs):
     dist.barrier()  # let the rank 0 mkdir first
 
     logger = get_logger(configs['exp_dir'], 'train.log')
-    logger.setLevel(logging.INFO)
+    logger.setLevel(level=logging.INFO)
     if world_size > 1:
         logger.info('training on multiple gpus, this gpu {}'.format(gpu))
 

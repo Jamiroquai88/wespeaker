@@ -30,6 +30,11 @@ def get_logger(outdir, fname):
     fh = logging.FileHandler(os.path.join(outdir, fname))
     fh.setFormatter(formatter)
     logger.addHandler(fh)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+    logger.propagate = False
     return logger
 
 
