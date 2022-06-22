@@ -16,6 +16,7 @@
 import os
 from pprint import pformat
 import fire
+import logging
 import yaml
 import tableprint as tp
 import re
@@ -48,7 +49,7 @@ def train(config='conf/config.yaml', **kwargs):
     world_size = int(os.environ['WORLD_SIZE'])
     gpu = int(configs['gpus'][rank])
     os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu)
-    dist.init_process_group(backend='nccl')
+    dist.init_process_group(backend='gloo')
 
     model_dir = os.path.join(configs['exp_dir'], "models")
     if rank == 0:
@@ -61,6 +62,7 @@ def train(config='conf/config.yaml', **kwargs):
     dist.barrier()  # let the rank 0 mkdir first
 
     logger = get_logger(configs['exp_dir'], 'train.log')
+    logger.setLevel(logging.INFO)
     if world_size > 1:
         logger.info('training on multiple gpus, this gpu {}'.format(gpu))
 
@@ -76,7 +78,7 @@ def train(config='conf/config.yaml', **kwargs):
 
     if rank == 0:
         wandb.login(
-            host="http://wandb.speech-rnd.internal",
+            host="http://localhost:8080/",
             key="local-473ad2cf1f9ed9023faf837048e75943e1bbe7c5"
         )
         wandb.init(

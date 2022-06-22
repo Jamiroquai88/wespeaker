@@ -142,11 +142,7 @@ def Dataset(data_type,
             noise_lmdb_file: noise data source lmdb file
             whole_utt: use whole utt or random chunk
     """
-<<<<<<< HEAD
     assert data_type in ['shard', 'raw', 'feat', 'segments']
-=======
-    assert data_type in ['shard', 'raw', 'feat']
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
     lists = read_lists(data_list_file)
     shuffle = configs.get('shuffle', False)
     # Global shuffle
@@ -156,11 +152,8 @@ def Dataset(data_type,
         dataset = Processor(dataset, processor.tar_file_and_group)
     elif data_type == 'raw':
         dataset = Processor(dataset, processor.parse_raw)
-<<<<<<< HEAD
     elif data_type == 'segments':
         dataset = Processor((base_path, dataset), processor.parse_segments)
-=======
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
     else:
         dataset = Processor(dataset, processor.parse_feat)
     # Local shuffle

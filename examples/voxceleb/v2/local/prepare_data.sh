@@ -19,8 +19,8 @@ stop_stage=-1
 
 . tools/parse_options.sh || exit 1
 
-download_dir=data/download_data
-rawdata_dir=data/raw_data
+download_dir=/tmp/data/download_data
+rawdata_dir=/tmp/data/raw_data
 
 if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ]; then
   echo "Download musan.tar.gz, rirs_noises.zip, vox1_test_wav.zip, vox1_dev_wav.zip, and vox2_aac.zip."
@@ -49,31 +49,15 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
   echo "Decompress success !!!"
 fi
 
-<<<<<<< HEAD
-=======
-if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
-  echo "Convert voxceleb2 wav format from m4a to wav using ffmpeg."
-  echo "This could also take some time ..."
-
-  if [ ! -d ${rawdata_dir}/voxceleb2_wav ]; then
-    ./local/m4a2wav.pl ${rawdata_dir}/voxceleb2_m4a dev ${rawdata_dir}/voxceleb2_wav
-    # Here we use 8 parallel jobs
-    cat ${rawdata_dir}/voxceleb2_wav/dev/m4a2wav_dev.sh | xargs -P 8 -i sh -c "{}"
-  fi
-
-  echo "Convert m4a2wav success !!!"
-fi
-
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
 if [ ${stage} -le 4 ] && [ ${stop_stage} -ge 4 ]; then
   echo "Prepare wav.scp for each dataset ..."
   export LC_ALL=C # kaldi config
 
   mkdir -p data/musan data/rirs data/vox1 data/vox2_dev
   # musan
-  find $(pwd)/${rawdata_dir}/musan -name "*.wav" | awk -F"/" '{print $(NF-2)"/"$(NF-1)"/"$NF,$0}' >data/musan/wav.scp
+  find ${rawdata_dir}/musan -name "*.wav" | awk -F"/" '{print $(NF-2)"/"$(NF-1)"/"$NF,$0}' >data/musan/wav.scp
   # rirs
-  find $(pwd)/${rawdata_dir}/RIRS_NOISES/simulated_rirs -name "*.wav" | awk -F"/" '{print $(NF-2)"/"$(NF-1)"/"$NF,$0}' >data/rirs/wav.scp
+  find ${rawdata_dir}/RIRS_NOISES/simulated_rirs -name "*.wav" | awk -F"/" '{print $(NF-2)"/"$(NF-1)"/"$NF,$0}' >data/rirs/wav.scp
 
   echo "Success !!!"
 fi

@@ -12,11 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-<<<<<<< HEAD
 
 import logging
-=======
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
 
 import torch
 

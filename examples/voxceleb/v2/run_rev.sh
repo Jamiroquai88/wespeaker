@@ -10,9 +10,11 @@ stop_stage=-1
 config=conf/resnet.yaml
 exp_dir=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data
 data_type="shard"  # shard/raw
+#gpus="[0]"
 gpus="[0,1,2,3]"
 num_avg=10
-checkpoint=exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data/models/model_15.pt
+checkpoint=
+#exp/ResNet34-TSTP-emb256-fbank80-num_frms200-aug0.6-spTrue-saFalse-ArcMargin-SGD-epoch150_rev-data/models/model_15.pt
 
 score_norm_method="asnorm"  # asnorm/snorm
 top_n=100
@@ -55,7 +57,7 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ]; then
       --gpus $gpus \
       --num_avg ${num_avg} \
       --data_type "${data_type}" \
-      --train_data data/train/${data_type}.list \
+      --train_data data/train/${data_type}.list.1k \
       --train_label data/train/utt2spk \
       --reverb_data data/rirs/lmdb \
       --noise_data data/musan/lmdb \

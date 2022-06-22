@@ -50,8 +50,11 @@ logging.getLogger('urllib3').setLevel(logging.CRITICAL)
 # credential_source=Ec2InstanceMetadata
 #
 # this uses the fact that we have EC2-level permissions to access our s3 speech buckets
-session = boto3.Session(profile_name='rev-inst')
-s3res = session.client('s3', region_name="us-west-2")
+try:
+    session = boto3.Session(profile_name='rev-inst')
+    s3res = session.client('s3', region_name="us-west-2")
+except:
+    logging.warning('Failed to initialize s3 session. If you are using s3:// shards it might not work.')
 
 
 def url_opener(data):
@@ -171,7 +174,6 @@ def parse_raw(data):
             logging.warning('Failed to read {}'.format(wav_file))
 
 
-<<<<<<< HEAD
 def parse_segments(data):
     bdir, data = data
     with open(os.path.join(bdir, 'wav.scp')) as f:
@@ -222,8 +224,6 @@ def parse_segments(data):
             yield example
 
 
-=======
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
 def parse_feat(data):
     """ Parse key/feat/spk from json line
 
@@ -379,16 +379,12 @@ def random_chunk(data, data_type='shard/raw/feat', num_frms=200):
         else:
             assert 'wav' in sample
             wav = sample['wav'][0]
-<<<<<<< HEAD
             try:
                 wav = get_random_chunk(wav, chunk_len)
             except:
                 logging.warning(f'{sample["key"]} probably empty. '
                                 f'If you see this error often there might be a problem with your data.')
                 continue
-=======
-            wav = get_random_chunk(wav, chunk_len)
->>>>>>> 87513c76d0136b0c00a5beb3a4dea8a9b218a995
             sample['wav'] = wav.unsqueeze(0)
         yield sample
 
